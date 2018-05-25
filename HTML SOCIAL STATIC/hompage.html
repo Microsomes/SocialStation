@@ -1,0 +1,208 @@
+<html>
+
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <title>Modular- Home</title>
+
+    <link rel="icon" href="./logoOfficial.png">
+
+    <style>
+
+        html,body{
+            height:100%;
+            width:100%;
+            margin:0px;
+        }
+        .container{
+            height:100%;
+            width:1200px;
+            background:white;
+            margin:auto;
+         }
+        .topLayer{
+            height:200px;
+            padding:10px;
+            position: relative;
+        }
+        .mainTitle{
+             height:50px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-family: 'Roboto', sans-serif;  
+        }
+        .logoContainer{
+             position: relative;
+            left:-4px;
+        }
+        .logoContainer .logoImg{
+            height: 90px;
+            transform: rotate(20deg);
+            position: relative;
+            top:7px;
+            cursor:pointer;
+        }
+        .subTittle{
+             text-align: center;
+             color:grey;
+        }
+        .subTittle .subTitleText{
+            position: relative;
+            left:100px;
+            margin: 0px;
+        }
+        .accountIcon{
+            position: absolute;
+            right:20px;
+            cursor: pointer;
+        }
+        .accountIcon .accountImage{
+            width:25px;
+            height: 25px;
+            cursor: pointer;
+            
+        }
+        .accountIconText{
+            position: absolute;
+            left:-18px;
+            font-size: 10px;
+            font-family: 'Roboto', sans-serif;
+            color:grey;
+            margin-top:2px;
+        }
+        .main_content{
+            min-height: 300px;
+        }
+        .main_content .search_container{
+             height:60px;
+        }
+        .search_container{
+            display: flex;
+         }
+        .search_container .searchIcon{
+            width:30%;
+         }
+        .searchIcon{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .searchIconImg{
+            height:50px;
+            width:50px;
+            position: relative;
+            left:-40px;
+         }
+         .searchBox{
+              width:70%;
+              color:white;
+           }
+         .searchBox input[type="text"]{
+             width:70%;
+             height: 100%;
+             outline:none;
+             border:none;
+             font-size: 20px;
+             color:grey;
+             padding: 10px;
+             background:lightgrey;
+ 
+          }
+          .postStatusContainer{
+              height:100px;
+              padding:10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size:30px;
+              font-family: 'Roboto', sans-serif;
+                color:grey;
+                position: relative;
+                top:50px;
+
+          }
+          .postStatusIcon{
+              width:35px;
+              width:35px;
+              position:relative;
+              left:-16px;
+          }
+          .joinContainer{
+              height:100px;
+              display: flex;
+              align-items: center;
+              justify-items: center;
+              text-align: center;
+               width:100%;
+          }
+          .joinContainerButton{
+              position: relative;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+               left:380px;
+            color:white;
+            top:70px;
+            cursor:pointer;
+           }
+    </style>
+
+</head>
+
+<!--
+    TODO ADD CORRECT STYLES
+-->
+
+<body>
+
+    <div class="container">
+
+        <div class="topLayer">
+            <div class="accountIcon">
+                <img class="accountImage" src="../HTML SOCIAL STATIC/User Icon.jpg"/>
+                <div class="accountIconText">
+                    Login/signup
+                </div>
+            </div>
+            <div class="mainTitle">
+                <div class="logoContainer">
+                    <img class="logoImg" src="../HTML SOCIAL STATIC/logoOfficial.png">
+                </div>
+                Social Station
+            </div>
+            <div class="subTittle">
+                <p class="subTitleText">The only Modular social media playform in the World</p>
+            </div>
+        </div><!-- end of the top layer-->
+
+        <div class="main_content">
+            <div class="search_container">
+                <!--TODO ADD SEARCH MODULES-->
+                <div class="searchIcon">
+                    <img class="searchIconImg" src="../HTML SOCIAL STATIC/Search Icon.jpg"/>
+                </div>
+                <div class="searchBox">
+                    <input placeholder="Search a Module. Type |help if unsure" type="text" />
+                </div>
+            </div>
+            <div class="postStatusContainer">
+                <img class="postStatusIcon" src="./Tiles Big Icon.png"/>
+                0 posts to date
+            </div>
+            <div class="joinContainer">
+                <div class="joinContainerButton">
+
+                    <img src="./Button.png"/>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>
