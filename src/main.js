@@ -1,5 +1,7 @@
 /*
 Author Muhammed T Javed
+- Alpha 1 of Social station.
+Social station is an open souce modular social media platform.
 */
 
 import Vue from 'vue'
