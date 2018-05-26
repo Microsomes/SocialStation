@@ -20,12 +20,16 @@ import staticRules from './assets/Static/rules.vue';
 import staticHelp from './assets/Static/help.vue';
 //import static pages above
 
+
 import dynoMainFeed from './assets/Dynamic/codeModules/MainFeed.vue';
 import dynoAnimationLiner from './assets/Dynamic/ModularComponents/topNavAnimationLiner.vue';
 import dynoCreate from './assets/Dynamic/codeModules/create.vue';
 import dynoCreateRandomFact from './assets/Dynamic/createPages/createRandomFact.vue';
 import dynoHome from './assets/Dynamic/_mainDirectives/home.vue';
 //import dynamic pages above
+
+import dynoNews from './assets/Dynamic/app/News/main.vue';
+//import news dyno
 
 import dynoModuler from './assets/Dynamic/codeModules/moduler.vue';
 import dynoCryptoFolio from './assets/Dynamic/app/CryptoFolio/main.vue'
@@ -69,6 +73,10 @@ const routes=[
      {
        path:'feed',
        component:dynoMainFeed
+     },
+     {
+       path:'news',
+       component:dynoNews
      }
     ]
   }

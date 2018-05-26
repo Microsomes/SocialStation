@@ -319,7 +319,7 @@
                 <div class="links">
                    <router-link to="/codeModule/cryptofolio">Social Station Feed</router-link>  
                    <router-link to="/codeModule/cryptofolio">Whos doing what</router-link>  
-                   <router-link to="/codeModule/cryptofolio">Top News</router-link>  
+                   <router-link to="/codeModule/news">News</router-link>  
                  </div>
             </div>
             <!--
