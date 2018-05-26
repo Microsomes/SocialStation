@@ -20,6 +20,7 @@ import staticRules from './assets/Static/rules.vue';
 import staticHelp from './assets/Static/help.vue';
 //import static pages above
 
+import dynoAnimationLiner from './assets/Dynamic/ModularComponents/topNavAnimationLiner.vue';
 import dynoCreate from './assets/Dynamic/codeModules/create.vue';
 import dynoCreateRandomFact from './assets/Dynamic/createPages/createRandomFact.vue';
 import dynoHome from './assets/Dynamic/_mainDirectives/home.vue';
@@ -32,7 +33,8 @@ import dynamicComponent from './assets/Dynamic/codeModules/randomFact.vue';
 //import dynamic components
 
 Vue.component("randomFact",dynamicComponent);
- 
+Vue.component("animLiner",dynoAnimationLiner);
+//registering vue components above
 const routes=[
   {
     path:'/',
