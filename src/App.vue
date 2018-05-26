@@ -39,7 +39,9 @@ export default {
       <div class="moduleSeacher">
         <input type="text" placeholder="search module to interact with. People vids polls etc..."/>
       </div>
+      
     </div><!-- end of the top bar-->
+    <animLiner></animLiner>
 
 <div class="main_routing_content">
   <router-view></router-view>

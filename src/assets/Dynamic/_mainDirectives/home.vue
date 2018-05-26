@@ -68,6 +68,7 @@
         }
         .search_container{
             display: flex;
+            
          }
         .search_container .searchIcon{
             width:30%;
@@ -88,6 +89,14 @@
               width:70%;
               color:white;
            }
+
+           @keyframes searchBox {
+    0%   {top:0px;}
+    25%  {top:-50px;}
+    50%  {top:-50px;}
+    100% {top:0px;}
+}
+
          .searchBox input[type="text"]{
              width:70%;
              height: 100%;
@@ -97,8 +106,18 @@
              color:grey;
              padding: 10px;
              background:#F2F2F2;
- 
+             position: relative;
+            animation-name: searchBox;
+            animation-duration:3s ; 
+            transition: all .5s;
           }
+          @keyframes postStatusRotate {
+    0%   {transform: rotate(90deg);opacity: 0;}
+    25%   {transform: rotate(180deg);opacity: 0.25;}
+    75%   {transform: rotate(240deg); transform: scale(1.2);opacity: 0.50;}
+    100%   {transform: rotate(360deg);opacity: 1;}
+   
+    }
           .postStatusContainer{
               height:100px;
               padding:10px;
@@ -110,7 +129,9 @@
                 color:grey;
                 position: relative;
                 top:50px;
- 
+                 animation-name: postStatusRotate;
+                 animation-duration: 5s ;
+  
           }
           .postStatusIcon{
               width:35px;
