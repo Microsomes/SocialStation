@@ -23,6 +23,7 @@ export default {
 
 <template>
   <div class="main_container">
+    Alpha 1.0
     <div class="advertisementleft">
      <p>Social station is a open source modular social media platform. If you want to participate by creating a module or understand the code please visit github by clicing <a target="_blank" href="https://github.com/Microsomes/SocialStation">here</a> Some rules:<router-link to="/rules">here</router-link></p>
     </div><!-- end of advertisementleft-->
