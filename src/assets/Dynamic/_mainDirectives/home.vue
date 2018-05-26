@@ -107,9 +107,9 @@
              padding: 10px;
              background:#F2F2F2;
              position: relative;
-            animation-name: searchBox;
+            /* animation-name: searchBox;
             animation-duration:3s ; 
-            transition: all .5s;
+            transition: all .5s; */
           }
           @keyframes postStatusRotate {
     0%   {transform: rotate(90deg);opacity: 0;}

@@ -37,6 +37,11 @@ export default {
       <div class="logoText">
         <router-link style="color:black;text-decoration:none;font-size:14px;" to="/create/fact"> Create Fact:</router-link> &nbsp;<randomFact></randomFact>
       </div>
+      <div class="goToFeedButton">
+      <router-link to="/codeModule/feed">
+        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;">FEED</v-btn>
+     </router-link> 
+      </div>
       <div class="moduleSeacher">
         <input type="text" placeholder="search module to interact with. People vids polls etc..."/>
       </div>

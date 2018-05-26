@@ -20,6 +20,7 @@ import staticRules from './assets/Static/rules.vue';
 import staticHelp from './assets/Static/help.vue';
 //import static pages above
 
+import dynoMainFeed from './assets/Dynamic/codeModules/MainFeed.vue';
 import dynoAnimationLiner from './assets/Dynamic/ModularComponents/topNavAnimationLiner.vue';
 import dynoCreate from './assets/Dynamic/codeModules/create.vue';
 import dynoCreateRandomFact from './assets/Dynamic/createPages/createRandomFact.vue';
@@ -60,10 +61,15 @@ const routes=[
   {
     path:'/codeModule',
     component:dynoModuler,
-    children:[{
+    children:[
+      {
       path:'cryptofolio',
       component:dynoCryptoFolio
-    }
+     },
+     {
+       path:'feed',
+       component:dynoMainFeed
+     }
     ]
   }
 

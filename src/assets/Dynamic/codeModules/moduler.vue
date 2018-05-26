@@ -12,7 +12,7 @@
 <template>
     <div>
         <div class="descriptionModule">
-            A crypto currency portfolio tracking module. All binance coins are supported.
+        Calling all developers, Would you like to create your own. Please visit GitHub for instructions.
         </div>
          
         <router-view></router-view>
