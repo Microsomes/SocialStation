@@ -66,6 +66,16 @@ export default {
         <i v-bind:class="{arrowCloser_close:isReventModuleWindowOpen}"  class="material-icons arrowCloser">arrow_drop_down</i>
 
     </div>
+    <div class="recentModulesText">
+      <p>Recently used modules</p>
+    </div>
+    <div class="recentModuleContainer">
+      <div class="recentModuleItem">
+        <div class="recentModuleItemcloser">
+            <i class="material-icons">close</i>
+        </div>
+      </div>
+    </div>
 </div>
  
  
@@ -75,6 +85,44 @@ export default {
 <!--StylesBelow-->
 
 <style scoped>
+.recentModuleItemcloser{
+  border:1px solid black;
+  width:30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  top:-10px;
+  left:89%;
+  background: grey;
+  color:white;
+  font-family: 'Roboto', sans-serif;
+
+
+}
+.recentModuleItem{
+  border:1px solid black;
+  width:200px;
+  height: 150px;
+  position: relative;
+}
+.recentModuleContainer{
+  border:1px solid black;
+  height: 188px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.recentModulesText{
+  font-family: 'Roboto', sans-serif;
+  color:white;
+  font-size: 18px;
+  padding-left:10px;
+
+}
 .recentModules{
   position: fixed;
   background: #C62D2D;
