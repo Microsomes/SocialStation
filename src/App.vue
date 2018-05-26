@@ -52,6 +52,10 @@ export default {
 <div class="main_routing_content">
   <router-view></router-view>
 </div>
+
+<div class="recentModules">
+  
+</div>
  
  
   </div>
@@ -60,6 +64,17 @@ export default {
 <!--StylesBelow-->
 
 <style scoped>
+.recentModules{
+  position: fixed;
+  background: #C62D2D;
+  z-index: 10;
+  top:60.9%;
+  width: 100%;
+  left: 0px;
+  height: 250px;
+      box-shadow: 5px -10px lightgoldenrodyellow;
+
+}
 
 
 .advertisementleft{
