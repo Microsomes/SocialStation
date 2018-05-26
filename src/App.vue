@@ -13,7 +13,15 @@ export default {
   data:function(){
     return {
 
+      isReventModuleWindowOpen:false
  
+    }
+  },methods:{
+    toggleModuleWindow(){
+      //toggle the recent module window 
+      //this.isReventModuleWindowOpen!=this.isReventModuleWindowOpen;
+
+      this.isReventModuleWindowOpen= !this.isReventModuleWindowOpen;
     }
   }
 }
@@ -53,8 +61,11 @@ export default {
   <router-view></router-view>
 </div>
 
-<div class="recentModules">
-  
+<div v-bind:class="{recentModulesOpen:isReventModuleWindowOpen}" class="recentModules">
+    <div v-on:click="toggleModuleWindow"  class="closer">
+        <i v-bind:class="{arrowCloser_close:isReventModuleWindowOpen}"  class="material-icons arrowCloser">arrow_drop_down</i>
+
+    </div>
 </div>
  
  
@@ -68,12 +79,50 @@ export default {
   position: fixed;
   background: #C62D2D;
   z-index: 10;
-  top:60.9%;
+  top:98%;
   width: 100%;
   left: 0px;
+  height: 0px;
+  box-shadow: 5px -10px lightgoldenrodyellow;
+  transition: all 1s;
+}
+.recentModulesOpen{
+  left: 0px;
   height: 250px;
-      box-shadow: 5px -10px lightgoldenrodyellow;
+  top:60.6%;
+}
 
+.closer{
+  width:60px;
+  background: #C62D2D;
+  border-radius: 5px;
+  position: relative;
+  left: 50%;
+  top:-6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s;
+}
+
+.arrowCloser{
+  color:white;
+  transform: rotate(180deg); 
+  transition: all .5s;
+}
+
+.arrowCloser_close{
+  color:white;
+    transform: rotate(0deg); 
+}
+
+
+
+.closer:hover{
+  cursor: pointer;
+}
+.closer:active{
+  transform: scale(1.2);
 }
 
 
