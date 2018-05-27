@@ -324,6 +324,7 @@
                    <router-link to="/codeModule/cryptofolio">Q/A</router-link>  
                    <router-link to="/codeModule/cryptofolio">SS Islam QA</router-link>  
                    <router-link to="/codeModule/cryptofolio">SS Christianity QA</router-link>  
+                   <router-link to="/codeModule/cryptofolio">SS TooManyFacts</router-link>  
                  </div>
              </div>
              
@@ -347,6 +348,7 @@
                    <router-link to="/codeModule/cryptofolio">Breif Paper</router-link>  
                    <router-link to="/codeModule/cryptofolio">Create a Module</router-link>                      
                    <router-link to="/codeModule/cryptofolio">Contact Us</router-link>                      
+                   <router-link to="/codeModule/cryptofolio">Admin Portal</router-link>                      
                  </div>
             </div>
             
