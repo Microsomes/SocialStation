@@ -182,6 +182,8 @@
            .additionalLinks{
                height:300px;
                background: #F2F2F2;
+               padding: 10px;
+               text-align: center;
            }
            .additionalLinks{
                display: flex;
@@ -199,13 +201,18 @@
             text-align: center;
 
         }
+        .links a:hover{
+            background: grey;
+            padding: 5px;
+            color:white;
+        }
     .links a{
         color:#616161;
         text-decoration: none;
         font-size: 17px;
         font-family: 'Roboto', sans-serif;
         margin-top:4px;
-
+        transition: all .2s;
     }
         .links{
             height: 100%;
@@ -301,7 +308,10 @@
                 </div>
                 <div class="links">
                    <router-link to="/create/fact">Create Fact</router-link>  
-                 </div>
+                   <router-link to="/create/fact">Create Question</router-link>  
+                   <router-link to="/create/fact">Create Article</router-link>  
+                   <router-link to="/create/fact">Create WebPage</router-link>  
+                   </div>
             </div>
              <div class="linker">
                  <div class="linkerTitle">
@@ -309,6 +319,11 @@
                 </div>
                 <div class="links">
                    <router-link to="/codeModule/cryptofolio">CryptoFolio</router-link>  
+                   <router-link to="/codeModule/cryptofolio">SS Board</router-link>  
+                   <router-link to="/codeModule/cryptofolio">SS Tube</router-link>  
+                   <router-link to="/codeModule/cryptofolio">Q/A</router-link>  
+                   <router-link to="/codeModule/cryptofolio">SS Islam QA</router-link>  
+                   <router-link to="/codeModule/cryptofolio">SS Christianity QA</router-link>  
                  </div>
              </div>
              
@@ -322,9 +337,29 @@
                    <router-link to="/codeModule/news">News</router-link>  
                  </div>
             </div>
-            <!--
-            <div class="linker">4</div>
-            <div class="linker">5</div> -->
+            
+            <div class="linker">
+                 <div class="linkerTitle">
+                    Developers
+                </div>
+                <div class="links">
+                   <router-link to="/codeModule/cryptofolio">About</router-link>  
+                   <router-link to="/codeModule/cryptofolio">Breif Paper</router-link>  
+                   <router-link to="/codeModule/cryptofolio">Create a Module</router-link>                      
+                   <router-link to="/codeModule/cryptofolio">Contact Us</router-link>                      
+                 </div>
+            </div>
+            
+            <div class="linker">
+                <div class="linkerTitle">
+                    Support Us
+                </div>
+                <div class="links">
+                   <router-link to="/codeModule/cryptofolio">Donate</router-link>  
+                   <router-link to="/codeModule/cryptofolio">Contact Us</router-link>  
+                   
+                 </div>
+            </div>
          </div>
         
     </div>
