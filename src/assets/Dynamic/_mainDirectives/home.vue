@@ -353,6 +353,7 @@
                    <router-link to="/codeModule/cryptofolio">Breif Paper</router-link>  
                    <router-link to="/codeModule/cryptofolio">Create a Module</router-link>                      
                    <router-link to="/codeModule/cryptofolio">Road Map</router-link>                      
+                   <router-link to="/codeModule/cryptofolio">Media/Promo</router-link>                      
                    <router-link to="/codeModule/cryptofolio">Contact Us</router-link>                      
                    <router-link to="/codeModule/cryptofolio">Admin Portal</router-link>                      
                  </div>
