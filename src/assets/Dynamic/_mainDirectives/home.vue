@@ -235,10 +235,15 @@
 
         <div class="topLayer">
             <div class="accountIcon">
+                                <router-link to="/in">
+
                 <img class="accountImage" src="./../../images/home/User Icon.jpg"/>
+                                </router-link>
+                <router-link to="/in">
                 <div class="accountIconText">
                     Login/signup
                 </div>
+                </router-link>
             </div>
             <div class="mainTitle">
                 <div class="logoContainer">
@@ -341,12 +346,13 @@
             
             <div class="linker">
                  <div class="linkerTitle">
-                    Developers
+                    Developers/info
                 </div>
                 <div class="links">
                    <router-link to="/codeModule/cryptofolio">About</router-link>  
                    <router-link to="/codeModule/cryptofolio">Breif Paper</router-link>  
                    <router-link to="/codeModule/cryptofolio">Create a Module</router-link>                      
+                   <router-link to="/codeModule/cryptofolio">Road Map</router-link>                      
                    <router-link to="/codeModule/cryptofolio">Contact Us</router-link>                      
                    <router-link to="/codeModule/cryptofolio">Admin Portal</router-link>                      
                  </div>
