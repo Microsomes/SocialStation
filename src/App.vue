@@ -61,6 +61,7 @@ export default {
   <router-view></router-view>
 </div>
 
+<!-- start of the recent module container-->
 <div v-bind:class="{recentModulesOpen:isReventModuleWindowOpen}" class="recentModules">
     <div v-on:click="toggleModuleWindow"  class="closer">
         <i v-bind:class="{arrowCloser_close:isReventModuleWindowOpen}"  class="material-icons arrowCloser">arrow_drop_down</i>
@@ -77,7 +78,21 @@ export default {
       </div>
     </div>
 </div>
- 
+<!-- end of the recent module container-->
+
+<!-- start of chat container-->
+<div class="chatContainer">
+  <div class="dot">
+      <i class="material-icons">data_usage</i>
+  </div>
+  <div class="messagingText">
+    Messaging
+  </div>
+  <div class="compose">
+      <i class="material-icons">mode_edit</i>
+  </div>
+</div>
+<!-- end of chat container-->
  
   </div>
 </template>
@@ -85,6 +100,54 @@ export default {
 <!--StylesBelow-->
 
 <style scoped>
+
+.chatContainer{
+  position: fixed;
+  background: #C62D2D;
+  bottom: 0px;
+  right: 50px;
+  width:200px;
+  height: 40px;
+  display: flex;
+  cursor: pointer;
+  border:1px solid grey;
+  border-radius: 4px;
+}
+.chatContainer .compose{
+  position: relative;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chatContainer .compose i{
+  color:lightcyan;
+  font-size: 20px;
+}
+.chatContainer .dot{
+  width:30px;
+  height: 100%;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top:0.9px;
+  left: 5px;
+ }
+
+ .chatContainer .dot i{
+   color:lightcyan;
+ }
+.chatContainer .messagingText{
+  width:100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:lightcyan;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+}
+
 .recentModuleItemcloser{
   border:1px solid black;
   width:30px;
