@@ -47,7 +47,7 @@ export default {
       </div>
       <div class="goToFeedButton">
       <router-link to="/codeModule/feed">
-        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;">FEED</v-btn>
+        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;text-decoration:none">FEED</v-btn>
      </router-link> 
       </div>
       <div class="moduleSeacher">
@@ -100,6 +100,7 @@ export default {
 <!--StylesBelow-->
 
 <style scoped>
+
 
 .chatContainer{
   position: fixed;

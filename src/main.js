@@ -7,6 +7,11 @@ Social station is an open souce modular social media platform.
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+var firebase = require('firebase')
+//import the firebase library
+
+Vue.use(firebase);
+
 Vue.use(VueRouter);
 
 import Vuetify from 'vuetify'
@@ -44,6 +49,10 @@ const routes=[
   {
     path:'/in',
     component:dynoSignInUp
+  },
+  {
+    path:'*',
+    component:dynoHome
   },
   {
     path:'/',

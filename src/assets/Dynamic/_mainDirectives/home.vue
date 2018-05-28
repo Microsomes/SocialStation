@@ -184,6 +184,7 @@
                background: #F2F2F2;
                padding: 10px;
                text-align: center;
+               position: relative;
            }
            .additionalLinks{
                display: flex;
@@ -220,6 +221,29 @@
             padding: 20px;
             flex-flow: column;
             align-items: center;
+         }
+         .childWebsitesContainer{
+              min-height: 200px;
+             margin-top: 10px;
+         }
+         .childWebsitesContainer h2{
+             color:grey;
+             padding: 10px;
+            font-family: 'Roboto', sans-serif;
+         }
+         .additionalLinksTip{
+             position: absolute;
+             top:-15px;
+             color: grey;
+             padding: 2px;
+            font-family: 'Roboto', sans-serif;
+            background: #F2F2F2;
+            color:black;
+            border-radius: 5px;
+            padding: 2px;
+
+
+
          }
     </style>
 
@@ -306,7 +330,25 @@
             </div>
         </div><!-- end of promo-->
 
+         <div class="childWebsitesContainer">
+                <div class="linkerTitle">
+                    Social Station Child Websites
+                </div>
+                <div class="links">
+                   <router-link to="/codeModule/cryptofolio">eventsmap.io</router-link>  
+                                      <router-link to="/codeModule/cryptofolio">govexposed.com</router-link>  
+                                      <router-link to="/codeModule/cryptofolio">makealistnow.com</router-link>  
+                    <router-link to="/codeModule/cryptofolio">nextbighype.com</router-link>  
+
+                   <router-link to="/codeModule/cryptofolio">clubmotivations.com</router-link>  
+   
+                 </div>
+         </div>
+
         <div class="additionalLinks">
+            <div class="additionalLinksTip">
+                Quick Options
+            </div>
             <div class="linker">
                 <div class="linkerTitle">
                     Create
@@ -370,6 +412,8 @@
                  </div>
             </div>
          </div>
+
+         
         
     </div>
 
