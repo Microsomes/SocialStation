@@ -7,11 +7,20 @@ Social station is an open souce modular social media platform.
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
-var firebase = require('firebase')
-//import the firebase library
+import './assets/firebase';
+//import the firebase user library
+import VueFire from 'vuefire';
+// explicit installation required in module environments
+Vue.use(VueFire);
 
-Vue.use(firebase);
+Vue.filter('capitalize', function (value) {
+  if (!value) return ''
+  value = value.toString()
+  return value.charAt(0).toUpperCase() + value.slice(1)
+})
 
+
+ 
 Vue.use(VueRouter);
 
 import Vuetify from 'vuetify'

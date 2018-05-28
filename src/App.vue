@@ -22,6 +22,11 @@ export default {
       //this.isReventModuleWindowOpen!=this.isReventModuleWindowOpen;
 
       this.isReventModuleWindowOpen= !this.isReventModuleWindowOpen;
+    },
+    scrollToTop(){
+      //method used to scroll the user to the top
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
   }
 }
@@ -93,6 +98,11 @@ export default {
   </div>
 </div>
 <!-- end of chat container-->
+
+
+<div @click="scrollToTop()" class="scrollUpButton">
+    <i @click="scrollToTop()" class="material-icons">expand_less</i>
+</div>
  
   </div>
 </template>
@@ -100,6 +110,31 @@ export default {
 <!--StylesBelow-->
 
 <style scoped>
+.scrollUpButton i{
+  color:white;
+  
+}
+
+.scrollUpButton{
+  position: fixed;
+  background: #CD4545;
+  bottom:300px;
+  right: 75px;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  transition: all .2s;
+}
+.scrollUpButton:hover{
+  transform: scale(3);
+}
+.scrollUpButton:active{
+  background: white;
+}
 
 
 .chatContainer{
