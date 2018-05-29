@@ -13,7 +13,9 @@ add niches and comment on them too
 web3protocol.com- a website about the web 3 protocol simple concise information
 deepwebexploration.com- a website about deep web exploring and allowing users to enter their own links
 mcmaps.io- a website that hosts losts of minecraft maps on Xbox PC and PS4-3, the site will also allow users to upload their own maps
-
+socialarena.io
+socialbase.io
+privacy.xyz- build a privacy website
 finalised list to complete by eid:
 bffconfessions.com - create a confessions website
 blowsteem- create a website where people can write hate speech and talk about real world political issues
