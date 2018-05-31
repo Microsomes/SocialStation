@@ -41,7 +41,7 @@ height: 10px;;
 <script>
 export default {
     data:function(){
-
+        return {}
     }
 }
 </script>
