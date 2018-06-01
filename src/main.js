@@ -14,6 +14,10 @@ import VueRouter from 'vue-router';
 // // explicit installation required in module environments
 // Vue.use(VueFire);
 
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
 import './assets/firestore';
 import VueFirestore from 'vue-firestore'
 import Firebase from 'firebase'
