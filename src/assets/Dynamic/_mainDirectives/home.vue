@@ -258,7 +258,9 @@
     <div class="container">
 
         <div class="topLayer">
-            <div class="accountIcon">
+          
+           <!-- code rendered redundant 02/06/2018-->
+            <div style="display:none" class="accountIcon">
                                 <router-link to="/in">
 
                 <img class="accountImage" src="./../../images/home/User Icon.jpg"/>
@@ -269,6 +271,8 @@
                 </div>
                 </router-link>
             </div>
+            <!-- code rendered redundant 02/06/2018-->
+
             <div class="mainTitle">
                 <div class="logoContainer">
                    <img class="logoImg" src="./../../images/home/logoOfficial.png">

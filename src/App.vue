@@ -9,12 +9,18 @@
 -->
 
 <script>
-export default {
+import memberInfoBar from './assets/Dynamic/ModularComponents/memberInfoBar';
+
+ export default {
   data:function(){
     return {
 
       isReventModuleWindowOpen:false
  
+    }
+  },computed:{
+    stateStoreC:function(){
+      return this.$store.state.count
     }
   },methods:{
     toggleModuleWindow(){
@@ -28,6 +34,8 @@ export default {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     }
+  },components:{
+    memberInfoBar,
   }
 }
 </script>
@@ -36,7 +44,7 @@ export default {
 
 <template>
   <div class="main_container">
-    Alpha 1.0- firestore
+    Alpha 1.0- firestore..{{stateStoreC}}. 
     <div class="advertisementleft">
      <p>Social station is a open source modular social media platform. If you want to participate by creating a module or understand the code please visit github by clicing <a target="_blank" href="https://github.com/Microsomes/SocialStation">here</a> Some rules:<router-link to="/rules">here</router-link></p>
     </div><!-- end of advertisementleft-->
@@ -61,6 +69,10 @@ export default {
       
     </div><!-- end of the top bar-->
     <animLiner></animLiner>
+    
+    <div class="membersBar"><!-- start of members bar-->
+      <memberInfoBar></memberInfoBar>
+    </div><!-- end of members bar-->
 
 <div class="main_routing_content">
   <router-view></router-view>
@@ -110,6 +122,13 @@ export default {
 <!--StylesBelow-->
 
 <style scoped>
+.membersBar{
+  height: 50px;
+  border:1px solid #D3D3D3;
+  border-radius: 5px;
+  margin: 10px;
+}
+
 .scrollUpButton i{
   color:white;
   

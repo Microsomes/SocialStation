@@ -14,18 +14,18 @@ import VueRouter from 'vue-router';
 // // explicit installation required in module environments
 // Vue.use(VueFire);
 
-import Vuex from 'vuex'
 
-Vue.use(Vuex)
 
 import './assets/firestore';
 import VueFirestore from 'vue-firestore'
 import Firebase from 'firebase'
+import {store} from './assets/store/store';
+//import vuex store centralized state manager
 require('firebase/firestore')
 Vue.use(VueFirestore)
 //import the firestore library above
 
-
+ 
 Vue.filter('capitalize', function (value) {
   if (!value) return ''
   value = value.toString()
@@ -128,5 +128,6 @@ const router= new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
    render: h => h(App)
 })
