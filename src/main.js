@@ -53,6 +53,7 @@ import dynoAnimationLiner from './assets/Dynamic/ModularComponents/topNavAnimati
 import dynoCreate from './assets/Dynamic/codeModules/create.vue';
 import dynoCreateRandomFact from './assets/Dynamic/createPages/createRandomFact.vue';
 import dynoHome from './assets/Dynamic/_mainDirectives/home.vue';
+import dynoEntry from './assets/Dynamic/_mainDirectives/entry.vue';
 //import dynamic pages above
 
 import dynoNews from './assets/Dynamic/app/News/main.vue';
@@ -78,7 +79,7 @@ const routes=[
   },
   {
     path:'/',
-    component:dynoHome
+    component:dynoEntry
   },
   {
     path:'/help',

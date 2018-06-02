@@ -48,6 +48,7 @@ export default {
     },created(){
         var home=this;
         //store instance of this
+        home.generateNewFact();
         setInterval(function(){ 
          home.generateNewFact();
 
