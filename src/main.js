@@ -68,6 +68,10 @@ import dynoCryptoFolio from './assets/Dynamic/app/CryptoFolio/main.vue'
 import dynamicComponent from './assets/Dynamic/codeModules/randomFact.vue';
 //import dynamic components
 
+
+//import core pages
+import myProfilePage from './assets/Dynamic/_mainDirectives/myprofile/main.vue';
+
 Vue.component("randomFact",dynamicComponent);
 Vue.component("animLiner",dynoAnimationLiner);
 //registering vue components above
@@ -79,6 +83,11 @@ const routes=[
   {
     path:'*',
     component:dynoHome
+  },
+  {
+    path:'/profile',
+    component:myProfilePage,
+    name:'myprofile'
   },
   {
     path:'/dashboard',

@@ -100,7 +100,8 @@
         <input title="search friends polls and other content" type="text" placeholder="search"/>
     </div>
     <div class="quickLinks">
-        <div class="signedinUserButtonContainer">
+        
+        <div @click="goToMyProfile" class="signedinUserButtonContainer">
             <div class="userCircleContainer">
                 <div class="userCircle">
                     {{this.$store.state.authRelated.loginDetails.email[0]}}
@@ -144,6 +145,10 @@ export default{
             //set  local state isLoggedIn to false
             console.log(this.$store.state.authRelated.isLoggedIn);
 
+        },
+        goToMyProfile(){
+            //push router request to the myprofile page
+            this.$router.push("/profile");
         }
     }
 }

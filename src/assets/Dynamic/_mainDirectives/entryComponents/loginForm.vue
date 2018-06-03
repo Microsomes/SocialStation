@@ -43,14 +43,14 @@ h1{
 <template>
     <div class="loginCont">
         <div class="header">
-        <h1>Login</h1>
+        <h1>s'identifier</h1>
         </div>
         <div class="promo">
             <randomFactsViewer></randomFactsViewer>
         </div>
         <div class="signUpContainer">
             <input v-model="formValues.email" type="text" placeholder="email"/>
-            <input v-model="formValues.password" type="password" placeholder="password"/>
+            <input  v-model="formValues.password" type="password" placeholder="password"/>
             <v-btn @click="authenticateUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Login</v-btn>
         </div>
     </div>
