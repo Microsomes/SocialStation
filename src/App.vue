@@ -41,6 +41,14 @@ import {auth} from './assets/firestore.js';
   },components:{
     memberInfoBar,
   },created(){
+    var home=this;
+
+    //if user is logged in redirect to dashboard
+    if(home.$store.state.authRelated.isLoggedIn){
+      //user is locally logged in
+      home.$router.push("/dashboard");
+    }
+
     //listen to onchangeauth event 
     auth.onAuthStateChanged(function(user){
       if(user){
@@ -48,9 +56,21 @@ import {auth} from './assets/firestore.js';
         var email= user.email;
         var uid= user.uid;
         console.log(uid);
+        home.$store.state.authRelated.isLoggedIn=true;
+        //tell local web app that we are logged in
+         home.$store.state.authRelated.loginDetails.uid=uid;
+         home.$store.state.authRelated.loginDetails.email=email;
+
+        home.$router.push("/dashboard");
+
+        
       }else{
         //user signed out
         console.log("user is signed out");
+        home.$router.push("/");
+        home.$store.state.authRelated.isLoggedIn=false;
+        //not logged in
+
       }
     });
   }

@@ -81,6 +81,11 @@ const routes=[
     component:dynoHome
   },
   {
+    path:'/dashboard',
+    component:dynoHome,
+    name:'dashboard'
+  },
+  {
     path:'/',
     component:dynoEntry
   },

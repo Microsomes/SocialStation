@@ -6,7 +6,13 @@ Vue.use(vuex);
 
 export const store= new vuex.Store({
     state:{
-        count:0
+        authRelated:{
+            isLoggedIn:false,
+            loginDetails:{
+                uid:'',
+                email:''
+            }
+        }
     },
     mutations:{
         increment(state){

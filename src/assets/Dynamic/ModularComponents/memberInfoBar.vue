@@ -37,7 +37,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+     text-transform: capitalize;
+     background: #CD4545;
+     color:white;
 
 }
 .signedinUserButtonContainer:hover{
@@ -61,7 +63,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    left: 20px;;
+    left: 10px;;
     
 }
 .userName{
@@ -100,9 +102,11 @@
     <div class="quickLinks">
         <div class="signedinUserButtonContainer">
             <div class="userCircleContainer">
-                <div class="userCircle">M</div>
+                <div class="userCircle">
+                    {{this.$store.state.authRelated.loginDetails.email[0]}}
+                </div>
             </div>
-            <div title="SS Bucks" class="userName">Microsomes{0}</div>
+            <div title="SS Bucks" class="userName">{{this.$store.state.authRelated.loginDetails.email}}</div>
          </div>
     </div>
     <div class="pannelButtons">
@@ -120,7 +124,27 @@
          <div class="panelItem"><!-- start of panel item-->
               <i title=" global announcements" class="material-icons">info</i>
         </div><!-- end of panel item-->
-              
+        
+
     </div>
+    <v-btn @click="Logout" style="background:#CD4545;color:white;font-family: 'Roboto', sans-serif;">Logout</v-btn>
 </div>
 </template>
+
+<script>
+import {auth} from './../../firestore.js';
+export default{
+    data:function(){
+        return {}
+    },methods:{
+        Logout(){
+            //logout method
+            auth.signOut();
+            this.$store.state.authRelated.isLoggedIn=false;
+            //set  local state isLoggedIn to false
+            console.log(this.$store.state.authRelated.isLoggedIn);
+
+        }
+    }
+}
+</script>
