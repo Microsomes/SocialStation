@@ -10,6 +10,10 @@
 
 <script>
 import memberInfoBar from './assets/Dynamic/ModularComponents/memberInfoBar';
+//importing members info bar to display the current signed in user
+
+import {auth} from './assets/firestore.js';
+//importing auth needed to listen to on auth change events triggered by firebase
 
  export default {
   data:function(){
@@ -36,6 +40,19 @@ import memberInfoBar from './assets/Dynamic/ModularComponents/memberInfoBar';
     }
   },components:{
     memberInfoBar,
+  },created(){
+    //listen to onchangeauth event 
+    auth.onAuthStateChanged(function(user){
+      if(user){
+        //user is logged in
+        var email= user.email;
+        var uid= user.uid;
+        console.log(uid);
+      }else{
+        //user signed out
+        console.log("user is signed out");
+      }
+    });
   }
 }
 </script>

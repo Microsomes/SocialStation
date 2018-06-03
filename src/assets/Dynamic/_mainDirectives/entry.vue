@@ -66,8 +66,8 @@ sign in page
 
 <div class="signContainer">
     <div class="loginImageContainer">
-        <randomImage></randomImage>
-     </div>
+        <randomImage></randomImage> 
+      </div>
     <div class="loginFormContaier">
         <div class="loginInnerCont">
             
@@ -98,7 +98,8 @@ export default{
                 currentActiveComp:'loginForm'
             }
         }
-    },components:{
+    }
+    ,components:{
         loginForm,
         signUpForm,
         randomImage
@@ -111,6 +112,8 @@ export default{
             //method changes active component to the signup form
             this.localState.currentActiveComp="signUpForm";
         }
-    }
+    },created(){
+        
+     }
 }
 </script>

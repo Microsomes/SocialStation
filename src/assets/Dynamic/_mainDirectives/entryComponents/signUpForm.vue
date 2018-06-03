@@ -49,22 +49,35 @@ h1{
             <randomFactsViewer></randomFactsViewer>
         </div>
         <div class="signUpContainer">
-            <input type="text" placeholder="email"/>
-            <input type="text" placeholder="password"/>
-            <v-btn style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Sign Up</v-btn>
+            <input v-model="formValues.email" type="text" placeholder="email"/>
+            <input v-model="formValues.password" type="text" placeholder="password"/>
+            <v-btn @click="signUpUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Sign Up</v-btn>
         </div>
     </div>
 </template>
 
 <script>
 import randomFactsViewer from './../../codeModules/randomFact';
+import {auth} from './../../../firestore.js';
 export default{
 data:function(){
     return {
-
+        formValues:{
+            email:'',
+            password:''
+        }
     }
 },components:{
     randomFactsViewer,
+},methods:{
+    signUpUser(){
+        //method will call google auth and sign up a user
+       auth.createUserWithEmailAndPassword(this.formValues.email,this.formValues.password).catch(function(err){
+           var errorCode= err.code;
+           var errorMessage= err.message;
+           alert(errorMessage);
+       });
+    }
 }
 }
 </script>

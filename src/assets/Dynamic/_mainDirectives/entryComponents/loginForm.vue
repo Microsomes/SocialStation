@@ -49,22 +49,55 @@ h1{
             <randomFactsViewer></randomFactsViewer>
         </div>
         <div class="signUpContainer">
-            <input type="text" placeholder="email"/>
-            <input type="text" placeholder="password"/>
-            <v-btn style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Login</v-btn>
+            <input v-model="formValues.email" type="text" placeholder="email"/>
+            <input v-model="formValues.password" type="text" placeholder="password"/>
+            <v-btn @click="authenticateUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Login</v-btn>
         </div>
     </div>
 </template>
 
 <script>
+import {auth} from './../../../firestore.js';
+//import auth object
+
+//these component should de decoupled but fuck it im running on a short time frame so for now it wont be
+//todo decouple auth logic from this component to the parent
 import randomFactsViewer from './../../codeModules/randomFact';
 export default{
 data:function(){
     return {
-
+        formValues:{
+            email:'',
+            password:''
+        }
     }
 },components:{
     randomFactsViewer,
+},methods:{
+    authenticateUser(){
+        //send a politly message to firebase to ask them if user account exists
+        //and to nicely ask for a unique id back 
+        //TODO check if username and password fields are filleds
+        if(this.formValues.email!="" && this.formValues.password!=""){
+            //username and password fields are filled
+        
+            auth.signInWithEmailAndPassword(this.formValues.email,this.formValues.password).catch(function(err){
+                //handle erros here
+                var errorCode= err.code;
+                var errorMessage= err.message;
+                if(err){
+                    alert(errorMessage);
+                }
+            });
+            console.log("logging in");
+
+            return;
+        }
+
+        //TODO send toast to user to enter all fields
+        alert("fill in all fields ");
+
+    }
 }
 }
 </script>
