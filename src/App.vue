@@ -86,9 +86,9 @@ import {auth} from './assets/firestore.js';
      <p>Social station is a open source modular social media platform. If you want to participate by creating a module or understand the code please visit github by clicing <a target="_blank" href="https://github.com/Microsomes/SocialStation">here</a> Some rules:<router-link to="/rules">here</router-link></p>
     </div><!-- end of advertisementleft-->
     <div class="topBar">
-      <router-link to="/"> 
+      <router-link to="/dashboard"> 
       <div class="logo">
-        <img  src="./assets/images/logos/logoOfficial.png"/>
+        <img  src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FlogoOfficial.png?alt=media&token=79dadc52-28fd-417d-aae1-61c251934ad5"/>
        
       </div><!-- end of logo-->
       </router-link>

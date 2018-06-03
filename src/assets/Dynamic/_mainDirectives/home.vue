@@ -275,7 +275,7 @@
 
             <div class="mainTitle">
                 <div class="logoContainer">
-                   <img class="logoImg" src="./../../images/home/logoOfficial.png">
+                   <img class="logoImg" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FlogoOfficial.png?alt=media&token=79dadc52-28fd-417d-aae1-61c251934ad5">
                 </div>
                 Social Station
             </div>
@@ -288,14 +288,14 @@
             <div class="search_container">
                 <!--TODO ADD SEARCH MODULES-->
                 <div class="searchIcon">
-                    <img class="searchIconImg" src="./../../images/home/Search Icon.jpg"/>
+                    <img class="searchIconImg" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FSearch%20Icon.jpg?alt=media&token=113e7029-abc9-43ed-b4ed-ab505aad8331"/>
                 </div>
                 <div class="searchBox">
                     <input placeholder="Search a Module. Type |help if unsure" type="text" />
                 </div>
             </div>
             <div class="postStatusContainer">
-                <img class="postStatusIcon" src="./../../images/home/Tiles Big Icon.png"/>
+                <img class="postStatusIcon" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FTiles%20Big%20Icon.png?alt=media&token=c4bd1bf9-f437-4c67-9323-36f2d6afee2d"/>
                 0 posts to date
             </div>
             <div class="joinContainer">

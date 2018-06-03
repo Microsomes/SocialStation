@@ -60,13 +60,24 @@ sign in page
  .mainLoginContent{
      height: 440px;
  }
+ @media only screen and (max-width: 800px) {
+   
+    
+   .loginImageContainer{
+       display:none;
+   }
+   .loginFormContaier{
+       width: 100%;
+   }
+}
 </style>
 
 <template>
 
 <div class="signContainer">
+    
     <div class="loginImageContainer">
-        <randomImage></randomImage> 
+        <img style="height:100%;width:100%" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FmainImageforsocialstation.jpg?alt=media&token=b228c304-ae20-4f66-9460-1dafbef939be"/>
       </div>
     <div class="loginFormContaier">
         <div class="loginInnerCont">
@@ -113,7 +124,7 @@ export default{
             this.localState.currentActiveComp="signUpForm";
         }
     },created(){
-        
+        alert("pre-alpha beta dev build");
      }
 }
 </script>
