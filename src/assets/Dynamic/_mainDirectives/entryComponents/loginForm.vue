@@ -25,7 +25,7 @@ h1{
     font-family: 'Roboto', sans-serif;
 
 }
-.signUpContainer input[type="text"]{
+.signUpContainer input[type="text"],input[type="password"]{
     background: white;
     color:black;
     padding: 10px;
@@ -50,7 +50,7 @@ h1{
         </div>
         <div class="signUpContainer">
             <input v-model="formValues.email" type="text" placeholder="email"/>
-            <input v-model="formValues.password" type="text" placeholder="password"/>
+            <input v-model="formValues.password" type="password" placeholder="password"/>
             <v-btn @click="authenticateUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Login</v-btn>
         </div>
     </div>

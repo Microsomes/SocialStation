@@ -10,7 +10,12 @@ export const store= new vuex.Store({
             isLoggedIn:false,
             loginDetails:{
                 uid:'',
-                email:''
+                email:'',
+                optionalAdditionalDate:{
+                    //additional alias username is stored here
+                    username:'',//users don't really need to have one
+                    bio:''
+                }
             }
         }
     },
