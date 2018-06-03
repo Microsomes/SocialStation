@@ -124,7 +124,6 @@ export default{
             this.localState.currentActiveComp="signUpForm";
         }
     },created(){
-        alert("pre-alpha beta dev build");
-     }
+      }
 }
 </script>
