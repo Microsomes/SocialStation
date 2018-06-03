@@ -18,8 +18,7 @@ it has no network access and gets its data through slots and props and emits
     transition: all .2s;
     margin-top: 10px;
     position: relative;
-    right: 130px;
-    margin: 10px;
+     margin: 10px;
 }
  
 .top_infoBar{

@@ -82,9 +82,9 @@ import {auth} from './assets/firestore.js';
 <template>
   <div class="main_container">
     Alpha 1.0- firestore..{{stateStoreC}}. 
-    <div class="advertisementleft">
+    <!-- <div class="advertisementleft">
      <p>Social station is a open source modular social media platform. If you want to participate by creating a module or understand the code please visit github by clicing <a target="_blank" href="https://github.com/Microsomes/SocialStation">here</a> Some rules:<router-link to="/rules">here</router-link></p>
-    </div><!-- end of advertisementleft-->
+    </div>end of advertisementleft -->
     <div class="topBar">
       <router-link to="/dashboard"> 
       <div class="logo">
@@ -116,7 +116,7 @@ import {auth} from './assets/firestore.js';
 </div>
 
 <!-- start of the recent module container-->
-<div v-bind:class="{recentModulesOpen:isReventModuleWindowOpen}" class="recentModules">
+<!-- <div v-bind:class="{recentModulesOpen:isReventModuleWindowOpen}" class="recentModules">
     <div v-on:click="toggleModuleWindow"  class="closer">
         <i v-bind:class="{arrowCloser_close:isReventModuleWindowOpen}"  class="material-icons arrowCloser">arrow_drop_down</i>
 
@@ -131,11 +131,11 @@ import {auth} from './assets/firestore.js';
         </div>
       </div>
     </div>
-</div>
-<!-- end of the recent module container-->
+</div> -->
+<!-- end of the recent module container -->
 
 <!-- start of chat container-->
-<div class="chatContainer">
+<!-- <div class="chatContainer">
   <div class="dot">
       <i class="material-icons">data_usage</i>
   </div>
@@ -145,13 +145,13 @@ import {auth} from './assets/firestore.js';
   <div class="compose">
       <i class="material-icons">mode_edit</i>
   </div>
-</div>
+</div> -->
 <!-- end of chat container-->
 
 
-<div @click="scrollToTop()" class="scrollUpButton">
+<!-- <div @click="scrollToTop()" class="scrollUpButton">
     <i @click="scrollToTop()" class="material-icons">expand_less</i>
-</div>
+</div> -->
  
   </div>
 </template>
@@ -405,8 +405,8 @@ import {auth} from './assets/firestore.js';
 .main_container{
   background: white;
   margin:0px;
-  width:960px;
-  margin:auto;
+  width:90%;
+   margin:auto;
   height:100%;
 }
 </style>

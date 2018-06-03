@@ -37,15 +37,35 @@
     overflow: auto;
     height: 290px;
 }
+
+@media only screen and (max-width: 900px) {
+     .newsContainer{
+          margin:0px;
+      }
+      .newsAddOptionsContainer{
+          display:none;
+          
+      }
+      .newsItemsContainer{
+           position: relative;
+            display: flex;
+           align-items: center;
+           justify-content: center;
+           flex-flow: column;
+      }
+}
+
+
+
 </style>
 
 <template>
     <div class="newsContainer">
 
  
- 
+        <div class="newsItemsContainer">
          <newsItemComp v-for="n in newsp2" :postData="n" ></newsItemComp> 
- 
+        </div>
         <div class="newsAddOptionsContainer">
                 <div class="addText">
                  Hello, please help SS by contributing some of your time and energy. Please Add a news article by filling in the form below.

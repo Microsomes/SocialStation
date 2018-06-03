@@ -14,7 +14,9 @@ export const store= new vuex.Store({
                 optionalAdditionalDate:{
                     //additional alias username is stored here
                     username:'',//users don't really need to have one
-                    bio:''
+                    bio:'',
+                    userRole:'nonAdmin',
+                    isHungryRabbit:false //determines if user gets hungry rabbit previleges
                 }
             }
         }
