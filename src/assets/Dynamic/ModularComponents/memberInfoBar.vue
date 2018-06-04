@@ -91,6 +91,38 @@
     color:#CD4545;
 
 }
+.logoutButton{
+    transition: all .5s;
+}
+ /*responsive code here if screen smaller then 900px*/
+    @media only screen and (max-width: 900px) {
+     .mainInfoBar{
+      }   
+    }
+
+        @media only screen and (max-width: 550px) {
+            .mainInfoBar{
+            }
+
+            .searchContainer{
+                display: none;
+            }
+            .pannelButtons{
+                display:none;
+            }
+           
+            
+        }
+        @media only screen and (max-width:380px){
+            .logoutButton{
+                position: absolute;
+                top:130px;
+            }
+            .quickLinks{
+                width: 100%;
+            }
+        }
+
 
 </style>
 
@@ -128,7 +160,7 @@
         
 
     </div>
-    <v-btn @click="Logout" style="background:#CD4545;color:white;font-family: 'Roboto', sans-serif;">Logout</v-btn>
+    <v-btn class="logoutButton" @click="Logout" style="background:#CD4545;color:white;font-family: 'Roboto', sans-serif;">Logout</v-btn>
 </div>
 </template>
 

@@ -5,8 +5,7 @@
         .container{
             height:100%;
              background:none;
-            width:960px;
-         }
+          }
         .topLayer{
             height:200px;
             padding:10px;
@@ -159,7 +158,7 @@
            }
 
            .promo_container{
-               height:400px;
+               min-height:400px;
                background: #C62D2D;
                width: 100%;
                display: flex;
@@ -180,7 +179,7 @@
            }
            
            .additionalLinks{
-               height:300px;
+               min-height:300px;
                background: #F2F2F2;
                padding: 10px;
                text-align: center;
@@ -241,10 +240,61 @@
             color:black;
             border-radius: 5px;
             padding: 2px;
-
-
-
          }
+         /*responsive code here if screen smaller then 900px*/
+         @media only screen and (max-width: 900px) {
+          
+            .additionalLinks{
+                 display: none;
+             }
+             .promo_container{
+                 flex-flow: column;
+                 overflow: auto;
+                 border-radius: 5px;
+                 justify-content: center;
+                 align-items: center;
+                 text-align: center;
+                 border:none;
+                 padding: 10px;
+              }
+              .promo_container div{
+                  border:none;
+                   width: 100%;
+                   padding: 10px;
+              }
+
+              .searchIcon{
+                  display: none;
+              }
+              .search_container{
+
+              }
+              .search_container input[type="text"]{
+                  width: 100%;
+              }
+              .searchIconImg{
+                  display: none;
+              }
+            .searchBox{
+                width: 100%;
+            }
+            .logoContainer{
+                border:1px solid black;
+                display: none;
+            }
+            .subTitleText{
+                left: 30px;
+                margin: 0px;
+                padding: 0px;
+                position: relative;
+            }
+            .subTittle .subTitleText{
+            left:0px;
+            font-size: 15px;
+            padding: 10px;
+            }
+        }
+
     </style>
 
  
@@ -280,7 +330,9 @@
                 Social Station
             </div>
             <div class="subTittle">
-                <p class="subTitleText">The only Modular social media playform in the World</p>
+                <p class="subTitleText">
+                    Social station is a modular open source social media platform.
+                </p>
             </div>
         </div><!-- end of the top layer-->
 
@@ -349,6 +401,7 @@
                  </div>
          </div>
 
+        <!-- start of quick options-->
         <div class="additionalLinks">
             <div class="additionalLinksTip">
                 Quick Options
@@ -415,7 +468,7 @@
                    
                  </div>
             </div>
-         </div>
+         </div><!-- end of quick options-->
 
          
         

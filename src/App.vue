@@ -81,8 +81,7 @@ import {auth} from './assets/firestore.js';
 
 <template>
   <div class="main_container">
-    Alpha 1.0- firestore..{{stateStoreC}}. 
-    <!-- <div class="advertisementleft">
+     <!-- <div class="advertisementleft">
      <p>Social station is a open source modular social media platform. If you want to participate by creating a module or understand the code please visit github by clicing <a target="_blank" href="https://github.com/Microsomes/SocialStation">here</a> Some rules:<router-link to="/rules">here</router-link></p>
     </div>end of advertisementleft -->
     <div class="topBar">
@@ -96,8 +95,8 @@ import {auth} from './assets/firestore.js';
         <router-link style="color:black;text-decoration:none;font-size:14px;" to="/create/fact"> Create Fact:</router-link> &nbsp;<randomFact></randomFact>
       </div>
       <div class="goToFeedButton">
-      <router-link to="/codeModule/feed">
-        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;text-decoration:none">FEED</v-btn>
+      <router-link style="text-decoration:none;" to="/codeModule/feed">
+        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;text-decoration:none">Go to FEED</v-btn>
      </router-link> 
       </div>
       <div class="moduleSeacher">
@@ -409,6 +408,21 @@ import {auth} from './assets/firestore.js';
    margin:auto;
   height:100%;
 }
+      /*responsive code here if screen smaller then 900px*/
+    @media only screen and (max-width: 900px) {
+      .logoText{
+        display:none;
+      }
+      .topBar{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo{
+        position: relative;
+        left: -40px;
+      }
+    }
 </style>
 
 
