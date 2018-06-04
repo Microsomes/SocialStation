@@ -65,6 +65,16 @@ sign in page
  .mainLoginContent{
      height: 440px;
  }
+ .promoText{
+     position: absolute;
+     background: #CD4545;
+     padding: 10px;
+     border-radius: 5px;
+     margin: 10px;
+     font-size: 25px;
+     font-family: 'Roboto', sans-serif;
+
+ }
  @media only screen and (max-width: 800px) {
    
     
@@ -83,6 +93,8 @@ sign in page
 <div class="signContainer">
     
     <div class="loginImageContainer">
+        <vue-typer :repeat='0' class="promoText" :text="promoText"></vue-typer>
+
         <img style="height:100%;width:100%" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FmainImageforsocialstation.jpg?alt=media&token=b228c304-ae20-4f66-9460-1dafbef939be"/>
       </div>
     <div class="loginFormContaier">
@@ -111,6 +123,7 @@ import randomImage from './entryComponents/randomImage';
 export default{
     data:function(){
         return {
+            promoText:'Social Station is a modular open source social media platform.',
             localState:{
                 currentActiveComp:'loginForm',
                 loginButtonActive:true,
