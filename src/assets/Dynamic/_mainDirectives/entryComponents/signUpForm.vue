@@ -49,8 +49,8 @@ h1{
             <randomFactsViewer></randomFactsViewer>
         </div>
         <div class="signUpContainer">
-            <input v-model="formValues.email" type="text" placeholder="email"/>
-            <input v-model="formValues.password" type="password" placeholder="password"/>
+            <input v-on:keyup.enter="signUpUser" v-model="formValues.email" type="text" placeholder="email"/>
+            <input v-on:keyup.enter="signUpUser" v-model="formValues.password" type="password" placeholder="password"/>
             <v-btn @click="signUpUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Sign Up</v-btn>
         </div>
     </div>
