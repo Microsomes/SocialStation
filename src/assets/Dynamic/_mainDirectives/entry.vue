@@ -7,6 +7,11 @@ sign in page
 
 <style scoped>
 
+.active{
+    background: black;
+    border-radius: 5px;
+ }
+
 .signContainer{
     position: fixed;
     background: #CD4545;
@@ -69,6 +74,7 @@ sign in page
    .loginFormContaier{
        width: 100%;
    }
+   
 }
 </style>
 
@@ -83,8 +89,8 @@ sign in page
         <div class="loginInnerCont">
             
             <div class="loginSignOutButtons">
-                <div @click="goToLogin()" class="login halves">Login</div>
-                <div @click="goToSignup()" class="logup halves">Signup</div>
+                <div v-bind:class="{active:localState.loginButtonActive}" @click="goToLogin()" class="login halves ">Login</div>
+                <div v-bind:class="{active:localState.signupButtonActive}" @click="goToSignup()" class="logup halves">Signup</div>
             </div><!-- end of login signout buttons-->
 
             <div   class="mainLoginContent">
@@ -106,7 +112,9 @@ export default{
     data:function(){
         return {
             localState:{
-                currentActiveComp:'loginForm'
+                currentActiveComp:'loginForm',
+                loginButtonActive:true,
+                signupButtonActive:false
             }
         }
     }
@@ -118,10 +126,14 @@ export default{
         goToLogin(){
             //method changes active component to the login form
             this.localState.currentActiveComp="loginForm";
+            this.localState.loginButtonActive=true;
+            this.localState.signupButtonActive=false;
         },
         goToSignup(){
             //method changes active component to the signup form
             this.localState.currentActiveComp="signUpForm";
+            this.localState.loginButtonActive=false;
+            this.localState.signupButtonActive=true;
         }
     },created(){
       }
