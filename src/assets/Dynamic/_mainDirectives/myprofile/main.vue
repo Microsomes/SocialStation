@@ -84,6 +84,9 @@
 .active:hover{
     background: white;
 }
+@media only screen and (max-width:550px){
+    
+}
  
 </style>
 

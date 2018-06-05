@@ -50,8 +50,9 @@ justify-content: center;
 }
 .photoItem:hover{
     cursor: pointer;
-    background: red;
+    background: #D35B5B;
     transform: scale(2.5);
+    border:5px solid #D35B5B;
  }
 .photosContainer{
     display: flex;
@@ -63,8 +64,10 @@ justify-content: center;
     display: flex;
 }
 .memoralWallContainer{
-    border:1px solid grey;
+    border:1px solid #D35B5B;
     width: 600px;
+    margin: 12px;
+    border-radius: 5px;
 }
 .memoraiTitle{
     color:grey;
@@ -80,6 +83,37 @@ justify-content: center;
     top:-10px;
     left: 10px;
     text-transform: capitalize;
+}
+.typeSomething{
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+}
+.typeSomething input[type="text"]{
+    width: 100%;
+    height: 10%;
+    padding: 10px;
+    outline:none;
+    border:1px solid grey;
+    transition: all .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.typeSomething input[type="text"]:focus{
+    height: 100%;
+}
+@media only screen and (max-width:550px){
+    .leftSide{
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .memoralWallContainer{
+        width: 90%;
+    }
 }
 </style>
 
@@ -149,9 +183,13 @@ justify-content: center;
             <div class="memoraiTitle">
                 Memorial wall
             </div>
-            <div class="memorialSubline">what will people remmeber about you after you die. Write down your most dearest and important thoughts </div>
-            <div class="typeSomething"></div>
+            <div class="memorialSubline">How will people remember you about you die? Write down your dearest, important thoughts memories and ideas here. </div>
+            <div class="typeSomething">
+                <input type="text" placeholder="get typing... and push enter to submit"/>
+                 
     
+            </div><!-- end of type something-->
+            
         </div><!-- end of memorail wall-->
     </div>
     <div class="rightSide">
