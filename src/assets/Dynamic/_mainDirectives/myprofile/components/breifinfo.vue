@@ -182,6 +182,10 @@ justify-content: center;
     .infoContainer{
         width:90%;
     }
+    .leftSideColumnContainerThird{
+        width:90%;
+    }
+   
 
     
 }
