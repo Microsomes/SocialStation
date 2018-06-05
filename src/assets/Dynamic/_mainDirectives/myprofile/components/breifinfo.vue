@@ -1,7 +1,6 @@
 
 <style scoped>
 .infoContainer{
-    border:1px solid grey;
     width: 300px;
     min-height: 500px;
     border-radius: 5px;
@@ -60,11 +59,9 @@ justify-content: center;
     justify-content: space-around;
 }
 .leftSide{
-    border:1px solid black;
     display: flex;
 }
 .memoralWallContainer{
-    border:1px solid #D35B5B;
     width: 600px;
     margin: 12px;
     border-radius: 5px;
@@ -105,11 +102,9 @@ justify-content: center;
     height: 100%;
 }
 .leftSideColumnContainerThird{
-    border:1px solid black;
-    min-width: 250px;
+    width: 250px;
 }
 .profileCompletion{
-    border:1px solid grey;
     border-radius: 5px;
     height: 250px;
 }
@@ -117,8 +112,63 @@ justify-content: center;
     color:grey;
     padding: 10px;
     font-family: 'Roboto', sans-serif;
+}
+.progressionCircle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85%;
+    font-family: 'Roboto', sans-serif;
 
 }
+.profileCompletionTips{
+        font-family: 'Roboto', sans-serif;
+}
+.profileCompletionTips{
+    padding: 10px;
+    min-height: 100px;
+    color:grey;
+    
+}
+.profiletext{
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
+    color:grey;
+    font-weight: bold;
+}
+.piggedReads{
+    min-height: 200px;
+ }
+.explanation{
+    color:grey;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+}
+
+.editProfileContainer{
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.editProfileButton{
+    background:#D35B5B;
+    width: 80%;
+    border-radius: 30px;
+    padding: 10px;
+    margin:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+.editProfileButton:hover{
+    cursor:pointer;
+}
+
 @media only screen and (max-width:675px){
     .leftSide{
         flex-flow: column;
@@ -132,6 +182,7 @@ justify-content: center;
     .infoContainer{
         width:90%;
     }
+
     
 }
 </style>
@@ -215,8 +266,44 @@ justify-content: center;
                 <div class="title">
                     Profile Completion
                 </div>
+                <div class="progressionCircle">
+                     <vue-circle
+        :progress="10"
+        :size="100"
+        :reverse="false"
+        line-cap="round"
+        :fill="fill"
+        empty-fill="rgba(0, 0, 0, .1)"
+        :animation-start-value="0.0"
+        :start-angle="0"
+        insert-mode="append"
+        :thickness="5"
+        :show-percent="true"
+        @vue-circle-progress="progress"
+        @vue-circle-end="progress_end">
+          <p>Completion</p>
+      </vue-circle>
+                </div>
+             <div class="profiletext">Want to make your profile more attractive?</div>
+            <div class="profileCompletionTips">{{profileTips}}</div>
+            <div class="editProfileContainer">
+                <div class="editProfileButton">Edit Profile</div>
             </div>
+        <!-- profile completion code is above-->
+            <!-- pigged reads starts here-->
+            <div class="piggedReads">
+                <div class="title">Pinned Reads</div>
+                <div class="explanation">Here you will be everyone who has pinned for you to read articles,websites, blogs or polls on Social Station. You can set who can pin your reads in your privacy setting. By default it is set to everyone.
+                </div>
+            </div>
+            <!-- pinned reads ends here-->
+            
+            </div><!-- end of profile completion div-->
+
+             
+
         </div><!-- third row column ends-->
+       
     </div>
      
 </div>
@@ -224,12 +311,26 @@ justify-content: center;
 
 <script>
  
+import VueCircle from 'vue2-circle-progress';
+//imported the circle progress needed for the beief profile page
+
 
 export default{
     data:function(){
         return {
-
+            profileTips:"Adding a name to your profile goes a long way. Additionally you may add a location, birthday, bio and a few highligted pictures of yourself.",
+        fill : { gradient: ["#D35B5B", "grey", "grey"] },
         }
+    },
+    methods:{
+      progress(event,progress,stepValue){
+        console.log(stepValue);
+      },
+      progress_end(event){
+        console.log("Circle progress end");
+      }
+    },components:{
+        VueCircle,
     }
 }
 

@@ -7,7 +7,6 @@
 <style scoped>
 
 .profileContainer{
-     border:1px solid grey;
      min-height: 500px;
      border-radius: 5px;
     
@@ -95,6 +94,9 @@
         flex-flow: column;
         justify-content: center;
         align-items: center;
+    }
+    .detailsNavItem{
+        margin-top: 10px;
     }
     
 }

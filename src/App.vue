@@ -349,8 +349,7 @@ import {auth} from './assets/firestore.js';
     }
 }
 .main_routing_content{
-  border:1px solid lightgray;
-  min-height:500px;
+   min-height:1000px;
   border-radius: 5px;
 }
 .moduleSeacher{
