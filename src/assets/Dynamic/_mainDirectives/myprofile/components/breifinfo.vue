@@ -97,6 +97,8 @@ justify-content: center;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+        box-shadow: 5px 10px #D35B5B;
+
 }
 .typeSomething input[type="text"]:focus{
     height: 100%;
@@ -169,7 +171,51 @@ justify-content: center;
     cursor:pointer;
 }
 
-@media only screen and (max-width:675px){
+.pinnedItem{
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s;
+    border:1px solid lightcyan;
+    border-radius: 5px;
+    padding: 10px;
+}
+.pinnedIcon{
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pinnedIcon i{
+    font-size: 50px;
+    color:#D35B5B;
+}
+.pinnedTextContainer{
+    width:200px;
+    padding: 2px;
+}
+.pinnedTextContainer .pinnedText{
+    color:grey;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+.pinnedPinnedBy{
+    color:grey;
+    position: relative;
+    left: 5px;
+}
+
+.pinnedItem:hover{
+    cursor: pointer;
+    background: lightcyan;
+    padding: 10px;
+     
+}
+
+@media only screen and (max-width:800px){
     .leftSide{
         flex-flow: column;
         justify-content: center;
@@ -186,7 +232,7 @@ justify-content: center;
         width:90%;
     }
    
-
+   
     
 }
 </style>
@@ -299,9 +345,44 @@ justify-content: center;
                 <div class="title">Pinned Reads</div>
                 <div class="explanation">Here you will be everyone who has pinned for you to read articles,websites, blogs or polls on Social Station. You can set who can pin your reads in your privacy setting. By default it is set to everyone.
                 </div>
+                <div class="pinnedItem"><!-- pinned items starts here-->
+                    <div class="pinnedIcon">
+                        
+                          <i class="material-icons">book</i>
+                    </div>
+                    <div class="pinnedTextContainer">
+                        <div class="pinnedText">Secrets of trading...</div>
+                        <div class="pinnedPinnedBy">_pinned by Tayyab</div>
+                         </div>
+                </div><!-- pinned ends here-->
+                            <div class="pinnedItem"><!-- pinned items starts here-->
+                    <div class="pinnedIcon">
+                        
+                          <i class="material-icons">book</i>
+                    </div>
+                    <div class="pinnedTextContainer">
+                        <div  class="pinnedText">Marriage Guide</div>
+                        <div class="pinnedPinnedBy">_pinned by Tayyab</div>
+                         </div>
+                </div><!-- pinned ends here-->
+                </div>
+                <!-- pinned reads ends here-->
+
+                <div class="likedPeopleOverview">
+                    <div class="title">
+                        People who liked you...
+                    </div>
+                    <div class="explanation">
+                        _People who liked your profile will appear here.
+                    </div>
+
+                    
+
+                 </div>
+
+
             </div>
-            <!-- pinned reads ends here-->
-            
+             
             </div><!-- end of profile completion div-->
 
              
