@@ -109,6 +109,10 @@ justify-content: center;
 .profileCompletion{
     border-radius: 5px;
     height: 250px;
+    border:1px solid lightcyan;
+    border-radius: 1px;
+    margin-bottom: 10px;
+    margin-top: 5px
 }
 .profileCompletion .title{
     color:grey;
@@ -140,6 +144,10 @@ justify-content: center;
 }
 .piggedReads{
     min-height: 200px;
+    border:1px solid lightcyan;
+    border-radius: 1px;
+    margin-bottom: 10px;
+    margin-top: 5px
  }
 .explanation{
     color:grey;
@@ -213,6 +221,12 @@ justify-content: center;
     background: lightcyan;
     padding: 10px;
      
+}
+.likedPeopleOverview{
+    border:1px solid lightcyan;
+    border-radius: 1px;
+    margin-bottom: 10px;
+    margin-top: 5px
 }
 
 @media only screen and (max-width:800px){
@@ -375,10 +389,34 @@ justify-content: center;
                     <div class="explanation">
                         _People who liked your profile will appear here.
                     </div>
+                    <div class="pinnedItem"><!-- pinned items starts here-->
+                    <div class="pinnedIcon">
+                        
+                          <i class="material-icons">favorite</i>
+                    </div>
+                    <div class="pinnedTextContainer">
+                        <div  class="pinnedText">Taylor Liked you</div>
+                        <div class="pinnedPinnedBy">_1 hour ago</div>
+                    </div>
+                    
+                </div><!-- pinned ends here-->
+
+                <div class="pinnedItem"><!-- pinned items starts here-->
+                    <div class="pinnedIcon">
+                        
+                          <i class="material-icons">favorite</i>
+                    </div>
+                    <div class="pinnedTextContainer">
+                        <div  class="pinnedText">Irtizas girl Liked you</div>
+                        <div class="pinnedPinnedBy">_ 21 secs ago</div>
+                    </div>
+                    
+                </div><!-- pinned ends here-->
 
                     
+                    
 
-                 </div>
+                 </div><!-- liked people overview ends here-->
 
 
             </div>
