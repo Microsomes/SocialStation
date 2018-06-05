@@ -66,6 +66,18 @@
     position: relative;
     top:-40px;
 }
+
+.stickyNav{
+    position: fixed;
+    top:0px;
+    width: 100%;
+    left:0px;
+    opacity: 0.5;
+}
+.stickyNav:hover{
+    opacity: 1;
+}
+
 .detailsNavItem{
     transition: all .2s;
 }
@@ -97,6 +109,7 @@
     }
     .detailsNavItem{
         margin-top: 10px;
+        
     }
     
 }
@@ -118,7 +131,7 @@
 <!-- container for profile image ends here-->
 
 <div class="detailsContainer">
-    <div class="detailsNav">
+    <div id="stickyProfileNavBar" v-bind:class="{stickyNav:navState.isProfileNavSticky}" class="detailsNav">
         <div v-bind:class="{active:profileNavState.isBreifSelected}" @click="goToNavLink('breif')" class="detailsNavItem">Brief info</div>
         <div v-bind:class="{active:profileNavState.isEductationSelected}" @click="goToNavLink('education')" class="detailsNavItem">Education</div>
         <div v-bind:class="{active:profileNavState.isInterestsSelected}" @click="goToNavLink('interests')" class="detailsNavItem">Interests</div>
@@ -147,6 +160,9 @@ import interests from './components/interests';
 export default{
     data:function(){
         return {
+            navState:{
+                isProfileNavSticky:false
+            },
             profileNavState:{
                 //im sure their is a better way of doing this but whatever for now its fine
                 isBreifSelected:true,
@@ -164,6 +180,18 @@ export default{
         friends,
         interests
     },methods:{
+        handleScroll(){
+            //handles scroll to attach sticky nav
+            let home= this;
+            //console.log("scrolling"+window.scrollY);
+            let offsetTop= document.getElementById("stickyProfileNavBar").offsetTop;
+            if(window.scrollY>640){
+                home.navState.isProfileNavSticky=true;
+            }else{
+                console.log("make non-stiky");
+                home.navState.isProfileNavSticky=false;
+            }
+        },
         resetProfileNavState(){
             //method will reset profileNavState to false
             let ref= this.profileNavState;
@@ -202,6 +230,9 @@ export default{
                 break;
             }
         }
+    },created(){
+        //add an event listener to listen for the scroll event passed by the dom
+        window.addEventListener('scroll',this.handleScroll);
     }
 }
 

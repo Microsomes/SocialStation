@@ -108,11 +108,11 @@ justify-content: center;
 }
 .profileCompletion{
     border-radius: 5px;
-    height: 250px;
-    border:1px solid lightcyan;
-    border-radius: 1px;
+    min-height: 250px;
+     border-radius: 1px;
     margin-bottom: 10px;
-    margin-top: 5px
+    margin-top: 0px;
+     
 }
 .profileCompletion .title{
     color:grey;
@@ -144,10 +144,10 @@ justify-content: center;
 }
 .piggedReads{
     min-height: 200px;
-    border:1px solid lightcyan;
-    border-radius: 1px;
+     border-radius: 1px;
     margin-bottom: 10px;
-    margin-top: 5px
+    margin-top: 5px;
+    padding:10px;
  }
 .explanation{
     color:grey;
@@ -185,9 +185,9 @@ justify-content: center;
     justify-content: center;
     align-items: center;
     transition: all .2s;
-    border:1px solid lightcyan;
     border-radius: 5px;
     padding: 10px;
+    margin: 10px;
 }
 .pinnedIcon{
     width: 50px;
@@ -223,10 +223,10 @@ justify-content: center;
      
 }
 .likedPeopleOverview{
-    border:1px solid lightcyan;
     border-radius: 1px;
-    margin-bottom: 10px;
-    margin-top: 5px
+     margin-top: 0px;
+    padding:10px;
+
 }
 
 @media only screen and (max-width:800px){
@@ -419,13 +419,13 @@ justify-content: center;
                  </div><!-- liked people overview ends here-->
 
 
-            </div>
+            </div><!-- end of profile completion-->
              
-            </div><!-- end of profile completion div-->
+            </div><!-- third row column ends-->
 
              
 
-        </div><!-- third row column ends-->
+        </div><!-- end of left side-->
        
     </div>
      

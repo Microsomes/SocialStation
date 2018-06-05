@@ -11,10 +11,6 @@ import VueTyperPlugin from 'vue-typer'
 Vue.use(VueTyperPlugin)
  
 
-import circleProgress from 'vue2-circle-progress';
-//imported the circle progress needed for the beief profile page
-
-Vue.use(circleProgress);
 
 // import './assets/firebase';
 // //import the firebase user library
