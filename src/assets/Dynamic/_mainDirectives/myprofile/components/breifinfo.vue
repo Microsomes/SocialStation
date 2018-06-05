@@ -104,7 +104,22 @@ justify-content: center;
 .typeSomething input[type="text"]:focus{
     height: 100%;
 }
-@media only screen and (max-width:550px){
+.leftSideColumnContainerThird{
+    border:1px solid black;
+    min-width: 250px;
+}
+.profileCompletion{
+    border:1px solid grey;
+    border-radius: 5px;
+    height: 250px;
+}
+.profileCompletion .title{
+    color:grey;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+
+}
+@media only screen and (max-width:675px){
     .leftSide{
         flex-flow: column;
         justify-content: center;
@@ -114,6 +129,10 @@ justify-content: center;
     .memoralWallContainer{
         width: 90%;
     }
+    .infoContainer{
+        width:90%;
+    }
+    
 }
 </style>
 
@@ -191,14 +210,20 @@ justify-content: center;
             </div><!-- end of type something-->
             
         </div><!-- end of memorail wall-->
+        <div class="leftSideColumnContainerThird"><!-- third row column-->
+            <div class="profileCompletion">
+                <div class="title">
+                    Profile Completion
+                </div>
+            </div>
+        </div><!-- third row column ends-->
     </div>
-    <div class="rightSide">
-
-    </div>
+     
 </div>
 </template>
 
 <script>
+ 
 
 export default{
     data:function(){

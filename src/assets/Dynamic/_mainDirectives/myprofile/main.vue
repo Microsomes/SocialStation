@@ -10,6 +10,7 @@
      border:1px solid grey;
      min-height: 500px;
      border-radius: 5px;
+    
 }
 .profileTop{
     min-height:200px;
@@ -40,6 +41,7 @@
     color:white;
     top:-50px;
         box-shadow: 5px 5px 5px #D35B5B;
+        
 }
 
 .center{
@@ -84,7 +86,16 @@
 .active:hover{
     background: white;
 }
-@media only screen and (max-width:550px){
+@media only screen and (max-width:675px){
+    .profileImagecircleContainer{
+        width:100px;
+        height: 100px;;
+    }
+    .detailsNav{
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
     
 }
  

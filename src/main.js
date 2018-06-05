@@ -9,6 +9,10 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 import VueTyperPlugin from 'vue-typer'
 Vue.use(VueTyperPlugin)
+ 
+
+import circleProgress from 'vue2-circle-progress';
+//imported the circle progress needed for the beief profile page
 
 
 // import './assets/firebase';
