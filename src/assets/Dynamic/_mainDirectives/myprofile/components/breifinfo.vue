@@ -233,7 +233,48 @@ justify-content: center;
 .updateProfileContainer{
     width: 100%;
 }
+.memorialItemsContainer{
+    border:1px solid lightcyan;
+    min-height: 3000px;
+    border-radius: 5px;
+}
 
+.memorialItem{
+    border:1px solid lightcyan;
+    min-height:100px;
+    border-radius: 5px;
+    display: flex;
+           transition: all .2s;
+
+}
+.memorialLeftIcon{
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+}
+.memorialLeftIcon i{
+    font-size: 50px;
+    color:#D35B5B;
+    transition: all .2s;
+}
+.memorialLeftIcon i:hover{
+    cursor:pointer;
+    color:black;
+}
+.memorailRightInfo{
+    min-width: 100px;
+    border-radius: 5px;
+    min-height: 200px;
+
+}
+.memorialItem:hover{
+       cursor:pointer;
+       background:lightyellow;
+       padding: 10px;
+   }
 @media only screen and (max-width:800px){
     .leftSide{
         flex-flow: column;
@@ -250,7 +291,20 @@ justify-content: center;
     .leftSideColumnContainerThird{
         width:90%;
     }
+   .memorialItem{
+       display: flex;
+       flex-flow: column;
+       align-items: center;
+       justify-content: center;
+       width: 100%;
+       min-height: 300px;
+   }
+    
    
+   .memorialItemsContainer{
+       width: 100%;
+       min-height: 300px;
+    }
    
     
 }
@@ -328,6 +382,29 @@ justify-content: center;
                  
     
             </div><!-- end of type something-->
+
+            <div class="memorialItemsContainer">  <!-- this is the start of the memorial items container -->
+               
+               <!-- start of memorial item div-->
+                <div class="memorialItem">
+                    <!-- start of memorial left icon div-->
+                    <div class="memorialLeftIcon">
+                          <i class="material-icons">import_contacts</i>
+                        <div style="font-size:10px;text-align:center;" class="explanation">
+                            Created by: Tayyab@gmail.com
+                        </div>
+                         <div style="font-size:10px;margin:-10px;text-align:center;" class="explanation">
+                         1 hour ago
+                        </div>
+                    </div><!-- end of memorial left icon div-->
+                    <!-- start of memorial right info div-->
+                    <div class="memorailRightInfo">
+                        <div class="explanation">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dignissim ex at fringilla cursus. In nulla nunc, condimentum tincidunt pharetra quis, aliquet ac sapien. Sed quis cursus neque, sit amet feugiat turpis. Fusce congue dolor eros, eu consectetur dolor efficitur non. Aenean dui ex, egestas sit amet odio eget, fermentum lacinia magna. Nunc tempor massa ac libero semper sagittis. Donec dapibus, nulla at vulputate tempor, felis massa porttitor justo, ut pellentesque ante turpis eu odio. Phasellus odio lorem, auctor a dolor ornare, auctor laoreet neque. Nunc dignissim mi et tristique viverra. Curabitur pretium ex sed lorem ultricies, vitae ultricies leo fermentum. Donec euismod, eros vel condimentum posuere, lorem tortor viverra purus, vitae vestibulum est felis in eros. Pellentesque suscipit velit sed mi efficitur, vitae pretium ligula egestas. Morbi ut luctus diam, nec egestas lorem. Integer sollicitudin ante eget velit facilisis, sit amet feugiat eros pretium. Etiam bibendum fermentum quam. Vestibulum ut posuere ex.
+                        </div>
+                    </div><!-- end of memorial right info div-->
+                </div><!-- end of memorial item-->
+             </div><!--this is the end of the memorial items container-->
             
         </div><!-- end of memorail wall-->
         <div class="leftSideColumnContainerThird"><!-- third row column-->
