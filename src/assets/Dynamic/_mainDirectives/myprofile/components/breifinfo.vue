@@ -160,6 +160,8 @@ justify-content: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-flow: column;
+    width: 90%;
 }
 .editProfileButton{
     background:#D35B5B;
@@ -227,6 +229,9 @@ justify-content: center;
      margin-top: 0px;
     padding:10px;
 
+}
+.updateProfileContainer{
+    width: 100%;
 }
 
 @media only screen and (max-width:800px){
@@ -326,6 +331,8 @@ justify-content: center;
             
         </div><!-- end of memorail wall-->
         <div class="leftSideColumnContainerThird"><!-- third row column-->
+        
+ 
             <div class="profileCompletion">
                 <div class="title">
                     Profile Completion
@@ -351,7 +358,11 @@ justify-content: center;
              <div class="profiletext">Want to make your profile more attractive?</div>
             <div class="profileCompletionTips">{{profileTips}}</div>
             <div class="editProfileContainer">
-                <div class="editProfileButton">Edit Profile</div>
+                
+                <div @click="breifInfoState.isUpdateProfileOpen=true" class="editProfileButton">Edit Profile</div>
+                <div v-if="breifInfoState.isUpdateProfileOpen" class="updateProfileContainer">
+                    <updateProfile></updateProfile>
+                </div>
             </div>
         <!-- profile completion code is above-->
             <!-- pigged reads starts here-->
@@ -412,6 +423,10 @@ justify-content: center;
                     </div>
                     
                 </div><!-- pinned ends here-->
+            <div class="explanation">
+                _had enough fun for one day, you may sign out by clicking the button below. We hope to see you back on Social Station very soon.
+            </div>
+        <div @click="logout" class="editProfileButton">Sign out</div>
 
                     
                     
@@ -434,13 +449,19 @@ justify-content: center;
 
 <script>
  
+import {auth} from './../../../../firestore.js';
 import VueCircle from 'vue2-circle-progress';
 //imported the circle progress needed for the beief profile page
 
+import updateProfile from './breifinfoComponents/updateProfile';
+//imported the update profile ui
 
 export default{
     data:function(){
         return {
+            breifInfoState:{
+                isUpdateProfileOpen:true
+            },
             profileTips:"Adding a name to your profile goes a long way. Additionally you may add a location, birthday, bio and a few highligted pictures of yourself.",
         fill : { gradient: ["#D35B5B", "grey", "grey"] },
         }
@@ -451,9 +472,17 @@ export default{
       },
       progress_end(event){
         console.log("Circle progress end");
+      },
+      logout(){
+           //logout method
+            auth.signOut();
+            this.$store.state.authRelated.isLoggedIn=false;
+            //set  local state isLoggedIn to false
+            console.log(this.$store.state.authRelated.isLoggedIn);
       }
     },components:{
         VueCircle,
+        updateProfile
     }
 }
 

@@ -93,6 +93,7 @@
 }
 .logoutButton{
     transition: all .5s;
+    display:none;
 }
  /*responsive code here if screen smaller then 900px*/
     @media only screen and (max-width: 900px) {

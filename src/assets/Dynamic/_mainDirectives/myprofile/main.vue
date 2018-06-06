@@ -39,7 +39,7 @@
     background: black;
     color:white;
     top:-50px;
-        box-shadow: 5px 5px 5px #D35B5B;
+    box-shadow: 5px 5px 5px #D35B5B;
         
 }
 
@@ -47,7 +47,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-        background:#D35B5B;
+    background:#D35B5B;
 
     
 }
@@ -67,16 +67,7 @@
     top:-40px;
 }
 
-.stickyNav{
-    position: fixed;
-    top:0px;
-    width: 100%;
-    left:0px;
-    opacity: 0.5;
-}
-.stickyNav:hover{
-    opacity: 1;
-}
+
 
 .detailsNavItem{
     transition: all .2s;
@@ -97,6 +88,20 @@
 .active:hover{
     background: white;
 }
+@media screen and (min-width: 800px) {
+    .stickyNav{
+    position: fixed;
+    top:0px;
+    width: 100%;
+    left:0px;
+    opacity: 0.5;
+    z-index: 10;
+}
+.stickyNav:hover{
+    opacity: 1;
+}
+    
+}
 @media only screen and (max-width:675px){
     .profileImagecircleContainer{
         width:100px;
@@ -111,6 +116,10 @@
         margin-top: 10px;
         
     }
+
+ 
+
+     
     
 }
  

@@ -81,6 +81,9 @@ import {auth} from './assets/firestore.js';
 
 <template>
   <div class="main_container">
+    <div class="developmentStatus">
+      Development build 0.3 Alpha- The hungry rabbit build
+    </div>
      <!-- <div class="advertisementleft">
      <p>Social station is a open source modular social media platform. If you want to participate by creating a module or understand the code please visit github by clicing <a target="_blank" href="https://github.com/Microsomes/SocialStation">here</a> Some rules:<router-link to="/rules">here</router-link></p>
     </div>end of advertisementleft -->
