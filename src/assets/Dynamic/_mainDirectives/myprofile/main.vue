@@ -197,7 +197,7 @@ export default{
             if(window.scrollY>640){
                 home.navState.isProfileNavSticky=true;
             }else{
-                console.log("make non-stiky");
+               // console.log("make non-stiky");
                 home.navState.isProfileNavSticky=false;
             }
         },

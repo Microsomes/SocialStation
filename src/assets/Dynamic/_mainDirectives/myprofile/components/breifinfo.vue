@@ -361,7 +361,7 @@ justify-content: center;
                 
                 <div @click="breifInfoState.isUpdateProfileOpen=true" class="editProfileButton">Edit Profile</div>
                 <div v-if="breifInfoState.isUpdateProfileOpen" class="updateProfileContainer">
-                    <updateProfile></updateProfile>
+                    <updateProfile @cancel_profile_update="handleOutsiders"></updateProfile>
                 </div>
             </div>
         <!-- profile completion code is above-->
@@ -460,13 +460,24 @@ export default{
     data:function(){
         return {
             breifInfoState:{
-                isUpdateProfileOpen:true
+                isUpdateProfileOpen:false
             },
             profileTips:"Adding a name to your profile goes a long way. Additionally you may add a location, birthday, bio and a few highligted pictures of yourself.",
         fill : { gradient: ["#D35B5B", "grey", "grey"] },
         }
     },
     methods:{
+        handleOutsiders(evt){
+            //listens and handles all emits from its child components
+            const home = this;
+            //reference to the current export default object
+            switch(evt){
+                case "cancel":
+                home.breifInfoState.isUpdateProfileOpen=false;
+                //close the update profile page
+                break;
+            };
+        },
       progress(event,progress,stepValue){
         console.log(stepValue);
       },

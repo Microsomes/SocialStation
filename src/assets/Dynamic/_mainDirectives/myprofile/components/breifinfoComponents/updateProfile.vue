@@ -55,7 +55,7 @@ font-family: 'Roboto', sans-serif;
     <div class="explanation" style="margin:0px;padding-top:5px;padding-top:5px;">Upload a profile picture</div>
     <input type="file"/>
     <v-btn @click="updateProfile();" class="updateProfileButtons" >Update</v-btn>
-    <v-btn class="updateProfileButtons">Cancel</v-btn>
+    <v-btn @click="cancelUpdate();" class="updateProfileButtons">Cancel</v-btn>
 </div>
 </template>
 
@@ -68,7 +68,8 @@ export default{
             //method will connect to my server and update profile
             alert("updating profile");
         },cancelUpdate(){
-            //sends
+            //sends canellation emit to its parent to close it
+            this.$emit("cancel_profile_update","cancel");
         }
     }
 }
