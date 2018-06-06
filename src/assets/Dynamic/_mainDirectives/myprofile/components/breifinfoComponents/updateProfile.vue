@@ -54,7 +54,7 @@ font-family: 'Roboto', sans-serif;
     <input class="textInput" type="text" placeholder="Birthday"/>
     <div class="explanation" style="margin:0px;padding-top:5px;padding-top:5px;">Upload a profile picture</div>
     <input type="file"/>
-    <v-btn class="updateProfileButtons" >Update</v-btn>
+    <v-btn @click="updateProfile();" class="updateProfileButtons" >Update</v-btn>
     <v-btn class="updateProfileButtons">Cancel</v-btn>
 </div>
 </template>
@@ -66,7 +66,9 @@ export default{
     },methods:{
         updateProfile(){
             //method will connect to my server and update profile
-            
+            alert("updating profile");
+        },cancelUpdate(){
+            //sends
         }
     }
 }

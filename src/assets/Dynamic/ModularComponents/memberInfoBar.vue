@@ -81,7 +81,8 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;  
+    display:none;  
 }
 .panelItem:hover{
     cursor:pointer;
@@ -140,7 +141,9 @@
                     {{this.$store.state.authRelated.loginDetails.email[0]}}
                 </div>
             </div>
-            <div title="SS Bucks" class="userName">{{this.$store.state.authRelated.loginDetails.email}}</div>
+            <div title="SS Bucks" class="userName">
+                {{this.$store.state.authRelated.loginDetails.email}}
+             </div>
          </div>
     </div>
     <div class="pannelButtons">
