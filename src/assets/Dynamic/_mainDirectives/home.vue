@@ -399,6 +399,7 @@
                 </div>
             </div>
             <div class="postStatusContainer">
+                <div class="title">Weekly Posts Goal</div>
                 <div>
                  <vue-circle
         :progress="1"
@@ -414,12 +415,10 @@
         :show-percent="false"
         @vue-circle-progress="progress"
         @vue-circle-end="progress_end">
-          <p>0 posts</p>
+          <p>0/100</p>
       </vue-circle>
                 </div>
-                <div class="explanation">
-                    _Goal: 100 posts a week. 
-                </div>
+                 
                 
             </div>
             
