@@ -308,7 +308,44 @@
             font-size: 15px;
             padding: 10px;
             }
+
+            .whatCanYouDoItem{
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 200px;
+            }
         }
+
+        .whatCanYouDoItem{
+            
+            height: 100px;
+            display: flex;
+            margin-top: 10px;
+            border-radius: 5px;            
+        }
+        .whatCanYouDoItem:nth-child(odd){
+            background: lightgrey;
+        }
+
+        .whatIcon{
+            width: 100px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .whatText{
+            min-width: 300px;
+            text-align: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+        
 
     </style>
 
@@ -398,6 +435,28 @@
         <div class="whatCanYouDo">
             <div class="title">What can you do on Social Station
               <i class="material-icons">arrow_drop_down</i>
+        </div>
+
+        <div v-for="(n,index) in whatCanYouDo" class="whatCanYouDoItem">
+            <div class="whatIcon">
+                <vue-circle
+        :progress="100"
+        :size="80"
+        :reverse="false"
+        line-cap="round"
+        :fill="fill"
+        empty-fill="rgba(0, 0, 0, .1)"
+        :animation-start-value="0.0"
+        :start-angle="0"
+        insert-mode="append"
+        :thickness="5"
+        :show-percent="false"
+        @vue-circle-progress="progress"
+        @vue-circle-end="progress_end">
+          <div class="title">{{index+1}}</div>
+      </vue-circle>
+            </div>
+            <div class="whatText title">{{n.text}}</div>
         </div>
         </div>
         <!-- what can you do on social station ends here-->
@@ -530,6 +589,26 @@ import VueCircle from 'vue2-circle-progress';
 export default{
     data:function(){
         return {
+            whatCanYouDo:[
+                {
+                    text:"Create Blogs, polls articles and share knowledge"
+                },
+                {
+                    text:"Unique Interaction engine i.e meaninful like feature"
+                },
+                {
+                    text:"Pin useful reads for yourself and others"
+                },
+                {
+                    text:"Use 3rd party modules which add more functionality."
+                },
+                {
+                    text:"Share knowledge, ideas, thoughts and dreams with others"
+                },
+                {
+                    text:"Read news sources, tweets, viral infomation, and content all from SS using the  most powerful feeds in the world."
+                }
+            ],
             fill : { gradient: ["#D35B5B", "grey", "grey"] }
         }
     },components:{
