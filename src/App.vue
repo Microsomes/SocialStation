@@ -99,7 +99,7 @@ import {auth} from './assets/firestore.js';
       </div>
       <div class="goToFeedButton">
       <router-link style="text-decoration:none;" to="/codeModule/feed">
-        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;text-decoration:none">Go to FEED</v-btn>
+        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;text-decoration:none;padding:0px;">Go to FEED</v-btn>
      </router-link> 
       </div>
       <div class="moduleSeacher">
@@ -161,6 +161,11 @@ import {auth} from './assets/firestore.js';
 <!--StylesBelow-->
 
 <style scoped>
+.goToFeedButton{
+  position: absolute;
+  right: 70px;
+  
+}
 .membersBar{
   height: 50px;
   border:1px solid #D3D3D3;
@@ -423,6 +428,9 @@ import {auth} from './assets/firestore.js';
       .logo{
         position: relative;
         left: -40px;
+      }
+      .goToFeedButton{
+        right:8px;
       }
     }
 </style>

@@ -306,7 +306,6 @@
             .subTittle .subTitleText{
             left:0px;
             font-size: 15px;
- 
             }
 
             .whatCanYouDoItem{
@@ -402,7 +401,7 @@
                     <img class="searchIconImg" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FSearch%20Icon.jpg?alt=media&token=113e7029-abc9-43ed-b4ed-ab505aad8331"/>
                 </div>
                 <div class="searchBox">
-                    <input placeholder="Search anything..." type="text" />
+                    <input @focus="handleSearch" placeholder="Search anything..." type="text" />
                 </div>
             </div>
             <div class="postStatusContainer">
@@ -595,6 +594,10 @@ import VueCircle from 'vue2-circle-progress';
 export default{
     data:function(){
         return {
+            handleSearchState:{
+                isSearchBoxOpen:false
+            },
+
             whatCanDoShow:false,
             whatCanYouDo:[
                 {
@@ -621,6 +624,10 @@ export default{
     },components:{
         VueCircle
     },methods:{
+        handleSearch(){
+            //method will be called when search box is in focus
+            console.log("search box is in focus");
+        },
         handleHomePageScroll(){
             const home= this;
            if(window.scrollY>600){
