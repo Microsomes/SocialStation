@@ -128,9 +128,17 @@
                 color:grey;
                 position: relative;
                 top:50px;
-                 animation-name: postStatusRotate;
+                 animation-name: ;
                  animation-duration: 5s ;
+             flex-flow: column;
+             margin-top: 10px;
   
+          }
+          .title{
+            color:grey;
+            padding: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
           }
           .postStatusIcon{
               width:35px;
@@ -241,6 +249,13 @@
             border-radius: 5px;
             padding: 2px;
          }
+         .explanation{
+    color:grey;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px;
+    font-size: 20px;
+}
+
          /*responsive code here if screen smaller then 900px*/
          @media only screen and (max-width: 900px) {
           
@@ -343,13 +358,34 @@
                     <img class="searchIconImg" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FSearch%20Icon.jpg?alt=media&token=113e7029-abc9-43ed-b4ed-ab505aad8331"/>
                 </div>
                 <div class="searchBox">
-                    <input placeholder="Search a Module. Type |help if unsure" type="text" />
+                    <input placeholder="Search anything..." type="text" />
                 </div>
             </div>
             <div class="postStatusContainer">
-                <img class="postStatusIcon" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FTiles%20Big%20Icon.png?alt=media&token=c4bd1bf9-f437-4c67-9323-36f2d6afee2d"/>
-                0 posts to date
+                <div>
+                 <vue-circle
+        :progress="1"
+        :size="150"
+        :reverse="false"
+        line-cap="round"
+        :fill="fill"
+        empty-fill="rgba(0, 0, 0, .1)"
+        :animation-start-value="0.0"
+        :start-angle="0"
+        insert-mode="append"
+        :thickness="5"
+        :show-percent="false"
+        @vue-circle-progress="progress"
+        @vue-circle-end="progress_end">
+          <p>0 posts</p>
+      </vue-circle>
+                </div>
+                <div class="explanation">
+                    _Goal: 100 posts a week. 
+                </div>
+                
             </div>
+            
             <div class="joinContainer">
                 <div class="joinContainerButton">
 
@@ -358,6 +394,12 @@
             </div>
         </div>
 
+        <!-- what can you do on social station-->
+        
+        <!-- what can you do on social station ends here-->
+        <div class="title">Why use Social Station
+              <i class="material-icons">arrow_drop_down</i>
+        </div>
         <div class="promo_container">
             <div class="promo1">
                 <h1 style="text-align:center">Modular</h1>
@@ -474,5 +516,21 @@
         
     </div>
 
- 
 </template>
+
+<script>
+
+import VueCircle from 'vue2-circle-progress';
+//imported the circle progress needed for the beief profile page
+
+export default{
+    data:function(){
+        return {
+            fill : { gradient: ["#D35B5B", "grey", "grey"] }
+        }
+    },components:{
+        VueCircle
+    }
+}
+
+</script>
