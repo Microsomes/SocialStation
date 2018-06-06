@@ -319,10 +319,16 @@
 
         .whatCanYouDoItem{
             
-            height: 100px;
+            height: 10px;
             display: flex;
             margin-top: 10px;
-            border-radius: 5px;            
+            border-radius: 5px;
+            opacity: 0;    
+            transition: all .5s;   
+        }
+        .whatCanYouDoItem_reveal{
+            opacity: 1;
+            height: 100px;
         }
         .whatCanYouDoItem:nth-child(odd){
             background: lightgrey;
@@ -436,10 +442,10 @@
               <i class="material-icons">arrow_drop_down</i>
         </div>
 
-        <div v-for="(n,index) in whatCanYouDo" class="whatCanYouDoItem">
+        <div  v-bind:class="{whatCanYouDoItem_reveal:whatCanDoShow}" v-for="(n,index) in whatCanYouDo" class="whatCanYouDoItem">
             <div class="whatIcon">
                 <vue-circle
-        :progress="100"
+        :progress="whatCanYouDoValue"
         :size="80"
         :reverse="false"
         line-cap="round"
@@ -588,9 +594,10 @@ import VueCircle from 'vue2-circle-progress';
 export default{
     data:function(){
         return {
+            whatCanDoShow:false,
             whatCanYouDo:[
                 {
-                    text:"Create Blogs, polls articles and share knowledge"
+                    text:"Create Blogs, polls articles and share knowledge",
                 },
                 {
                     text:"Unique Interaction engine i.e meaninful like feature"
@@ -612,6 +619,20 @@ export default{
         }
     },components:{
         VueCircle
+    },methods:{
+        handleHomePageScroll(){
+            const home= this;
+           if(window.scrollY>600){
+               //if user scrolls y 700 make the what can do value 100%
+            home.whatCanDoShow=true;
+            console.log("make value 100");
+           }else{
+               console.log("dont make");
+           }
+        }
+    },created(){
+        window.addEventListener('scroll',this.handleHomePageScroll);
+        //add a window event listener which calls homage page scroll method when user scrolls
     }
 }
 
