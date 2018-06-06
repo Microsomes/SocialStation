@@ -306,7 +306,7 @@
             .subTittle .subTitleText{
             left:0px;
             font-size: 15px;
-            padding: 10px;
+ 
             }
 
             .whatCanYouDoItem{
@@ -314,6 +314,7 @@
                 align-items: center;
                 justify-content: center;
                 min-height: 200px;
+                padding: 10px;
             }
         }
 
@@ -445,7 +446,7 @@
         <div  v-bind:class="{whatCanYouDoItem_reveal:whatCanDoShow}" v-for="(n,index) in whatCanYouDo" class="whatCanYouDoItem">
             <div class="whatIcon">
                 <vue-circle
-        :progress="whatCanYouDoValue"
+        :progress="100"
         :size="80"
         :reverse="false"
         line-cap="round"
