@@ -94,11 +94,15 @@
     top:0px;
     width: 100%;
     left:0px;
-    opacity: 0.5;
+    opacity: 0.1;
     z-index: 10;
+    height: 70px;
 }
 .stickyNav:hover{
     opacity: 1;
+}
+.detailsNavItem{
+     height: 40px;
 }
     
 }

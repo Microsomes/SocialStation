@@ -395,7 +395,11 @@
         </div>
 
         <!-- what can you do on social station-->
-        
+        <div class="whatCanYouDo">
+            <div class="title">What can you do on Social Station
+              <i class="material-icons">arrow_drop_down</i>
+        </div>
+        </div>
         <!-- what can you do on social station ends here-->
         <div class="title">Why use Social Station
               <i class="material-icons">arrow_drop_down</i>
