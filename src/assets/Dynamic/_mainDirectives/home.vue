@@ -127,7 +127,7 @@
               font-family: 'Roboto', sans-serif;
                 color:grey;
                 position: relative;
-                top:50px;
+                top:70px;
                  animation-name: ;
                  animation-duration: 5s ;
              flex-flow: column;

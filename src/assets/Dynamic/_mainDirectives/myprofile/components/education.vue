@@ -10,10 +10,12 @@
     .educationColumnLeft{
         min-width: 700px;
         margin: 10px;
+        
      }
     .educationColumnRight{
         border:1px solid black;
         width: 600px;
+        display: none;
     }
     .educationContainer{
         min-height: 400px;
@@ -146,6 +148,41 @@
             cursor:pointer;
             color:black;
         }
+        .skillText{
+            color:grey;
+            font-size: 15px;
+            font-family: 'Roboto', sans-serif;
+
+        }
+    .skillLine{
+        height: 1px;
+        background: lightgray;
+    }
+
+    @media only screen and (max-width:771px){
+       .educationColumnLeft{
+           min-width: 100px;
+       }
+       .educationItem{
+        display: block;
+        margin: 10px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+     }
+     .educationItemsContainer{
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .topRowKills{
+         display: block;
+         text-align: center;
+     }
+     
+      
+    }
+
 </style>
 <template>
 <div class="breifInfoContainer">
@@ -223,7 +260,13 @@
                 <div class="skillAddIcon">  <i class="material-icons">add</i></div>
             </div>
             </div>
-             <div class="skillsItemContainer"></div>
+             <div class="skillsItemContainer">
+                 <div class="skillsItem"><!-- start of skills item-->
+                     <div class="skillText">Web  Development</div>
+                     <div class="skillLine"></div>
+                 </div><!-- end of skills item-->
+                 
+             </div>
         </div>
         
     </div><!-- column left container-->
