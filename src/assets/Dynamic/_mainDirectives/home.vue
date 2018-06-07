@@ -315,6 +315,10 @@
                 min-height: 200px;
                 padding: 10px;
             }
+            .quickAddComp{
+                flex-flow: column;
+                min-height:200px;
+            }
         }
 
         .whatCanYouDoItem{
@@ -352,6 +356,14 @@
             min-height: 100px;
         }
         
+        .quickAddComp{
+            height:100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+
+        }
 
     </style>
 
@@ -402,8 +414,16 @@
                 </div>
                 <div class="searchBox">
                     <input @focus="handleSearch" placeholder="Search anything..." type="text" />
+                    
                 </div>
+                
             </div>
+            <div class="quickAddComp">
+                <v-btn style="padding:0px">Create Q/A</v-btn>
+                <v-btn style="padding:0px">Create A blog</v-btn>
+                <v-btn style="padding:0px">Add a fact</v-btn>
+            </div>
+            
             <div class="postStatusContainer">
                 <div class="title">Weekly Posts Goal</div>
                 <div>

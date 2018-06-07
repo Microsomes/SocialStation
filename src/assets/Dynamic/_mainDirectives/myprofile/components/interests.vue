@@ -464,6 +464,8 @@ export default{
         return {
             switch1:false
         }
+    },created(){
+            window.scrollTo(0, 200);
     }
 }
 
