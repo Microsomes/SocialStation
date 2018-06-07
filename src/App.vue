@@ -27,6 +27,13 @@ import {auth} from './assets/firestore.js';
       return this.$store.state.count
     }
   },methods:{
+    signout(){
+            //logout method
+            auth.signOut();
+            this.$store.state.authRelated.isLoggedIn=false;
+            //set  local state isLoggedIn to false
+            console.log(this.$store.state.authRelated.isLoggedIn);
+    },
     toggleModuleWindow(){
       //toggle the recent module window 
       //this.isReventModuleWindowOpen!=this.isReventModuleWindowOpen;
@@ -89,8 +96,11 @@ import {auth} from './assets/firestore.js';
   <b-navbar-toggle  target="nav_collapse"></b-navbar-toggle>
 
   <b-navbar-brand  href="#">
+    <router-link to="/dashboard">
     <img height="50px;"  src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FlogoOfficial.png?alt=media&token=79dadc52-28fd-417d-aae1-61c251934ad5"/>
+    </router-link>
     <router-link style="color:white" to="/dashboard">Social Station</router-link>
+    
     </b-navbar-brand>
 
   <b-collapse is-nav id="nav_collapse">
@@ -103,7 +113,7 @@ import {auth} from './assets/firestore.js';
       
         <b-nav-form >
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                  Feed
+                  <router-link style="color:white;" to="/codeModule/feed">Feed</router-link>
                  </b-button>
       </b-nav-form>
 
@@ -121,7 +131,7 @@ import {auth} from './assets/firestore.js';
         <b-dropdown-item href="#">
                   <router-link to="/profile">Profile</router-link>
         </b-dropdown-item>
-         <b-dropdown-item href="#">Signout</b-dropdown-item>
+         <b-dropdown-item @click="signout()" href="#">Signout</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
 
