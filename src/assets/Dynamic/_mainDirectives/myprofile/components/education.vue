@@ -11,6 +11,7 @@
 }
     .breifInfoContainer{
         min-height: 1000px;
+        overflow: hidden;
     }
     .breifInfoContainer{
         display: flex;
@@ -169,12 +170,16 @@
        .educationColumnLeft{
            min-width: 100px;
        }
+       .breifInfoContainer{
+           width: 100%;
+       }
        .educationItem{
         display: block;
         margin: 10px;
         justify-content: center;
         align-items: center;
         width: 100%;
+        
      }
      .educationItemsContainer{
          display: flex;
@@ -277,6 +282,9 @@
          color:grey;
          position: relative;
          top:10px;
+    }
+    .educationRightText{
+        width: 100%;
     }
 
 </style>

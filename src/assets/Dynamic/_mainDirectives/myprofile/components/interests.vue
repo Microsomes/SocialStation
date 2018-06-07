@@ -1,10 +1,15 @@
 
 <style scoped>
 
+    .breifInfoContainer{
+        border:1px solid black;
+        min-height:300px;
+    }
+
 </style>
 <template>
 <div class="breifInfoContainer">
-    friends
+    interests
 </div>
 </template>
 

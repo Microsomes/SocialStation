@@ -148,7 +148,7 @@
         <div v-bind:class="{active:profileNavState.isBreifSelected}" @click="goToNavLink('breif')" class="detailsNavItem">Brief info</div>
         <div v-bind:class="{active:profileNavState.isEductationSelected}" @click="goToNavLink('education')" class="detailsNavItem">Education</div>
         <div v-bind:class="{active:profileNavState.isInterestsSelected}" @click="goToNavLink('messages')" class="detailsNavItem">Messages Centre</div>
-        <div v-bind:class="{active:profileNavState.isFriendsSelected}" @click="goToNavLink('friends')" class="detailsNavItem">Interests/Prefs</div>
+        <div v-bind:class="{active:profileNavState.isFriendsSelected}" @click="goToNavLink('interests')" class="detailsNavItem">Interests/Prefs</div>
         <div v-bind:class="{active:profileNavState.isFolloweresSelected}"@click="goToNavLink('followers')" class="detailsNavItem">Friends/Followers</div>
     </div>
     <div class="profileContentContainer">
@@ -166,7 +166,7 @@
 import breifInfo from './components/breifinfo';
 import education from './components/education';
 import followers from './components/followers';
-import friends from './components/friends';
+import interests from './components/interests';
 import messages from './components/messages';
 //importing profile components above
 
@@ -190,7 +190,7 @@ export default{
         breifInfo,
         education,
         followers,
-        friends,
+        interests,
         messages
     },methods:{
         handleScroll(){
@@ -233,9 +233,9 @@ export default{
                 ref.isInterestsSelected=true;
                 home.profileCurrentContent="messages";
                 break;
-                case "friends":
+                case "interests":
                 ref.isFriendsSelected=true;
-                home.profileCurrentContent="friends";
+                home.profileCurrentContent="interests";
                 break;
                 case "followers":
                 ref.isFolloweresSelected=true;

@@ -11,6 +11,7 @@
 }
 .breifInfoContainer{
     min-height: 500px;
+    margin-top: 50px;
 }
 .messagesTopBar{
     background: #D35B5B;
@@ -108,7 +109,10 @@
                  <input type="text" placeholder="search"/>
              </div>
              <div class="chatItemsContainer">
-                 
+                 <div class="chatItem">
+                     <div class="leftChatImage"></div>
+                     <div class="rightText"></div>
+                 </div>
              </div>
          </div>
          <div class="messagesBox">
