@@ -63,6 +63,33 @@
     align-items: center;
     justify-content: center;
 }
+.messageMainContainer{
+    display: flex;
+}
+.openChatsLeft{
+    width: 400px;
+    min-height:500px;
+    border-right: 1px solid grey;
+}
+.messagesBox{
+    width: 1000px;
+    color:grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.searchChatsContainer{
+    height: 50px;
+    padding: 5px;
+}
+.searchChatsContainer input[type="text"]{
+    background:#F2F2F2;
+    width:100%;
+    height: 100%;
+    padding: 10px;
+    outline:none;
+}
 </style>
 <template>
 <div class="breifInfoContainer">
@@ -75,6 +102,19 @@
         <div class="chattingWith">Jibrel Network </div>
         <div class="amountOfPeople">20 people</div>
      </div><!-- end of messages top bar-->
+     <div class="messageMainContainer">
+         <div class="openChatsLeft">
+             <div class="searchChatsContainer">
+                 <input type="text" placeholder="search"/>
+             </div>
+             <div class="chatItemsContainer">
+                 
+             </div>
+         </div>
+         <div class="messagesBox">
+             Please select a chat to start messaging
+         </div>
+     </div>
 
 </div><!-- end of main container-->
 </template>

@@ -94,7 +94,7 @@
     top:0px;
     width: 100%;
     left:0px;
-    opacity: 0.1;
+    opacity: 1;
     z-index: 10;
     height: 70px;
 }
@@ -147,7 +147,7 @@
     <div id="stickyProfileNavBar" v-bind:class="{stickyNav:navState.isProfileNavSticky}" class="detailsNav">
         <div v-bind:class="{active:profileNavState.isBreifSelected}" @click="goToNavLink('breif')" class="detailsNavItem">Brief info</div>
         <div v-bind:class="{active:profileNavState.isEductationSelected}" @click="goToNavLink('education')" class="detailsNavItem">Education</div>
-        <div v-bind:class="{active:profileNavState.isInterestsSelected}" @click="goToNavLink('interests')" class="detailsNavItem">Messages Centre</div>
+        <div v-bind:class="{active:profileNavState.isInterestsSelected}" @click="goToNavLink('messages')" class="detailsNavItem">Messages Centre</div>
         <div v-bind:class="{active:profileNavState.isFriendsSelected}" @click="goToNavLink('friends')" class="detailsNavItem">Interests/Prefs</div>
         <div v-bind:class="{active:profileNavState.isFolloweresSelected}"@click="goToNavLink('followers')" class="detailsNavItem">Friends/Followers</div>
     </div>
@@ -167,7 +167,7 @@ import breifInfo from './components/breifinfo';
 import education from './components/education';
 import followers from './components/followers';
 import friends from './components/friends';
-import interests from './components/interests';
+import messages from './components/messages';
 //importing profile components above
 
 export default{
@@ -191,7 +191,7 @@ export default{
         education,
         followers,
         friends,
-        interests
+        messages
     },methods:{
         handleScroll(){
             //handles scroll to attach sticky nav
@@ -229,9 +229,9 @@ export default{
                 ref.isEductationSelected=true;
                 home.profileCurrentContent="education";
                 break;
-                case "interests":
+                case "messages":
                 ref.isInterestsSelected=true;
-                home.profileCurrentContent="interests";
+                home.profileCurrentContent="messages";
                 break;
                 case "friends":
                 ref.isFriendsSelected=true;
