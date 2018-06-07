@@ -367,6 +367,9 @@
 .tagClose:hover{
     transform: scale(1.2);
 }
+.tagClose:active{
+    background:black;
+}
 </style>
 <template>
 <div class="breifInfoContainer">
