@@ -8,6 +8,26 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+                                  
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #D35B5B; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
     .breifInfoContainer{
         min-height: 1000px;
@@ -166,62 +186,6 @@
         background: lightgray;
     }
 
-    @media only screen and (max-width:771px){
-       .educationColumnLeft{
-           min-width: 100px;
-       }
-       .breifInfoContainer{
-           width: 100%;
-       }
-       .educationItem{
-        display: block;
-        margin: 10px;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        
-     }
-     .educationItemsContainer{
-         display: flex;
-         align-items: center;
-         justify-content: center;
-     }
-     .topRowKills{
-         display: block;
-         text-align: center;
-     }
-     .breifInfoContainer{
-         flex-flow: column;
-     }
-     .educationColumnRight{
-         width: 100%;
-     }
-     .educationIcon{
-         width: 100%;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-     }
-     .educationIcon img{
-         width: 100px;
-     }
-     .tagItemContainer{
-         width:100%;
-     }
-     .educationItemsContainer{
-         flex-flow: column;
-         width:100%;
-     }
-
-    .friendItem{
-        flex-flow: column;
-        border:1px solid black;
-        min-height:300px;
-        width:100%;
-    }
-      
-    }
-
     .cvContainer{
         min-height: 400px;
         margin: 10px;
@@ -377,10 +341,12 @@
     background:black;
 }
 .friendItem{
-    height: 140px;
+    min-height: 140px;
     display:flex;
-    margin-top:10px;
-}
+    margin-top:20px;
+    padding:0px;
+
+ }
 
 .friendItem:hover{
     background:lightgoldenrodyellow;
@@ -430,6 +396,92 @@
     height:80px;
 
 }
+
+  @media only screen and (max-width:771px){
+       .educationColumnLeft{
+           min-width: 100px;
+       }
+       .breifInfoContainer{
+           width: 100%;
+       }
+       .educationItem{
+        display: block;
+        margin: 10px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        
+     }
+     .educationItemsContainer{
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .topRowKills{
+         display: block;
+         text-align: center;
+     }
+     .breifInfoContainer{
+         flex-flow: column;
+     }
+     .educationColumnRight{
+         width: 100%;
+     }
+     .educationIcon{
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .educationIcon img{
+         width: 100px;
+     }
+     .tagItemContainer{
+         width:100%;
+     }
+     .educationItemsContainer{
+         flex-flow: column;
+         width:100%;
+     }
+
+    
+    .friendItem{
+        flex-flow: column;
+        min-height:300px;
+        width:100%;
+    }
+    .profileBio{
+        min-height:150px;
+        width: 100%;
+        
+    }
+    .rightText{
+        width:100%;
+    }
+
+    .leftImage img{
+        border:1px solid pink;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-content: center;
+        position: relative;
+        left:15px;
+    }
+    .addTagsInputContainer{
+        width:100%;
+    }
+    .addTagsInputContainer input[type="text"]{
+        width: 100%;
+    }
+    }
+    .findFriendsText{
+        position: relative;
+        left:-15px;
+    }
+    .findFriendsResultContainer{
+        color:grey;
+    }
 </style>
 <template>
 <div class="breifInfoContainer">
@@ -501,6 +553,7 @@
                    
 
                 </div>
+                
                    
             </div><!-- end of education items container-->
             
@@ -538,7 +591,17 @@
                     </div>
                 </div>
                 <!-- end of friends item-->
-            
+
+
+             </div>
+             <div class="findFriendsContainer">
+                 <div class="title educationText findFriendsText">Find Friends</div>
+                   <div class="addTagsInputContainer">
+                    <input type="text" placeholder="Find Friends"/>
+                </div>
+                <div class="findFriendsResultContainer">
+                    no friends found
+                </div>
              </div>
               
             

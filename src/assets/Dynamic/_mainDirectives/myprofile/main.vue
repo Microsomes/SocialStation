@@ -97,6 +97,7 @@
     opacity: 1;
     z-index: 10;
     height: 70px;
+    margin-bottom: 400px;
 }
 .stickyNav:hover{
     opacity: 1;
