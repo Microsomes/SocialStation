@@ -13,13 +13,11 @@
         
      }
     .educationColumnRight{
-        border:1px solid black;
         width: 600px;
-        display: none;
-    }
+      
+     }
     .educationContainer{
         min-height: 400px;
-        box-shadow: 5px 5px 5px 2px #888888;
         position: relative;
 
     }
@@ -107,7 +105,6 @@
 
         .skillsContainer{
              min-height:300px;
-            box-shadow: 5px 5px 5px 2px #888888;
             padding: 20px;
             position: relative;
             top:-4px;
@@ -179,8 +176,98 @@
          display: block;
          text-align: center;
      }
-     
+     .breifInfoContainer{
+         flex-flow: column;
+     }
+     .educationColumnRight{
+         width: 100%;
+     }
+     .educationIcon{
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .educationIcon img{
+         width: 100px;
+     }
       
+    }
+
+    .cvContainer{
+        min-height: 400px;
+        margin: 10px;
+        padding: 10px;
+        font-family: 'Roboto', sans-serif;
+
+
+    }
+    .explanation{
+        color:grey;
+        position: relative;
+        left: 3px;
+        font-family: 'Roboto', sans-serif;
+    }
+    .cvItemsContainer{
+        min-height: 100px;
+        padding: 10px;
+    }
+    .cvItemsContainer a{
+        color:grey;
+     }
+     .cvItem{
+         display: flex;
+         height: 50px;
+         margin: 10px;
+      }
+     .cvIcon{
+         height: 100%;
+         width: 50px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .cvIcon i{
+         font-size: 40px;
+         color:#D35B5B;
+     }
+     .cvLink{
+          display: flex;
+         align-items: center;
+         background:#D35B5B;
+         border-radius:10px;
+         color:white;
+         padding: 10px;
+         margin: 10px;
+     }
+     .cvLink a{
+         color:white;
+     }
+     .cvUploadButtonContainer{
+         height: 200px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     .cvUploadButton{
+         background:#D35B5B;
+         border-radius: 20px;
+         padding: 20px;
+         color:white;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin: 20px;
+         width: 300px;
+     }
+     .cvUploadButton:hover{
+         cursor:pointer;
+     }
+    .educationBioText{
+        font-family: 'Roboto', sans-serif;
+         color:grey;
+         position: relative;
+         top:10px;
     }
 
 </style>
@@ -271,7 +358,38 @@
         
     </div><!-- column left container-->
     <div class="educationColumnRight">
-        social interactions who else is in education etc social widgets
+        <div class="cvContainer">
+            <div class="title titleCv">
+                Curriculum Vitae(CV)
+            </div>
+            <div class="explanation">
+                Upload your CV to your profile.
+            </div>
+            <div class="cvItemsContainer">
+
+                <div class="cvItem">
+                    <div class="cvIcon">
+                          <i class="material-icons">event_note</i>
+                    </div>
+                    <div class="cvLink">
+                        <a href="#" download>CV download</a>
+                    </div>
+                </div>
+             </div>
+             <div class="cvUploadButtonContainer">
+                 <div class="cvUploadButton">
+                     Upload CV
+                 </div>
+             </div>
+             <div class="educationBio">
+                 <div class="title">
+                     Education Description
+                 </div>
+                 <div style="position:relative;left:4px;" class="explanation">A small piece discussing your skills goals and ambitions.</div>
+                 <div class="educationBioText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                 </div>
+             </div>
+        </div>
     </div>
 </div>
 </template>
