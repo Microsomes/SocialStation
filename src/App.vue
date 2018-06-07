@@ -81,37 +81,53 @@ import {auth} from './assets/firestore.js';
 
 <template>
   <div class="main_container">
-    <div class="developmentStatus">
-      Development build 0.3 Alpha- The hungry rabbit build
-    </div>
-     <!-- <div class="advertisementleft">
-     <p>Social station is a open source modular social media platform. If you want to participate by creating a module or understand the code please visit github by clicing <a target="_blank" href="https://github.com/Microsomes/SocialStation">here</a> Some rules:<router-link to="/rules">here</router-link></p>
-    </div>end of advertisementleft -->
-    <div class="topBar">
-      <router-link to="/dashboard"> 
-      <div class="logo">
-        <img  src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FlogoOfficial.png?alt=media&token=79dadc52-28fd-417d-aae1-61c251934ad5"/>
-       
-      </div><!-- end of logo-->
-      </router-link>
-      <div class="logoText">
-        <router-link style="color:black;text-decoration:none;font-size:14px;" to="/create/fact"> Create Fact:</router-link> &nbsp;<randomFact></randomFact>
-      </div>
-      <div class="goToFeedButton">
-      <router-link style="text-decoration:none;" to="/codeModule/feed">
-        <v-btn style="background:#C62C2C;color:white;font-family: 'Roboto', sans-serif;text-decoration:none;padding:0px;">Go to FEED</v-btn>
-     </router-link> 
-      </div>
-      <div class="moduleSeacher">
-        <input type="text" placeholder="search module to interact with. People vids polls etc..."/>
-      </div>
-      
-    </div><!-- end of the top bar-->
-    <animLiner></animLiner>
     
-    <div class="membersBar"><!-- start of members bar-->
-      <memberInfoBar></memberInfoBar>
-    </div><!-- end of members bar-->
+  
+  
+     <b-navbar style="background:gray;color:black;" toggleable="md" type="dark" >
+
+  <b-navbar-toggle  target="nav_collapse"></b-navbar-toggle>
+
+  <b-navbar-brand  href="#">
+    <img height="50px;"  src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FlogoOfficial.png?alt=media&token=79dadc52-28fd-417d-aae1-61c251934ad5"/>
+    <router-link style="color:white" to="/dashboard">Social Station</router-link>
+    </b-navbar-brand>
+
+  <b-collapse is-nav id="nav_collapse">
+
+    <b-navbar-nav >
+     </b-navbar-nav>
+
+    <!-- Right aligned nav items -->
+    <b-navbar-nav   class="ml-auto">
+      
+        <b-nav-form >
+                <b-button size="sm" class="my-2 my-sm-0" type="submit">
+                  Feed
+                 </b-button>
+      </b-nav-form>
+
+      <b-nav-form>
+        <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search Anything"/>
+       </b-nav-form>
+
+      
+
+      <b-nav-item-dropdown right>
+        <!-- Using button-content slot -->
+        <template slot="button-content">
+          <em>User</em>
+        </template>        
+        <b-dropdown-item href="#">
+                  <router-link to="/profile">Profile</router-link>
+        </b-dropdown-item>
+         <b-dropdown-item href="#">Signout</b-dropdown-item>
+      </b-nav-item-dropdown>
+    </b-navbar-nav>
+
+  </b-collapse>
+</b-navbar>
+
 
 <div class="main_routing_content">
   <router-view></router-view>
