@@ -92,8 +92,8 @@
     .stickyNav{
     position: fixed;
     top:0px;
-    width: 100%;
-    left:0px;
+    width: 50%;
+    right:0px;
     opacity: 1;
     z-index: 10;
     height: 70px;
@@ -199,7 +199,7 @@ export default{
             let home= this;
             //console.log("scrolling"+window.scrollY);
             let offsetTop= document.getElementById("stickyProfileNavBar").offsetTop;
-            if(window.scrollY>640){
+            if(window.scrollY>750){
                 home.navState.isProfileNavSticky=true;
             }else{
                // console.log("make non-stiky");

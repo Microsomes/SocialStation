@@ -580,6 +580,8 @@ export default{
     },components:{
         VueCircle,
         updateProfile
+    },created(){
+            window.scrollTo(0, 200);
     }
 }
 

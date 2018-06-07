@@ -418,6 +418,8 @@ export default{
         return {
 
         }
+    },created(){
+            window.scrollTo(0, 200);
     }
 }
 
