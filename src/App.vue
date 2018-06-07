@@ -88,6 +88,10 @@ import {auth} from './assets/firestore.js';
 
 <template>
   <div class="main_container">
+        <b-alert show style="background:#C62D2D;font-family: 'Roboto', sans-serif;">
+          Happy release day! Today marks the start of the social media revolution. Click&nbsp; <a style="color:white;" target="_blank" href="https://docs.socialstation.io">here</a> &nbsp;to visit the ICO/Docs website
+        </b-alert>
+
     
   
   
