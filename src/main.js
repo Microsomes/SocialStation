@@ -86,6 +86,9 @@ import eventsMap from './assets/Dynamic/app/eventsmap/main.vue';
 //import events map core module
 import qanda from './assets/Dynamic/app/qa/main.vue';
 //import question and answer module
+import sschan from './assets/Dynamic/app/sschan/main.vue';
+//import 4chan module
+import theeidshow from './assets/Dynamic/app/eidshow2018/main.vue';
 
 Vue.component("randomFact",dynamicComponent);
 Vue.component("animLiner",dynoAnimationLiner);
@@ -161,6 +164,14 @@ const routes=[
      {
        path:'qanda',
        component:qanda
+     },
+     {
+       path:'sschan',
+       component:sschan
+     },
+     {
+       path:'theeidshow',
+       component:theeidshow
      }
     ]
   }

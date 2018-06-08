@@ -139,6 +139,12 @@ import {auth} from './assets/firestore.js';
             <b-dropdown-item  href="#">
            <router-link to="/codeModule/qanda">Q/A</router-link>
          </b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/sschan">SSBoard</router-link>
+         </b-dropdown-item>
+          <b-dropdown-item  href="#">
+           <router-link to="/codeModule/theeidshow">THE EID SHOW</router-link>
+         </b-dropdown-item>
           <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
       </b-nav-item-dropdown>
       </b-nav-form>
