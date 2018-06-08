@@ -45,9 +45,9 @@ h1{
         <div class="header">
         <h1>s'identifier</h1>
         </div>
-        <div class="promo">
-            <randomFactsViewer></randomFactsViewer>
-        </div>
+        <div style="text-align:center;" class="promo">
+            Social station is an open source modular social media platform
+         </div>
         <div class="signUpContainer">
             <input v-on:keyup.enter="authenticateUser" v-model="formValues.email" type="text" placeholder="email"/>
             <input v-on:keyup.enter="authenticateUser"  v-model="formValues.password" type="password" placeholder="password"/>
