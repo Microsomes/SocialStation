@@ -82,6 +82,10 @@ import blog from './assets/Dynamic/app/blog/main.vue';
 //imported the blog module
 import neverending from './assets/Dynamic/app/neverendingfacts/main.vue';
 //imported the never ending facts module
+import eventsMap from './assets/Dynamic/app/eventsmap/main.vue';
+//import events map core module
+import qanda from './assets/Dynamic/app/qa/main.vue';
+//import question and answer module
 
 Vue.component("randomFact",dynamicComponent);
 Vue.component("animLiner",dynoAnimationLiner);
@@ -149,6 +153,14 @@ const routes=[
      {
        path:'neverending',
        component:neverending
+     },
+     {
+       path:'eventsmap',
+       component:eventsMap
+     },
+     {
+       path:'qanda',
+       component:qanda
      }
     ]
   }

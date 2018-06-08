@@ -89,7 +89,7 @@ import {auth} from './assets/firestore.js';
 <template>
   <div class="main_container">
         <b-alert show style="background:#C62D2D;font-family: 'Roboto', sans-serif;">
-          Happy release day! Today marks the start of the social media revolution. Click&nbsp; <a style="color:white;" target="_blank" href="https://docs.socialstation.io">here</a> &nbsp;to visit the ICO/Docs website
+          Happy release day! Today marks the start of the social media revolution. Click&nbsp; <a style="color:white;" target="_blank" href="https://socialstation.info">here</a> &nbsp;to visit the ICO/Docs website
         </b-alert>
 
     
@@ -130,9 +130,14 @@ import {auth} from './assets/firestore.js';
          <b-dropdown-item  href="#">
            <router-link to="/codeModule/neverending" >Never ending facts</router-link>
            </b-dropdown-item>
-         <b-dropdown-item @click="signout()" href="#">Events Map</b-dropdown-item>
+         <b-dropdown-item href="#">
+           <router-link to="/codeModule/eventsmap">Events Map</router-link>
+         </b-dropdown-item>
          <b-dropdown-item  href="#">
            <router-link to="/codeModule/cryptofolio">Crypto Folio</router-link>
+         </b-dropdown-item>
+            <b-dropdown-item  href="#">
+           <router-link to="/codeModule/qanda">Q/A</router-link>
          </b-dropdown-item>
           <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
       </b-nav-item-dropdown>
