@@ -43,7 +43,7 @@ h1{
 <template>
     <div class="loginCont">
         <div class="header">
-        <h1>s'identifier</h1>
+        <h1>Login</h1>
         </div>
         <div style="text-align:center;" class="promo">
             Social station is an open source modular social media platform

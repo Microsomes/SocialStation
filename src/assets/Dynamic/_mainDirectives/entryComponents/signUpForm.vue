@@ -43,7 +43,7 @@ h1{
 <template>
     <div class="loginCont">
         <div class="header">
-        <h1>s'inscrire</h1>
+        <h1>Sign up</h1>
         </div>
         <div class="promo">
   <div style="text-align:center;" class="promo">
