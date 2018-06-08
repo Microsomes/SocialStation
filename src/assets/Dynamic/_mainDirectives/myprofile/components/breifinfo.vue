@@ -509,10 +509,10 @@ justify-content: center;
                     </div>
                     
                 </div><!-- pinned ends here-->
-            <div class="explanation">
+            <!-- <div style="displat" class="explanation">
                 _had enough fun for one day, you may sign out by clicking the button below. We hope to see you back on Social Station very soon.
             </div>
-        <div @click="logout" class="editProfileButton">Sign out</div>
+        <div @click="logout" class="editProfileButton">Sign out</div> -->
 
                     
                     

@@ -77,6 +77,12 @@ import dynamicComponent from './assets/Dynamic/codeModules/randomFact.vue';
 //import core pages
 import myProfilePage from './assets/Dynamic/_mainDirectives/myprofile/main.vue';
 
+//imports app modules
+import blog from './assets/Dynamic/app/blog/main.vue';
+//imported the blog module
+import neverending from './assets/Dynamic/app/neverendingfacts/main.vue';
+//imported the never ending facts module
+
 Vue.component("randomFact",dynamicComponent);
 Vue.component("animLiner",dynoAnimationLiner);
 //registering vue components above
@@ -135,6 +141,14 @@ const routes=[
      {
        path:'news',
        component:dynoNews
+     },
+     {
+       path:'blog',
+       component:blog
+     },
+     {
+       path:'neverending',
+       component:neverending
      }
     ]
   }

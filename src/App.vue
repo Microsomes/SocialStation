@@ -115,6 +115,29 @@ import {auth} from './assets/firestore.js';
     <!-- Right aligned nav items -->
     <b-navbar-nav   class="ml-auto">
       
+      <b-nav-form>
+          <b-nav-item-dropdown right>
+        <!-- Using button-content slot -->
+        <template slot="button-content">
+          <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
+        </template>        
+        <b-dropdown-item href="#">
+                  <router-link to="/codeModule/news">News</router-link>
+        </b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/blog">Blog</router-link>
+         </b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/neverending" >Never ending facts</router-link>
+           </b-dropdown-item>
+         <b-dropdown-item @click="signout()" href="#">Events Map</b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/cryptofolio">Crypto Folio</router-link>
+         </b-dropdown-item>
+          <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
+      </b-nav-item-dropdown>
+      </b-nav-form>
+
         <b-nav-form >
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">
                   <router-link style="color:white;" to="/codeModule/feed">Feed</router-link>
@@ -126,17 +149,19 @@ import {auth} from './assets/firestore.js';
        </b-nav-form>
 
       
+        <b-nav-form >
 
       <b-nav-item-dropdown right>
         <!-- Using button-content slot -->
         <template slot="button-content">
-          <em>User</em>
+          <em style="color:white;font-family: 'Roboto', sans-serif;">User</em>
         </template>        
         <b-dropdown-item href="#">
                   <router-link to="/profile">Profile</router-link>
         </b-dropdown-item>
          <b-dropdown-item @click="signout()" href="#">Signout</b-dropdown-item>
       </b-nav-item-dropdown>
+        </b-nav-form>
     </b-navbar-nav>
 
   </b-collapse>
