@@ -10,6 +10,7 @@ sign in page
 .active{
     background: black;
     border-radius: 5px;
+    opacity: 0.4;
  }
 
 .signContainer{
@@ -21,6 +22,8 @@ sign in page
     height: 100%;
     z-index: 100;
     display: flex;
+               background-image: url("https://images7.alphacoders.com/411/thumb-1920-411820.jpg");
+
 }
 .loginImageContainer{
     width:80%;
@@ -28,14 +31,23 @@ sign in page
     height: 100%;
 }
 .loginFormContaier{
-    background: #CD4545;
-    left: 0px;
+     left: 0px;
     position: relative;
     width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: none;
+    background:#CD4545;
+    opacity: 0.95;
 }
+@media only  screen and  (max-width: 700px) {
+    .loginFormContaier{
+           background-image: url("https://images7.alphacoders.com/411/thumb-1920-411820.jpg");
+    }
+
+}
+
 .loginInnerCont{
     height: 500px;
     width: 80%;
@@ -95,7 +107,7 @@ sign in page
     <div class="loginImageContainer">
         <vue-typer :repeat='0' class="promoText" :text="promoText"></vue-typer>
 
-        <img style="height:100%;width:100%" src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FmainImageforsocialstation.jpg?alt=media&token=b228c304-ae20-4f66-9460-1dafbef939be"/>
+        <img style="height:100%;width:100%" src="https://images7.alphacoders.com/411/thumb-1920-411820.jpg"/>
       </div>
     <div class="loginFormContaier">
         <div class="loginInnerCont">

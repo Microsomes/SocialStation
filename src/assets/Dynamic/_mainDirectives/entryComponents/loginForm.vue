@@ -51,7 +51,7 @@ h1{
         <div class="signUpContainer">
             <input v-on:keyup.enter="authenticateUser" v-model="formValues.email" type="text" placeholder="email"/>
             <input v-on:keyup.enter="authenticateUser"  v-model="formValues.password" type="password" placeholder="password"/>
-            <v-btn @click="authenticateUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;">Login</v-btn>
+            <v-btn @click="authenticateUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;padding:0px;">Login</v-btn>
         </div>
     </div>
 </template>
