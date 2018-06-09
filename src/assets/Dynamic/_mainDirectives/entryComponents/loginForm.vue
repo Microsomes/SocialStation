@@ -46,7 +46,7 @@ h1{
         <h1>Login</h1>
         </div>
         <div style="text-align:center;" class="promo">
-            Social station is an open source modular social media platform
+            Social station is an open source modular social media platform. Learn more at <a target="_blank" style="color:white" href="https://socialstation.info">socialstation.info</a>
          </div>
         <div class="signUpContainer">
             <input v-on:keyup.enter="authenticateUser" v-model="formValues.email" type="text" placeholder="email"/>

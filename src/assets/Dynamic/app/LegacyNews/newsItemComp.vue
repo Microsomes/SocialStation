@@ -163,6 +163,10 @@ it has no network access and gets its data through slots and props and emits
     
 }
 
+.commentsSection{
+    min-height: 10px;
+}
+
 </style>
 
 
@@ -268,9 +272,17 @@ it has no network access and gets its data through slots and props and emits
                 <div class="newsSourceLink">
                    <a style="color:grey" target="_blank" v-bind:href="postData.url"> {{postData.url}}</a>
                 </div>
-                 
-                  <i style="color:#C62D2D" class="material-icons">comment</i>(100)
-
+                 <div class="commentsSection">
+                  <div class="loadCommentsButton">
+                      <v-btn v-if="state.isCommentsOpen==false"  @click="openCommentsSection()" style="padding:0px;font-family: 'Roboto', sans-serif;">Load Comments</v-btn>
+                      <v-btn v-if="state.isCommentsOpen==true"  @click="closeCommentsSection()" style="padding:0px;font-family: 'Roboto', sans-serif;">Close Comments</v-btn>
+                  </div>
+                  <div v-if="state.isCommentsOpen" class="commentsDisqusContainer">
+                       <div class="comments">
+                     <vue-disqus shortname="https-socialstation-io" identifier="one" url="https://socialstation.io"></vue-disqus>
+                    </div>
+                  </div>
+                </div>
              </div>
 
         </div><!-- end of standard news item-->
@@ -286,6 +298,9 @@ import {db} from './../../../firestore.js';
 export default{
     data:function(){
         return {
+            state:{
+                isCommentsOpen:false//determines if the comments section is open
+            },
             localState:{
                 isEditOpen:false,
                 updateValues:{
@@ -306,6 +321,14 @@ export default{
         }
     },
     methods:{
+        closeCommentsSection(){
+            //method closes the comment section
+            this.state.isCommentsOpen=false;
+        },
+        openCommentsSection(){
+            //method will open comments section
+            this.state.isCommentsOpen=true;
+        },
         openEditMenu(){
             //method that opens the edit menu
             this.localState.isEditOpen=true;
