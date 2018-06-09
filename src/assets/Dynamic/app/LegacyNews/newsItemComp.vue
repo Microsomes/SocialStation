@@ -9,11 +9,9 @@ it has no network access and gets its data through slots and props and emits
 
 /*css for standard_newsItem*/
 .standard_newsItem{
-    border:1px solid grey;
-    min-height: 400px;
-    width:500px;
-    border-radius: 10px;
-    padding: 10px;
+    min-height: 600px;
+    width:800px;
+     padding: 10px;
     cursor: pointer;
     transition: all .2s;
     margin-top: 10px;
@@ -29,7 +27,7 @@ it has no network access and gets its data through slots and props and emits
 }
 .newsImage{
     width: 100%;
-    height: 250px;
+    height: 450px;
 }
 .newsTextInfo{
     width: 100%;
@@ -150,6 +148,7 @@ it has no network access and gets its data through slots and props and emits
 .updatePost{
 }
 @media only screen and (max-width: 500px) {
+   
     .standard_newsItem{
        width:90%;
         position: relative;
