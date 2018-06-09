@@ -1,7 +1,7 @@
 
 <style scoped>
 .descriptionModule{
-    height:50px;
+    min-height:50px;
     padding:20px;
     background: #F2F2F2;
     font-family: 'Roboto', sans-serif;

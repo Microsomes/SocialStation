@@ -13,14 +13,12 @@
 
  
 .newsAddOptionsContainer{
-    border:1px solid grey;
     width: 200px;
     top:0px;
     position: absolute;
     right: 0px;
-    height: 400px;
-    border-radius: 10px;
-    margin: 10px;
+    height: 100%;
+     margin: 10px;
 }
 .addText{
     padding: 10px;
@@ -36,7 +34,7 @@
     padding: 10px;
     overflow: auto;
     height: 290px;
-}
+ }
 
 @media only screen and (max-width: 900px) {
      .newsContainer{
@@ -53,24 +51,32 @@
            justify-content: center;
            flex-flow: column;
       }
+      
 }
 
+.title{
+    color:grey;
+    margin-left: 20px;
+    margin-top:10px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
 
+}
 
+.explanation{
+    color:grey;
+    font-family: 'Roboto', sans-serif;
+
+}
 </style>
 
 <template>
     <div class="newsContainer">
 
- 
-        <div class="newsItemsContainer">
-         <newsItemComp v-for="n in newsp2" :postData="n" ></newsItemComp> 
-        </div>
-        <div class="newsAddOptionsContainer">
-                <div class="addText">
-                 Hello, please help SS by contributing some of your time and energy. Please Add a news article by filling in the form below.
-                </div>
-
+        <!--share news modal-->
+  <b-modal ref="shareNews" hide-footer title="Share news @ legacynews Module">
+    
+    
                 <div class="inputAddFormContainer">
   <v-text-field
       v-model="newsAdderValues.title"
@@ -107,16 +113,34 @@
         label="Image URL"
       required
     ></v-text-field>
-        <v-btn @click="addArticle()" style="background:#61B865;color:white;font-family: 'Roboto', sans-serif;" color="succjess">Add</v-btn>
+        <v-btn @click="addArticle()" style="background:#61B865;color:white;font-family: 'Roboto', sans-serif;padding:0px;" color="succjess">Add</v-btn>
 
-                </div>          
-        </div><!-- end of news add options-->
+                </div> 
+    </b-modal>
+
+        <!-- share news model ends-->
+
+ 
+    <div class="title">
+                User generated news
+            </div>
+            <div class="explanation">
+                Share news on this board, dicuss it via comments and learn something new.
+            </div>
+            <v-btn @click="shareNews()" style="padding:0px;font-family: 'Roboto', sans-serif;">Share some news</v-btn>
+
+        <div class="newsItemsContainer">
+          
+         <newsItemComp v-for="n in newsp2" :postData="n" ></newsItemComp> 
+       
+        </div><!-- end of news items container-->
+         
+          
 
       
         </div><!-- end of news container-->
          
-    </div>
-</template>
+ </template>
 
 
 <script>
@@ -161,8 +185,21 @@ export default {
              return this.newsCollection["articles"]
         }
     },methods:{
+        shareNews(){
+            this.$refs.shareNews.show();
+        },
         addArticle(){
             //method will push article to firestore
+
+            let adv= this.newsAdderValues;
+
+            if(adv.title=="" || adv.author=="" || adv.createdBy=="" || adv.description==""
+            ||adv.image=="" || adv.url==""){
+                alert("please check all fields are filled");
+                return ;
+            }
+
+
             //TODO check all fields
             this.$firestore.newsp2.add({
                 adderComment:this.newsAdderValues.adderComment,

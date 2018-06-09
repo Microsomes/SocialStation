@@ -33,7 +33,7 @@ it has no network access and gets its data through slots and props and emits
 }
 .newsTextInfo{
     width: 100%;
-    height: 90px;
+    min-height: 90px;
 }
 .newsIcon{
     width: 70px;
@@ -104,7 +104,7 @@ it has no network access and gets its data through slots and props and emits
     color:grey;
     padding-left: 10px;
     overflow:hidden;
-    height: 30px;
+    min-height: 30px;
 }
 .title a{
     color:grey;
@@ -254,8 +254,10 @@ it has no network access and gets its data through slots and props and emits
                 <div class="newsSourceLink">
                    <a style="color:grey" target="_blank" v-bind:href="postData.url"> {{postData.url}}</a>
                 </div>
-                
-            </div>
+                 
+                  <i style="color:#C62D2D" class="material-icons">comment</i>(100)
+
+             </div>
 
         </div><!-- end of standard news item-->
 </div>
