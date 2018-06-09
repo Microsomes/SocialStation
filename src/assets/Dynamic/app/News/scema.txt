@@ -1,8 +1,0 @@
-author 
-created by
-description
-image 
-isEditable
-lastEditedBy
-title
-url

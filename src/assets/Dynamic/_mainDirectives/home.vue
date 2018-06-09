@@ -377,6 +377,38 @@
  
     <div class="container">
 
+          <!--create a qa modal-->
+
+         <b-modal ref="askaqa" hide-footer title="Aak a Q/A">
+
+        ask a qa coming soon
+          
+        </b-modal>
+
+        <!-- create a qa model ends-->
+
+         <!--create a blog modal-->
+
+         <b-modal ref="createBlog" hide-footer title="Aak a Q/A">
+
+        create a blog coming soon
+          
+        </b-modal>
+
+        <!-- create a qa model ends-->
+
+         <!--create a fact modal-->
+
+         <b-modal ref="createAFact" hide-footer title="Aak a Q/A">
+
+        create a fact coming soon
+          
+        </b-modal>
+
+        <!-- create a fact model ends-->
+
+        
+
         <div class="topLayer">
           
            <!-- code rendered redundant 02/06/2018-->
@@ -419,9 +451,9 @@
                 
             </div>
             <div class="quickAddComp">
-                <v-btn style="padding:0px">Create Q/A</v-btn>
-                <v-btn style="padding:0px">Create A blog</v-btn>
-                <v-btn style="padding:0px">Add a fact</v-btn>
+                <v-btn @click="createAQa()" style="padding:0px">Ask Q/A</v-btn>
+                <v-btn @click="createABlog()" style="padding:0px">Create A blog</v-btn>
+                <v-btn @click="createAFact()" style="padding:0px">Add a fact</v-btn>
             </div>
             
             <div class="postStatusContainer">
@@ -644,6 +676,15 @@ export default{
     },components:{
         VueCircle
     },methods:{
+        createAFact(){
+            this.$refs.createAFact.show();
+        },
+        createABlog(){
+            this.$refs.createBlog.show();
+        },
+        createAQa(){
+            this.$refs.askaqa.show();
+        },
         handleSearch(){
             //method will be called when search box is in focus
             console.log("search box is in focus");

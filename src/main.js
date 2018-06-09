@@ -63,9 +63,10 @@ import dynoCreateRandomFact from './assets/Dynamic/createPages/createRandomFact.
 import dynoHome from './assets/Dynamic/_mainDirectives/home.vue';
 import dynoEntry from './assets/Dynamic/_mainDirectives/entry.vue';
 //import dynamic pages above
+import dynoNews from './assets/Dynamic/app/news/main.vue';
 
-import dynoNews from './assets/Dynamic/app/News/main.vue';
-//import news dyno
+import legacy_news from './assets/Dynamic/app/LegacyNews/main.vue';
+//import legacy news
 
 import dynoModuler from './assets/Dynamic/codeModules/moduler.vue';
 import dynoCryptoFolio from './assets/Dynamic/app/CryptoFolio/main.vue'
@@ -92,8 +93,17 @@ import theeidshow from './assets/Dynamic/app/eidshow2018/main.vue';
 
 Vue.component("randomFact",dynamicComponent);
 Vue.component("animLiner",dynoAnimationLiner);
+
+
+import example_modal from './assets/exmaples/modal.vue';
+//import example vues below
+
 //registering vue components above
 const routes=[
+  {
+    path:'/examples',
+    component:example_modal
+  },
   {
     path:'/in',
     component:dynoSignInUp
@@ -138,6 +148,10 @@ const routes=[
     component:dynoModuler,
     children:[
       {
+        path:'news',
+        component:dynoNews
+      },
+      {
       path:'cryptofolio',
       component:dynoCryptoFolio
      },
@@ -146,8 +160,8 @@ const routes=[
        component:dynoMainFeed
      },
      {
-       path:'news',
-       component:dynoNews
+       path:'legacynews',
+       component:legacy_news
      },
      {
        path:'blog',

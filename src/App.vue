@@ -8,223 +8,6 @@
 
 -->
 
-<script>
-import memberInfoBar from './assets/Dynamic/ModularComponents/memberInfoBar';
-//importing members info bar to display the current signed in user
-
-import {auth} from './assets/firestore.js';
-//importing auth needed to listen to on auth change events triggered by firebase
-
- export default {
-  data:function(){
-    return {
-
-      isReventModuleWindowOpen:false
- 
-    }
-  },computed:{
-    stateStoreC:function(){
-      return this.$store.state.count
-    }
-  },methods:{
-    signout(){
-            //logout method
-            auth.signOut();
-            this.$store.state.authRelated.isLoggedIn=false;
-            //set  local state isLoggedIn to false
-            console.log(this.$store.state.authRelated.isLoggedIn);
-    },
-    toggleModuleWindow(){
-      //toggle the recent module window 
-      //this.isReventModuleWindowOpen!=this.isReventModuleWindowOpen;
-
-      this.isReventModuleWindowOpen= !this.isReventModuleWindowOpen;
-    },
-    scrollToTop(){
-      //method used to scroll the user to the top
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
-  },components:{
-    memberInfoBar,
-  },created(){
-    var home=this;
-
-    //if user is logged in redirect to dashboard
-    if(home.$store.state.authRelated.isLoggedIn){
-      //user is locally logged in
-      home.$router.push("/dashboard");
-    }
-
-    //listen to onchangeauth event 
-    auth.onAuthStateChanged(function(user){
-      if(user){
-        //user is logged in
-        var email= user.email;
-        var uid= user.uid;
-        console.log(uid);
-        home.$store.state.authRelated.isLoggedIn=true;
-        //tell local web app that we are logged in
-         home.$store.state.authRelated.loginDetails.uid=uid;
-         home.$store.state.authRelated.loginDetails.email=email;
-
-        home.$router.push("/dashboard");
-
-        
-      }else{
-        //user signed out
-        console.log("user is signed out");
-        home.$router.push("/");
-        home.$store.state.authRelated.isLoggedIn=false;
-        //not logged in
-
-      }
-    });
-  }
-}
-</script>
-
-<!--PROGRAMMING LOGIC ABOVE-->
-
-<template>
-  <div class="main_container">
-        <b-alert show style="background:#C62D2D;font-family: 'Roboto', sans-serif;">
-          Happy release day! Today marks the start of the social media revolution. Click&nbsp; <a style="color:white;" target="_blank" href="https://socialstation.info">here</a> &nbsp;to visit the ICO/Docs website
-        </b-alert>
-
-    
-  
-  
-     <b-navbar style="background:gray;color:black;" toggleable="md" type="dark" >
-
-  <b-navbar-toggle  target="nav_collapse"></b-navbar-toggle>
-
-  <b-navbar-brand  href="#">
-    <router-link to="/dashboard">
-    <img height="50px;"  src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FlogoOfficial.png?alt=media&token=79dadc52-28fd-417d-aae1-61c251934ad5"/>
-    </router-link>
-    <router-link style="color:white" to="/dashboard">Social Station</router-link>
-    
-    </b-navbar-brand>
-
-  <b-collapse is-nav id="nav_collapse">
-
-    <b-navbar-nav >
-     </b-navbar-nav>
-
-    <!-- Right aligned nav items -->
-    <b-navbar-nav   class="ml-auto">
-      
-      <b-nav-form>
-          <b-nav-item-dropdown right>
-        <!-- Using button-content slot -->
-        <template slot="button-content">
-          <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
-        </template>        
-        <b-dropdown-item href="#">
-                  <router-link to="/codeModule/news">News</router-link>
-        </b-dropdown-item>
-         <b-dropdown-item  href="#">
-           <router-link to="/codeModule/blog">Blog</router-link>
-         </b-dropdown-item>
-         <b-dropdown-item  href="#">
-           <router-link to="/codeModule/neverending" >Never ending facts</router-link>
-           </b-dropdown-item>
-         <b-dropdown-item href="#">
-           <router-link to="/codeModule/eventsmap">Events Map</router-link>
-         </b-dropdown-item>
-         <b-dropdown-item  href="#">
-           <router-link to="/codeModule/cryptofolio">Crypto Folio</router-link>
-         </b-dropdown-item>
-            <b-dropdown-item  href="#">
-           <router-link to="/codeModule/qanda">Q/A</router-link>
-         </b-dropdown-item>
-         <b-dropdown-item  href="#">
-           <router-link to="/codeModule/sschan">SSBoard</router-link>
-         </b-dropdown-item>
-          <b-dropdown-item  href="#">
-           <router-link to="/codeModule/theeidshow">THE EID SHOW</router-link>
-         </b-dropdown-item>
-          <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
-      </b-nav-item-dropdown>
-      </b-nav-form>
-
-        <b-nav-form >
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                  <router-link style="color:white;" to="/codeModule/feed">Feed</router-link>
-                 </b-button>
-      </b-nav-form>
-
-      <b-nav-form>
-        <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search Anything"/>
-       </b-nav-form>
-
-      
-        <b-nav-form >
-
-      <b-nav-item-dropdown right>
-        <!-- Using button-content slot -->
-        <template slot="button-content">
-          <em style="color:white;font-family: 'Roboto', sans-serif;">User</em>
-        </template>        
-        <b-dropdown-item href="#">
-                  <router-link to="/profile">Profile</router-link>
-        </b-dropdown-item>
-         <b-dropdown-item @click="signout()" href="#">Signout</b-dropdown-item>
-      </b-nav-item-dropdown>
-        </b-nav-form>
-    </b-navbar-nav>
-
-  </b-collapse>
-</b-navbar>
-
-
-<div class="main_routing_content">
-  <router-view></router-view>
-</div>
-
-<!-- start of the recent module container-->
-<!-- <div v-bind:class="{recentModulesOpen:isReventModuleWindowOpen}" class="recentModules">
-    <div v-on:click="toggleModuleWindow"  class="closer">
-        <i v-bind:class="{arrowCloser_close:isReventModuleWindowOpen}"  class="material-icons arrowCloser">arrow_drop_down</i>
-
-    </div>
-    <div class="recentModulesText">
-      <p>Recently used modules</p>
-    </div>
-    <div class="recentModuleContainer">
-      <div class="recentModuleItem">
-        <div class="recentModuleItemcloser">
-            <i class="material-icons">close</i>
-        </div>
-      </div>
-    </div>
-</div> -->
-<!-- end of the recent module container -->
-
-<!-- start of chat container-->
-<!-- <div class="chatContainer">
-  <div class="dot">
-      <i class="material-icons">data_usage</i>
-  </div>
-  <div class="messagingText">
-    Messaging
-  </div>
-  <div class="compose">
-      <i class="material-icons">mode_edit</i>
-  </div>
-</div> -->
-<!-- end of chat container-->
-
-
-<!-- <div @click="scrollToTop()" class="scrollUpButton">
-    <i @click="scrollToTop()" class="material-icons">expand_less</i>
-</div> -->
- 
-  </div>
-</template>
-
-<!--StylesBelow-->
 
 <style scoped>
 .goToFeedButton{
@@ -499,7 +282,266 @@ import {auth} from './assets/firestore.js';
         right:8px;
       }
     }
+
+    .welcomeMessageModal{
+      font-family: 'Roboto', sans-serif;
+
+    }
 </style>
 
 
+
+
+<!--PROGRAMMING LOGIC ABOVE-->
+
+<template>
+  <div class="main_container">
+        <b-alert show style="background:#C62D2D;font-family: 'Roboto', sans-serif;">
+          Happy release day! Today marks the start of the social media revolution. Click&nbsp; <a style="color:white;" target="_blank" href="https://socialstation.info">here</a> &nbsp;to visit the ICO/Docs website
+        </b-alert>
+
+        <!-- welcome modal-->
+        <b-modal ref="welcomeMessage" hide-footer title="Welcome">
+          <div class="welcomeMessageModal">
+            <div style="font-weight:bold;font-family: 'Roboto', sans-serif;" class="title">Welcome to Social Station.</div>
+            <div style="color:grey;margin-top:3px;" class="explanation">Today Friday 15th of June Marks the release of this website. What is Social Station you may ask? in short Social Station is an open source modular social media platform, that will eventually become decentralzed. You may read more about the project at <a target="_blank" href="https://socialstation.info">socialstation.info</a>. Or you can learn by exploring the site.
+            </div>
+          </div>
+        </b-modal>
+        <!-- welcome end modal-->
+
+       
+   
+  
+      
+       
+
+    
+  
+  
+     <b-navbar style="background:gray;color:black;" toggleable="md" type="dark" >
+
+  <b-navbar-toggle  target="nav_collapse"></b-navbar-toggle>
+
+  <b-navbar-brand  href="#">
+    <router-link to="/dashboard">
+    <img height="50px;"  src="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fimages%2FlogoOfficial.png?alt=media&token=79dadc52-28fd-417d-aae1-61c251934ad5"/>
+    </router-link>
+    <router-link style="color:white" to="/dashboard">Social Station</router-link>
+    
+    </b-navbar-brand>
+
+  <b-collapse is-nav id="nav_collapse">
+
+    <b-navbar-nav >
+     </b-navbar-nav>
+
+    <!-- Right aligned nav items -->
+    <b-navbar-nav   class="ml-auto">
+      
+      <b-nav-form>
+          <b-nav-item-dropdown right>
+        <!-- Using button-content slot -->
+        <template slot="button-content">
+          <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
+        </template>        
+        <b-dropdown-item href="#">
+                  <router-link to="/codeModule/legacynews">Legacy News</router-link>
+        </b-dropdown-item>
+         <b-dropdown-item href="#">
+                  <router-link to="/codeModule/news">Popular News</router-link>
+        </b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/blog">Blog</router-link>
+         </b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/neverending" >Never ending facts</router-link>
+           </b-dropdown-item>
+         <b-dropdown-item href="#">
+           <router-link to="/codeModule/eventsmap">Events Map</router-link>
+         </b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/cryptofolio">Crypto Folio</router-link>
+         </b-dropdown-item>
+            <b-dropdown-item  href="#">
+           <router-link to="/codeModule/qanda">Q/A</router-link>
+         </b-dropdown-item>
+         <b-dropdown-item  href="#">
+           <router-link to="/codeModule/sschan">SSBoard</router-link>
+         </b-dropdown-item>
+          <b-dropdown-item  href="#">
+           <router-link to="/codeModule/theeidshow">THE EID SHOW</router-link>
+         </b-dropdown-item>
+          <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
+      </b-nav-item-dropdown>
+      </b-nav-form>
+
+        <b-nav-form >
+                <b-button size="sm" class="my-2 my-sm-0" type="submit">
+                  <router-link style="color:white;" to="/codeModule/feed">Feed</router-link>
+                 </b-button>
+      </b-nav-form>
+
+      <b-nav-form>
+        <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search Anything"/>
+       </b-nav-form>
+
+      
+        <b-nav-form >
+
+      <b-nav-item-dropdown right>
+        <!-- Using button-content slot -->
+        <template slot="button-content">
+          <em style="color:white;font-family: 'Roboto', sans-serif;">User</em>
+        </template>        
+        <b-dropdown-item href="#">
+                  <router-link to="/profile">Profile</router-link>
+        </b-dropdown-item>
+         <b-dropdown-item @click="signout()" href="#">Signout</b-dropdown-item>
+      </b-nav-item-dropdown>
+        </b-nav-form>
+    </b-navbar-nav>
+
+  </b-collapse>
+</b-navbar>
+
+
+<div class="main_routing_content">
+  <router-view></router-view>
+</div>
+
+<!-- start of the recent module container-->
+<!-- <div v-bind:class="{recentModulesOpen:isReventModuleWindowOpen}" class="recentModules">
+    <div v-on:click="toggleModuleWindow"  class="closer">
+        <i v-bind:class="{arrowCloser_close:isReventModuleWindowOpen}"  class="material-icons arrowCloser">arrow_drop_down</i>
+
+    </div>
+    <div class="recentModulesText">
+      <p>Recently used modules</p>
+    </div>
+    <div class="recentModuleContainer">
+      <div class="recentModuleItem">
+        <div class="recentModuleItemcloser">
+            <i class="material-icons">close</i>
+        </div>
+      </div>
+    </div>
+</div> -->
+<!-- end of the recent module container -->
+
+<!-- start of chat container-->
+<!-- <div class="chatContainer">
+  <div class="dot">
+      <i class="material-icons">data_usage</i>
+  </div>
+  <div class="messagingText">
+    Messaging
+  </div>
+  <div class="compose">
+      <i class="material-icons">mode_edit</i>
+  </div>
+</div> -->
+<!-- end of chat container-->
+
+
+<!-- <div @click="scrollToTop()" class="scrollUpButton">
+    <i @click="scrollToTop()" class="material-icons">expand_less</i>
+</div> -->
  
+  </div>
+</template>
+
+<!--StylesBelow-->
+ 
+
+ <script>
+import memberInfoBar from './assets/Dynamic/ModularComponents/memberInfoBar';
+//importing members info bar to display the current signed in user
+
+import {auth} from './assets/firestore.js';
+//importing auth needed to listen to on auth change events triggered by firebase
+
+ export default {
+  data:function(){
+    return {
+
+      isReventModuleWindowOpen:false
+ 
+    }
+  },computed:{
+    stateStoreC:function(){
+      return this.$store.state.count
+    }
+  },methods:{
+     
+    signout(){
+            //logout method
+            auth.signOut();
+            this.$store.state.authRelated.isLoggedIn=false;
+            //set  local state isLoggedIn to false
+            console.log(this.$store.state.authRelated.isLoggedIn);
+    },
+    toggleModuleWindow(){
+      //toggle the recent module window 
+      //this.isReventModuleWindowOpen!=this.isReventModuleWindowOpen;
+
+      this.isReventModuleWindowOpen= !this.isReventModuleWindowOpen;
+    },
+    scrollToTop(){
+      //method used to scroll the user to the top
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+  },components:{
+    memberInfoBar,
+  },created(){
+
+       
+    var home=this;
+
+    //if user is logged in redirect to dashboard
+    if(home.$store.state.authRelated.isLoggedIn){
+      //user is locally logged in
+      home.$router.push("/dashboard");
+    }
+
+    //listen to onchangeauth event 
+    auth.onAuthStateChanged(function(user){
+      if(user){
+        //user is logged in
+        var email= user.email;
+        var uid= user.uid;
+        console.log(uid);
+        home.$store.state.authRelated.isLoggedIn=true;
+        //tell local web app that we are logged in
+         home.$store.state.authRelated.loginDetails.uid=uid;
+         home.$store.state.authRelated.loginDetails.email=email;
+
+        home.$router.push("/dashboard");
+
+        
+      }else{
+        //user signed out
+        console.log("user is signed out");
+        home.$router.push("/");
+        home.$store.state.authRelated.isLoggedIn=false;
+        //not logged in
+
+      }
+    });
+  },mounted(){
+    var isWelcomeMessageBeenSeenBefore= localStorage.getItem("hasSeenBefore");
+    if(isWelcomeMessageBeenSeenBefore==null){
+      console.log("welcome message has not been seen");
+        this.$refs.welcomeMessage.show();
+        //show welcome message
+        //welcome message shown lets make sure its only showed once since its annoying if its shown more then once
+        localStorage.setItem("hasSeenBefore","seen");
+    }else{
+      //welcome message has been seen before
+
+    }
+       
+  }
+}
+</script>
