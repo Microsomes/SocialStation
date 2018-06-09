@@ -147,24 +147,36 @@ it has no network access and gets its data through slots and props and emits
 
 .updatePost{
 }
-@media only screen and (max-width: 500px) {
-   
-    .standard_newsItem{
-       width:90%;
-        position: relative;
-        left: 10px;
-        border:none;
-        border-bottom: 1px solid grey;
-     }
-    .newsTextInfo{
-         width:100%;
-    }
-    
-}
 
 .commentsSection{
     min-height: 10px;
 }
+
+@media only screen and (max-width: 500px) {
+   .standard_newsItem{
+       width:100%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex-flow: column;
+   }
+   .newsImage{
+       width:60%;
+       height:60%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+   .newsTextInfo{
+       width:100%;
+       width:60%;
+   }
+     .newsFromInfo{
+         width:100%;
+     }
+    
+}
+
 
 </style>
 
@@ -278,7 +290,7 @@ it has no network access and gets its data through slots and props and emits
                   </div>
                   <div v-if="state.isCommentsOpen" class="commentsDisqusContainer">
                        <div class="comments">
-                     <vue-disqus shortname="https-socialstation-io" identifier="one" url="https://socialstation.io"></vue-disqus>
+                     <vue-disqus shortname="https-socialstation-io" identifier="two" url="https://socialstation.io"></vue-disqus>
                     </div>
                   </div>
                 </div>

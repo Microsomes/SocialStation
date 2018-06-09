@@ -281,6 +281,8 @@
       .goToFeedButton{
         right:8px;
       }
+
+      
     }
 
     .welcomeMessageModal{
@@ -368,6 +370,7 @@
             transform: scale3D(0, 0, 1);
   } 
 }
+
 </style>
 
 
