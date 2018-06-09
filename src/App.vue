@@ -289,6 +289,63 @@
     }
       @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
 
+
+.loaderContainer{
+  position: fixed;
+  overflow: hidden;
+  width:100%;
+  height:100%;
+  top:0px;
+  left:0px;
+  background:white;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*loader animation here*/
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 100px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #C62D2D;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
 </style>
 
 
@@ -298,6 +355,15 @@
 
 <template>
   <div class="main_container">
+
+    <div v-if="state.isLoading" class="loaderContainer">
+
+          <div class="spinner">
+         <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
         <b-alert show style="background:#C62D2D;font-family: 'Roboto', sans-serif;">
           Happy release day! Today marks the start of the social media revolution. Click&nbsp; <a style="color:white;" target="_blank" href="https://socialstation.info">here</a> &nbsp;to visit the ICO/Docs website
         </b-alert>
@@ -468,6 +534,9 @@ import {auth} from './assets/firestore.js';
  export default {
   data:function(){
     return {
+      state:{
+        isLoading:true
+      },
 
       isReventModuleWindowOpen:false
  
@@ -534,6 +603,14 @@ import {auth} from './assets/firestore.js';
       }
     });
   },mounted(){
+
+    var home=this;
+
+    setTimeout(() => {
+       home.state.isLoading=false;
+    }, 1000);
+    
+
     var isWelcomeMessageBeenSeenBefore= localStorage.getItem("hasSeenBefore");
     if(isWelcomeMessageBeenSeenBefore==null){
       console.log("welcome message has not been seen");
