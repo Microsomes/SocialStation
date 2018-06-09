@@ -409,7 +409,7 @@
 
 
 <div class="main_routing_content">
-  <transition name="transiton_anim" enter-active-class="animated flash" leave-active-class="animated fadeOutDown">
+  <transition name="transiton_anim" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown">
   <router-view></router-view>
   </transition>
 </div>
