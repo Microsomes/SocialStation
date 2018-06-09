@@ -563,7 +563,7 @@ import {auth} from './assets/firestore.js';
   data:function(){
     return {
       state:{
-        isLoading:true
+        isLoading:false
       },
 
       isReventModuleWindowOpen:false
