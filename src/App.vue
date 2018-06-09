@@ -346,7 +346,7 @@
           <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
         </template>        
         <b-dropdown-item href="#">
-                  <router-link to="/codeModule/legacynews">Legacy News</router-link>
+                  <router-link to="/codeModule/legacynews">News Board</router-link>
         </b-dropdown-item>
          <b-dropdown-item href="#">
                   <router-link to="/codeModule/news">Popular News</router-link>

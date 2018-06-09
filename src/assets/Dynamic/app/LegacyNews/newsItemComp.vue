@@ -149,6 +149,20 @@ it has no network access and gets its data through slots and props and emits
 
 .updatePost{
 }
+@media only screen and (max-width: 500px) {
+    .standard_newsItem{
+       width:90%;
+        position: relative;
+        left: 10px;
+        border:none;
+        border-bottom: 1px solid grey;
+     }
+    .newsTextInfo{
+         width:100%;
+    }
+    
+}
+
 </style>
 
 
@@ -207,8 +221,8 @@ it has no network access and gets its data through slots and props and emits
                 </div>
                 
             </div>
-            <v-btn @click="cancelUpdate()" style="background:#61B865;color:white;font-family: 'Roboto', sans-serif;" color="succedss">Update</v-btn>
-            <v-btn @click="cancelUpdate()" style="background:#CD4545;color:white;font-family: 'Roboto', sans-serif;" color="succedss">Cancel</v-btn>
+            <v-btn @click="cancelUpdate()" style="background:#61B865;color:white;font-family: 'Roboto', sans-serif;padding:0px" color="succedss">Update</v-btn>
+            <v-btn @click="cancelUpdate()" style="background:#CD4545;color:white;font-family: 'Roboto', sans-serif;padding:0px" color="succedss">Cancel</v-btn>
 
         </div><!-- end of standard news item-->
 
