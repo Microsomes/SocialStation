@@ -287,6 +287,8 @@
       font-family: 'Roboto', sans-serif;
 
     }
+      @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+
 </style>
 
 
@@ -319,7 +321,7 @@
     
   
   
-     <b-navbar style="background:gray;color:black;" toggleable="md" type="dark" >
+     <b-navbar ref="mainNavBar" style="background:gray;color:black;" toggleable="md" type="dark" >
 
   <b-navbar-toggle  target="nav_collapse"></b-navbar-toggle>
 
@@ -378,7 +380,7 @@
 
         <b-nav-form >
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                  <router-link style="color:white;" to="/codeModule/feed">Feed</router-link>
+                  <router-link  style="color:white;" to="/codeModule/feed">Feed</router-link>
                  </b-button>
       </b-nav-form>
 
@@ -407,7 +409,9 @@
 
 
 <div class="main_routing_content">
+  <transition name="transiton_anim" enter-active-class="animated flash" leave-active-class="animated fadeOutDown">
   <router-view></router-view>
+  </transition>
 </div>
 
 <!-- start of the recent module container-->
@@ -473,7 +477,7 @@ import {auth} from './assets/firestore.js';
       return this.$store.state.count
     }
   },methods:{
-     
+   
     signout(){
             //logout method
             auth.signOut();

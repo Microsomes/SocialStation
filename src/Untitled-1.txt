@@ -1,0 +1,40 @@
+
+                <div class="inputAddFormContainer">
+  <v-text-field
+      v-model="newsAdderValues.title"
+        label="Title"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.description"
+        label="Description"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.createdBy"
+        label="Your Name"
+      required
+    ></v-text-field>
+    <v-text-field
+      v-model="newsAdderValues.adderComment"
+        label="Your Comment"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.url"
+        label="URL Source"
+      required
+    ></v-text-field>
+     <v-text-field
+      v-model="newsAdderValues.author"
+        label="Author eg bbc news"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.image"
+        label="Image URL"
+      required
+    ></v-text-field>
+        <v-btn @click="addArticle()" style="background:#61B865;color:white;font-family: 'Roboto', sans-serif;" color="succjess">Add</v-btn>
+
+                </div> 
