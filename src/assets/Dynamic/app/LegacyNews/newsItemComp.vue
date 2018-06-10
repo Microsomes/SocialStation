@@ -290,14 +290,15 @@ it has no network access and gets its data through slots and props and emits
                   </div>
                   <div v-if="state.isCommentsOpen" class="commentsDisqusContainer">
                        <div class="comments">
-                     <vue-disqus shortname="https-socialstation-io" identifier="two" url="https://socialstation.io"></vue-disqus>
-                    </div>
+                           comments section coming soon{{disqusIdentifiers.page_identifier}}
+                     </div>
                   </div>
                 </div>
              </div>
 
         </div><!-- end of standard news item-->
-</div>
+
+ </div>
  
 </template>
 
@@ -309,6 +310,11 @@ import {db} from './../../../firestore.js';
 export default{
     data:function(){
         return {
+            disqusIdentifiers:{
+                page_identifier:this.postData.title+"v1",
+                url:"https://socialstation.io/ten",
+                shortname:'https-socialstation-io'
+            },
             state:{
                 isCommentsOpen:false//determines if the comments section is open
             },

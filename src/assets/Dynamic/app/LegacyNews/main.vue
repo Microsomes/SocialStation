@@ -194,6 +194,7 @@
      display: flex;
     align-items: center;
     justify-content: center;
+    flex-flow: column;
 }
 .rightContent{
     width:500px;
@@ -223,11 +224,70 @@
 <!-- start of news board container-->
 <div class="newsBoardContainer">
 
+         <!--share news modal-->
+  <b-modal ref="shareNews" hide-footer title="Share news @ legacynews Module">
+    
+    
+                <div class="inputAddFormContainer">
+  <v-text-field
+      v-model="newsAdderValues.title"
+        label="Title"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.description"
+        label="Description"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.createdBy"
+        label="Your Name"
+      required
+    ></v-text-field>
+    <v-text-field
+      v-model="newsAdderValues.adderComment"
+        label="Your Comment"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.url"
+        label="URL Source"
+      required
+    ></v-text-field>
+     <v-text-field
+      v-model="newsAdderValues.author"
+        label="Author eg bbc news"
+      required
+    ></v-text-field>
+      <v-text-field
+      v-model="newsAdderValues.image"
+        label="Image URL"
+      required
+    ></v-text-field>
+        <v-btn @click="addArticle()" style="background:#61B865;color:white;font-family: 'Roboto', sans-serif;padding:0px;" color="succjess">Add</v-btn>
+
+                </div> 
+    </b-modal>
+
+        <!-- share news model ends-->
+
     <div class="leftContaner">
+ <div class="title">
+                User generated news
+            </div>
+            <div class="explanation">
+                Share news on this board, dicuss it via comments and learn something new.
+            </div>
+            <v-btn @click="shareNews()" style="padding:0px;font-family: 'Roboto', sans-serif;">Share some news</v-btn>
+
         <newsItemComp v-for="n in newsp2" :postData="n" ></newsItemComp> 
-    </div>
+
+     </div>
     <div class="rightContent">
-        right content
+        <!-- <div class="thoughtsContainer">
+            <div class="title">Thoughts</div>
+            <reddit_style_post></reddit_style_post>
+        </div> -->
     </div>
 
 </div>
@@ -245,6 +305,8 @@ import newsItemComp from './newsItemComp';
 import {db} from './../../../firestore.js';
 //import the firebase database instance
 
+import reddit_style_post from './redditStylePost';
+//import reddit style post
 
 export default {
     data:function(){
@@ -269,7 +331,8 @@ export default {
         
     },components:{
         bigNewsItem,
-        newsItemComp
+        newsItemComp,
+        reddit_style_post
     },firestore(){
         return {
             newsCollection:db.collection("NewsRelated").doc("userAddedArticles"),
