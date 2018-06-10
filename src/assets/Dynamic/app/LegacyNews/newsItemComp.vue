@@ -9,11 +9,9 @@ it has no network access and gets its data through slots and props and emits
 
 /*css for standard_newsItem*/
 .standard_newsItem{
-    border:1px solid grey;
-    min-height: 400px;
-    width:500px;
-    border-radius: 10px;
-    padding: 10px;
+    min-height: 600px;
+    width:800px;
+     padding: 10px;
     cursor: pointer;
     transition: all .2s;
     margin-top: 10px;
@@ -29,7 +27,7 @@ it has no network access and gets its data through slots and props and emits
 }
 .newsImage{
     width: 100%;
-    height: 250px;
+    height: 450px;
 }
 .newsTextInfo{
     width: 100%;
@@ -149,19 +147,36 @@ it has no network access and gets its data through slots and props and emits
 
 .updatePost{
 }
+
+.commentsSection{
+    min-height: 10px;
+}
+
 @media only screen and (max-width: 500px) {
-    .standard_newsItem{
-       width:90%;
-        position: relative;
-        left: 10px;
-        border:none;
-        border-bottom: 1px solid grey;
-     }
-    .newsTextInfo{
+   .standard_newsItem{
+       width:100%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex-flow: column;
+   }
+   .newsImage{
+       width:60%;
+       height:60%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+   .newsTextInfo{
+       width:100%;
+       width:60%;
+   }
+     .newsFromInfo{
          width:100%;
-    }
+     }
     
 }
+
 
 </style>
 
@@ -268,13 +283,22 @@ it has no network access and gets its data through slots and props and emits
                 <div class="newsSourceLink">
                    <a style="color:grey" target="_blank" v-bind:href="postData.url"> {{postData.url}}</a>
                 </div>
-                 
-                  <i style="color:#C62D2D" class="material-icons">comment</i>(100)
-
+                 <div class="commentsSection">
+                  <div class="loadCommentsButton">
+                      <v-btn v-if="state.isCommentsOpen==false"  @click="openCommentsSection()" style="padding:0px;font-family: 'Roboto', sans-serif;">Load Comments</v-btn>
+                      <v-btn v-if="state.isCommentsOpen==true"  @click="closeCommentsSection()" style="padding:0px;font-family: 'Roboto', sans-serif;">Close Comments</v-btn>
+                  </div>
+                  <div v-if="state.isCommentsOpen" class="commentsDisqusContainer">
+                       <div class="comments">
+                           comments section coming soon{{disqusIdentifiers.page_identifier}}
+                     </div>
+                  </div>
+                </div>
              </div>
 
         </div><!-- end of standard news item-->
-</div>
+
+ </div>
  
 </template>
 
@@ -286,6 +310,14 @@ import {db} from './../../../firestore.js';
 export default{
     data:function(){
         return {
+            disqusIdentifiers:{
+                page_identifier:this.postData.title+"v1",
+                url:"https://socialstation.io/ten",
+                shortname:'https-socialstation-io'
+            },
+            state:{
+                isCommentsOpen:false//determines if the comments section is open
+            },
             localState:{
                 isEditOpen:false,
                 updateValues:{
@@ -306,6 +338,14 @@ export default{
         }
     },
     methods:{
+        closeCommentsSection(){
+            //method closes the comment section
+            this.state.isCommentsOpen=false;
+        },
+        openCommentsSection(){
+            //method will open comments section
+            this.state.isCommentsOpen=true;
+        },
         openEditMenu(){
             //method that opens the edit menu
             this.localState.isEditOpen=true;

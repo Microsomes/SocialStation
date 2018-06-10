@@ -36,23 +36,6 @@
     height: 290px;
  }
 
-@media only screen and (max-width: 900px) {
-     .newsContainer{
-          margin:0px;
-      }
-      .newsAddOptionsContainer{
-          display:none;
-          
-      }
-      .newsItemsContainer{
-           position: relative;
-            display: flex;
-           align-items: center;
-           justify-content: center;
-           flex-flow: column;
-      }
-      
-}
 
 .title{
     color:grey;
@@ -199,12 +182,49 @@
   }
 }
  
+.newsBoardContainer{
+    min-height:800px;
+    display:flex;
+   
+}
+
+.leftContaner{
+    width:900px;
+    min-height:500px;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+}
+.rightContent{
+    width:500px;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .newsBoardContainer{
+        flex-flow: column;
+        width:100%;
+     }
+     .rightContent{
+         width:100%;
+         background:red;
+         display:none;
+     }
+      .leftContaner{
+          width: 100%;
+          overflow: hidden;
+          
+      }
+}
+
 </style>
 
 <template>
-    <div class="newsContainer">
+<!-- start of news board container-->
+<div class="newsBoardContainer">
 
-        <!--share news modal-->
+         <!--share news modal-->
   <b-modal ref="shareNews" hide-footer title="Share news @ legacynews Module">
     
     
@@ -251,8 +271,8 @@
 
         <!-- share news model ends-->
 
- 
-    <div class="title">
+    <div class="leftContaner">
+ <div class="title">
                 User generated news
             </div>
             <div class="explanation">
@@ -260,35 +280,22 @@
             </div>
             <v-btn @click="shareNews()" style="padding:0px;font-family: 'Roboto', sans-serif;">Share some news</v-btn>
 
-        <div class="newsItemsContainer">
-            <div v-if="state.isLoading" class="loader">
-                <div class="sk-circle">
-  <div class="sk-circle1 sk-child"></div>
-  <div class="sk-circle2 sk-child"></div>
-  <div class="sk-circle3 sk-child"></div>
-  <div class="sk-circle4 sk-child"></div>
-  <div class="sk-circle5 sk-child"></div>
-  <div class="sk-circle6 sk-child"></div>
-  <div class="sk-circle7 sk-child"></div>
-  <div class="sk-circle8 sk-child"></div>
-  <div class="sk-circle9 sk-child"></div>
-  <div class="sk-circle10 sk-child"></div>
-  <div class="sk-circle11 sk-child"></div>
-  <div class="sk-circle12 sk-child"></div>
+        <newsItemComp v-for="n in newsp2" :postData="n" ></newsItemComp> 
+
+     </div>
+    <div class="rightContent">
+        <!-- <div class="thoughtsContainer">
+            <div class="title">Thoughts</div>
+            <reddit_style_post></reddit_style_post>
+        </div> -->
+    </div>
+
 </div>
-            </div>
-          
-         <newsItemComp v-for="n in newsp2" :postData="n" ></newsItemComp> 
-       
-        </div><!-- end of news items container-->
-         
-          
+<!-- end of news board container-->
 
-      
-        </div><!-- end of news container-->
-         
- </template>
 
+</template>
+   
 
 <script>
 import bigNewsItem from './bigNewsItem';
@@ -298,6 +305,8 @@ import newsItemComp from './newsItemComp';
 import {db} from './../../../firestore.js';
 //import the firebase database instance
 
+import reddit_style_post from './redditStylePost';
+//import reddit style post
 
 export default {
     data:function(){
@@ -322,7 +331,8 @@ export default {
         
     },components:{
         bigNewsItem,
-        newsItemComp
+        newsItemComp,
+        reddit_style_post
     },firestore(){
         return {
             newsCollection:db.collection("NewsRelated").doc("userAddedArticles"),

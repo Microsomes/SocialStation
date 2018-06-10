@@ -16,8 +16,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(VueTyperPlugin)
  
- 
- 
+import VueDisqus from 'vue-disqus'
+
+Vue.use(VueDisqus)
 
 
 // import './assets/firebase';
@@ -44,7 +45,7 @@ Vue.filter('capitalize', function (value) {
   return value.charAt(0).toUpperCase() + value.slice(1)
 })
 
-
+ 
  
 Vue.use(VueRouter);
 
