@@ -279,7 +279,7 @@
                 Share news on this board, dicuss it via comments and learn something new.
             </div>
             <v-btn @click="shareNews()" style="padding:0px;font-family: 'Roboto', sans-serif;">Share some news</v-btn>
-
+    
         <newsItemComp v-for="n in newsp2" :postData="n" ></newsItemComp> 
 
      </div>

@@ -381,6 +381,8 @@
 <template>
   <div class="main_container">
 
+    <ssdisqus></ssdisqus>
+
     <div v-if="state.isLoading" class="loaderContainer">
          <div class="sk-cube-grid">
   <div class="sk-cube sk-cube1"></div>

@@ -103,6 +103,11 @@ Vue.component("animLiner",dynoAnimationLiner);
 import example_modal from './assets/exmaples/modal.vue';
 //import example vues below
 
+import comments_section from './assets/Dynamic/ModularComponents/sscommentsSection/main.vue';
+//import commments comment
+Vue.component("ssdisqus",comments_section);
+
+
 //registering vue components above
 const routes=[
   {

@@ -7,7 +7,9 @@
 
 
 <template>
-
+<div class="commentsection_container">
+    comments section thread
+</div>
 </template>
 
 <script>
