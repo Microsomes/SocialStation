@@ -9,6 +9,9 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 import VueTyperPlugin from 'vue-typer'
 
+import Typewriter from 'vue-typewriter'
+
+Vue.use(Typewriter);
  
 import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue);
@@ -107,6 +110,8 @@ import comments_section from './assets/Dynamic/ModularComponents/sscommentsSecti
 //import commments comment
 Vue.component("ssdisqus",comments_section);
 
+import better_auth from './assets/Dynamic/_mainDirectives/better_auth/home.vue';
+
 
 //registering vue components above
 const routes=[
@@ -134,7 +139,7 @@ const routes=[
   },
   {
     path:'/',
-    component:dynoEntry
+    component:better_auth
   },
   {
     path:'/help',

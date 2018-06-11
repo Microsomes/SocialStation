@@ -21,6 +21,7 @@
     "vue-radial-progress": "^0.2.10",
     "vue-router": "^3.0.1",
     "vue-typer": "^1.2.0",
+    "vue-typewriter": "^2.2.1",
     "vue2-circle-progress": "^1.2.3",
     "vuefire": "^1.4.5",
     "vuetify": "^1.0.18",
