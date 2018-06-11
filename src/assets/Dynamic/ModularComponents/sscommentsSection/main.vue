@@ -118,8 +118,10 @@
 
         <div class="commentEnterInputContainer">
             <v-text-field
+            
             @click="state.isCommentClicked=true"
-            v-on:keyup="anaylyseTextInputted"
+            v-on:keyup="anaylyseTextInputted()"
+            v-on:keyup.enter="addComment()"
             class="commentInput"
             style="width:100%;"
       v-model="commentText"
@@ -157,7 +159,7 @@ export default{
             },
             commentsSectionIdentifer:{
                 //unique identifer needed to grab the correct board
-                uniqueIdentifer:'trump'
+                uniqueIdentifer:'newboard2'
             },
             commentBoard:[]
         }
@@ -172,16 +174,20 @@ export default{
             }
         },
         addComment(){
+            var userEmail= this.$store.state.authRelated.loginDetails.email;
+            var home=this;
+
             $.post("http://localhost:8081/comments/addComment/sff",
             {
-                commentMsg:"trump is  a prick ",
-                commentBy:"Sajjid",
+                commentMsg:this.commentText,
+                commentBy:userEmail,
                 commentProfilePic:"http://images.8tracks.com/cover/i/001/420/987/92895.original-9702.jpg?rect=80,0,319,319&q=98&fm=jpg&fit=max&w=320&h=320",
-                uniqueIdentifier:"trump2",
+                uniqueIdentifier:this.commentsSectionIdentifer.uniqueIdentifer,
                 threadTitle:"trump owned"
             },
             function(data, status){
                 console.log(data);
+                home.reloadComments();
             });
         },
         grabComments(){
@@ -192,6 +198,11 @@ export default{
                 console.log(data);
         });
         
+        },
+        reloadComments(){
+            //method used to reload comments
+            this.commentBoard=[];
+            this.grabComments();
         }
     },components:{
         commentItem:commentItem
