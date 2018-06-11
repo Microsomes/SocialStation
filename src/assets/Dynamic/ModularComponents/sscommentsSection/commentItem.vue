@@ -135,24 +135,25 @@
 
 <template>
 <div class="comment_container">
+    
     <div class="comment_left">
         <div class="commentProfilePic">
             <div class="profilePic">
-                <img width="100%;" height="100%" style="border-radius:50%;" v-bind:src="dataComingIn.commenedByProfileImg" />
+                <img width="100%;" height="100%" style="border-radius:50%;" v-bind:src="dataComing.commenedByProfileImg" />
             </div>
         </div>
     </div>
     <div class="comment_right">
         <div class="comment_right_top">
             <div class="commenters_name">
-                {{dataComingIn.commentedBy}}
+                {{dataComing.commentedBy}}
             </div>
             <div class="commentCreatedAgo">
-                47 minutes ago
+                {{timeAgo}}
             </div>
         </div>
         <div class="commentText">
-            {{dataComingIn.commentMsg}}
+            {{dataComing.commentMsg}}
         </div>
         <div class="commentLikeReplyContainer">
             <div class="likeDislikeContainer">
@@ -180,6 +181,7 @@
 export default{
     data:function(){
         return {
+            timeAgo:'a few secs',
             commentItemData:{
                 likes:0,
                 dislikes:0,
@@ -187,7 +189,17 @@ export default{
                 isDisliked:false
             }
         }
-    },props:['dataComingIn']
+    },props:['dataComingIn'],
+    mounted(){
+            this.timeAgo= this.$moment(this.dataComing.timestamp).utc().fromNow();
+ 
+    },updated(){
+         this.timeAgo= this.$moment(this.dataComing.timestamp).utc().fromNow();
+    },computed:{
+        dataComing(){
+            return this.dataComingIn
+        }
+    }
 }
 
 </script>

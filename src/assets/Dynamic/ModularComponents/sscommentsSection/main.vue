@@ -136,7 +136,7 @@
     </div>
 
     <div class="commentsItemContainer">
-        <commentItem v-for="n in commentBoard[0]['result']" :dataComingIn="n" ></commentItem>
+        <commentItem v-for="(n,index) in commentBoard[0]['result']" :dataComingIn="n" :key="index" ></commentItem>
     </div>
      
       
@@ -190,12 +190,19 @@ export default{
             },
             function(data, status){
                 console.log(data);
-                home.reloadComments();
+                // home.reloadComments();
+                 home.state.isCommentClicked=false;
+                console.log("comment added");
                 home.commentText="";
-                home.state.isCommentClicked=false;
+                //empty comment text here
+                home.reloadComments();
+
+ 
             });
         },
         grabComments(){
+            //
+            console.log("grabbing comment");
             //grab all comments in the unique identifier thread
             var home=this;
         $.get("http://localhost:8081/comments/comments/"+this.commentsSectionIdentifer.uniqueIdentifer+"/new/chris", function(data, status){
@@ -209,9 +216,12 @@ export default{
         },
         reloadComments(){
             //method used to reload comments
+                        console.log("erased");
+
             this.commentBoard=[];
-            this.grabComments();
-        }
+              this.grabComments();
+            // this.grabComments();
+         }
     },components:{
         commentItem:commentItem
     },mounted(){

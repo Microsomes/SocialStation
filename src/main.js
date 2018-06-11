@@ -23,6 +23,9 @@ import VueDisqus from 'vue-disqus'
 
 Vue.use(VueDisqus)
 
+Vue.use(require('vue-moment'));
+
+
 
 // import './assets/firebase';
 // //import the firebase user library
