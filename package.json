@@ -17,6 +17,7 @@
     "vue": "^2.5.16",
     "vue-disqus": "^3.0.3",
     "vue-firestore": "^0.2.8",
+    "vue-moment": "^4.0.0-0",
     "vue-radial-progress": "^0.2.10",
     "vue-router": "^3.0.1",
     "vue-typer": "^1.2.0",

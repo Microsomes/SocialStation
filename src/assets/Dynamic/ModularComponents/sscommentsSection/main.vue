@@ -136,10 +136,9 @@
     </div>
 
     <div class="commentsItemContainer">
-        <commentItem></commentItem>
+        <commentItem v-for="n in commentBoard[0]['result']" :dataComingIn="n" ></commentItem>
     </div>
-
-    
+     
      
  </div>
 </template>
@@ -151,38 +150,16 @@ import commentItem from './commentItem.vue';
 export default{
     data:function(){
         return {
-            commentBoard:{
-
-                comments:[
-                    {
-                        from:'',
-                        fromprofilePicLink:'',
-                        comment:'d'+this.commentText,
-                        like:0,
-                        dislike:0,
-                        timestamp:0,
-                        likesList:[
-                            //all the people who liked the comment
-                            "user1",
-                            "user2"
-                        ],
-                        dislikesList:[
-                            //all the people who disliked the comment
-                            "user1",
-                            "user2"
-                        ],
-                    }
-                ]
-
-            },
             commentText:'',
             state:{
                 isCommentClicked:false,
                 isCommentButtonDisabled:true
             },
             commentsSectionIdentifer:{
-                uniqueIdentifer:'bbcnews trump kills north koreas presisdent'
-            }
+                //unique identifer needed to grab the correct board
+                uniqueIdentifer:'trump'
+            },
+            commentBoard:[]
         }
     },methods:{
         anaylyseTextInputted(){
@@ -195,13 +172,34 @@ export default{
             }
         },
         addComment(){
-
-           
-
-           
+            $.post("http://localhost:8081/comments/addComment/sff",
+            {
+                commentMsg:"trump is  a prick ",
+                commentBy:"Sajjid",
+                commentProfilePic:"http://images.8tracks.com/cover/i/001/420/987/92895.original-9702.jpg?rect=80,0,319,319&q=98&fm=jpg&fit=max&w=320&h=320",
+                uniqueIdentifier:"trump2",
+                threadTitle:"trump owned"
+            },
+            function(data, status){
+                console.log(data);
+            });
+        },
+        grabComments(){
+            //grab all comments in the unique identifier thread
+            var home=this;
+        $.get("http://localhost:8081/comments/comments/"+this.commentsSectionIdentifer.uniqueIdentifer+"/new/chris", function(data, status){
+                home.commentBoard.push(data);
+                console.log(data);
+        });
+        
         }
     },components:{
         commentItem:commentItem
+    },mounted(){
+        //retrieve all board comments from the unique identifer
+        this.grabComments();
+        //retrieve all comments
+         
     }
 }
 

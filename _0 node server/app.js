@@ -13,6 +13,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.use("/",(req,res,next)=>{
+    res.header("Access-Control-Allow-Origin",'*');
+    next();
+})
+
 app.use("/products",product);
 app.use("/messages",messages);
 app.use("/comments",comments)
@@ -26,7 +31,7 @@ app.use((req,res,next)=>{
 app.use((error,req,res,next)=>{
     res.status(500);
     res.json({
-        messages:error.message
+        messages:"please check if the end point is correct, if you still have problems contact tayyab720@hotmail.com"
     });
 });
 

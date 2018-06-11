@@ -90,10 +90,13 @@
 .like i{
     color:grey;
     font-size: 20px;
+    visibility: hidden;
 }
 .dislike i{
     color:grey;
     font-size: 20px;
+        visibility: hidden;
+
 
 }
 .like i:hover{
@@ -123,7 +126,10 @@
 .active i{
     color:#414141;
 }
- 
+ .profilePic img:hover{
+     transform: scale(3);
+     cursor: pointer;
+ }
 </style>
 
 
@@ -132,30 +138,30 @@
     <div class="comment_left">
         <div class="commentProfilePic">
             <div class="profilePic">
-                <img width="100%;" height="100%" style="border-radius:50%;" src="https://images.girlsaskguys.com/custom/content_images/how-to-be-hot-2.jpg"/>
+                <img width="100%;" height="100%" style="border-radius:50%;" v-bind:src="dataComingIn.commenedByProfileImg" />
             </div>
         </div>
     </div>
     <div class="comment_right">
         <div class="comment_right_top">
             <div class="commenters_name">
-                Chris Mahatman
+                {{dataComingIn.commentedBy}}
             </div>
             <div class="commentCreatedAgo">
                 47 minutes ago
             </div>
         </div>
         <div class="commentText">
-            Wag 1 whats up
+            {{dataComingIn.commentMsg}}
         </div>
         <div class="commentLikeReplyContainer">
             <div class="likeDislikeContainer">
                 <div v-bind:class="{active:commentItemData.isLiked}" class="like">
-                      <i   class="material-icons">thumb_up</i> <em style="color:grey;position:relative;top:-5px;">{{commentItemData.likes}}</em>
+                      <!-- <i   class="material-icons">thumb_up</i> <em style="color:grey;position:relative;top:-5px;">{{commentItemData.likes}}</em> -->
                 </div>
                 <div v-bind:class="{active:commentItemData.isDisliked}" class="dislike">
                       <i class="material-icons">thumb_down</i>
-                       <em style="color:grey;position:relative;top:-5px;">{{commentItemData.dislikes}}</em>
+                       <!-- <em style="color:grey;position:relative;top:-5px;">{{commentItemData.dislikes}}</em> -->
 
                 </div>
             </div>
@@ -164,7 +170,7 @@
             </div>
         </div>
     </div>
-</div><!-- end of comment container-->
+ </div><!-- end of comment container-->
 </template>
 
 
@@ -181,7 +187,7 @@ export default{
                 isDisliked:false
             }
         }
-    }
+    },props:['dataComingIn']
 }
 
 </script>
