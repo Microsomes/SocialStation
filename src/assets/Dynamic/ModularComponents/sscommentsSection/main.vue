@@ -88,6 +88,19 @@
      min-height:10px;
      margin-top:50px;
   }
+
+
+  @media only screen and (max-width:860px){
+      .commentsection_container{
+         width:100%;
+      }
+      .enterACommentContainer{
+          right:0px;
+      }
+
+      .commentsItemContainer{
+      }
+  }
 </style>
 
 
