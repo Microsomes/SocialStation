@@ -506,6 +506,7 @@
   </b-collapse>
 </b-navbar>
       <warning_bar text='Your profile is complete please visit your profile section to update it. Profile->Breif info'></warning_bar>
+<ssdisqus uid="homepage"></ssdisqus>
 
 <div class="main_routing_content">
   <!-- <transition name="transiton_anim" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown"> -->
