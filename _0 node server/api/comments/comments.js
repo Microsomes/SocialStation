@@ -2,6 +2,7 @@ const express = require('express');
 const router= express.Router();
 var mysql = require('mysql');
 //require mysql module
+var SqlString = require('sqlstring');
 
 
 const commentsTableName= "comments";
@@ -57,32 +58,56 @@ router.get('/allBoards/:sort',(req,res,next)=>{
     
 });
 
-//grab comment by its unique identifer
+//grab comments by its unique identifer
 router.get('/comments/:uniqueIdentifer/:sort/:requestByWhom',(req,res,next)=>{
     const uniqueIdentifer= req.params.uniqueIdentifer;
     const sortby= req.params.sort;
     const requestByWhom= req.params.requestByWhom;
     //need to know the signed in user that is requesing the comments so we can check if the user has liked the comment before
     //find out if this user has liked the comment before
+
+    
+   
+
     if(sortby=="old"){
         //return oldest records first
         //returns all boards
-    con.query("select * from comments WHERE uniqueIdentifer='"+uniqueIdentifer+"' ORDER BY commentId ASC",(err,results)=>{
-        res.status(200).json({
-            result:results,
-            err:err
-            });
-    });
-    }else if(sortby=="new"){
-        //return newest records first 
-            con.query("select * from comments WHERE uniqueIdentifer='"+uniqueIdentifer+"' ORDER BY commentId DESC",(err,results)=>{
+
+        let oldsql="SELECT * FROM comments where uniqueIdentifer= ? ORDER by commentId ASC";
+        let totsSQL="SELECT * FROM commentsboard WHERE uniqueCommentIdentifier= ?";
+
+
+        con.query(oldsql,uniqueIdentifer,(err,result)=>{
             
+            con.query(totsSQL,uniqueIdentifer,(terr,tresult)=>{
                 res.status(200).json({
-                    result:results,
-                    err:err
-                    });
- 
-            });//end of query
+                    result,
+                    tresult,
+                    err,
+                    terr
+                });
+            })
+            
+        })//end of query
+
+    }else if(sortby=="new"){
+        
+        let oldsql="SELECT * FROM comments where uniqueIdentifer= ? ORDER by commentId DESC";
+        let totsSQL="SELECT * FROM commentsboard WHERE uniqueCommentIdentifier= ?";
+
+
+        con.query(oldsql,uniqueIdentifer,(err,result)=>{
+            
+            con.query(totsSQL,uniqueIdentifer,(terr,tresult)=>{
+                res.status(200).json({
+                    result,
+                    tresult,
+                    err,
+                    terr
+                });
+            })
+            
+        })//end of query
     }else{
         res.status(200).json({
             err:'/new or /old required /new returns newest comments first and /old returns the oldest comments first'
@@ -111,6 +136,9 @@ router.post('/addComment/:commentData',(req,res,next)=>{
 
 });
 
+
+ 
+
 function createComment(commentData){
     //checks if a thread is already created if not creates one
    
@@ -133,21 +161,24 @@ function createComment(commentData){
 
     //check if a board is for the unique identifer is created if not create one
 
-    var isThreadInExistence= "SELECT uniqueCommentIdentifier FROM "+boardCommentsName+" WHERE uniqueCommentIdentifier='"+commentDatas.uniqueIdentifer+"'";
+    var isThreadInExistence= "SELECT uniqueCommentIdentifier FROM "+boardCommentsName+" WHERE uniqueCommentIdentifier= ?";
 
-    con.query(isThreadInExistence,(err,result)=>{
+    con.query(isThreadInExistence,commentDatas.uniqueIdentifer,(err,result)=>{
         if(result.length==0){
             //thred does not exist
             //create one now
             console.log("thread does not exist");
 
+            let toAdd={
+                totalComments:1,
+                commentsThreadTitle:commentDatas.commentThreadTitle,
+                uniqueCommentIdentifier:commentDatas.uniqueIdentifer
+            }
             //creating board preparing sql
-            var createThreadSQL= "INSERT INTO "+boardCommentsName+" (totalComments,commentsThreadTitle,uniqueCommentIdentifier) VALUES (1,'"+commentDatas.commentThreadTitle+"','"+commentDatas.uniqueIdentifer+"')";
+            var createThreadSQL= "INSERT INTO "+boardCommentsName+" SET ?";
 
-            con.query(createThreadSQL,(err,result)=>{
-
-                
-
+            con.query(createThreadSQL,toAdd,(err,result)=>{
+                console.log(result);
             })
 
         }else{
@@ -156,9 +187,9 @@ function createComment(commentData){
             console.log("thread does  exist hmm oh");
 
             //instread update that thread and add 1 to the comments
-            var incrementSQLBy1= "UPDATE "+boardCommentsName+" SET totalComments= totalComments + 1 WHERE uniqueCommentIdentifier= '"+commentDatas.uniqueIdentifer+"'";
+            var incrementSQLBy1= "UPDATE "+boardCommentsName+" SET totalComments= totalComments + 1 WHERE uniqueCommentIdentifier= ?";
 
-            con.query(incrementSQLBy1,(err,result)=>{
+            con.query(incrementSQLBy1,commentDatas.uniqueIdentifer,(err,result)=>{
                 console.log({
                     err:err,
                     result,
@@ -168,10 +199,18 @@ function createComment(commentData){
         }
     })
 
+    var toAddComment={
+        commentMsg:commentDatas.commentMsg,
+        commentedBy:commentDatas.commentBy,
+        likes:0,
+        dislikes:0,
+        commenedByProfileImg:commentDatas.commentByProfileImg,
+        uniqueIdentifer:commentDatas.uniqueIdentifer
+    }
     
-    var prepareInsertSQL="INSERT INTO "+commentsTableName+" (commentMsg,commentedBy,likes,dislikes,commenedByProfileImg,uniqueIdentifer) VALUES ('"+commentDatas.commentMsg+"','"+commentDatas.commentBy+"',0,0,'"+commentDatas.commentByProfileImg+"','"+commentDatas.uniqueIdentifer+"')";
+    var prepareInsertSQL="INSERT INTO "+commentsTableName+" SET ?";
 
-    con.query(prepareInsertSQL,(err,result)=>{
+    con.query(prepareInsertSQL,toAddComment,(err,result)=>{
         commentData.res.status(200).json({
             msg:'creating comment now',
             result,

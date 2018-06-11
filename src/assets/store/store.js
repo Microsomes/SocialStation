@@ -10,7 +10,8 @@ export const store= new vuex.Store({
             isLoggedIn:false,
             loginDetails:{
                 profileMeta:{
-                    profileCompletion:10
+                    profileCompletion:10,
+                    showNoUsernameWarning:true//if true user will be nudged to add a username
                 },
                 uid:'',
                 email:'',

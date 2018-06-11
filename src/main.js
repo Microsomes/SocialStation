@@ -113,6 +113,10 @@ Vue.component("ssdisqus",comments_section);
 import better_auth from './assets/Dynamic/_mainDirectives/better_auth/home.vue';
 
 
+import warning_bar from './assets/Dynamic/ModularComponents/waningbar';
+Vue.component("warning_bar",warning_bar);
+
+
 //registering vue components above
 const routes=[
   {
@@ -139,7 +143,7 @@ const routes=[
   },
   {
     path:'/',
-    component:better_auth
+    component:dynoEntry
   },
   {
     path:'/help',

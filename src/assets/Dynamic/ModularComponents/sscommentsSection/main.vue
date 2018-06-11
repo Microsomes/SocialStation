@@ -3,9 +3,8 @@
 <style scoped>
 
 .commentsection_container{
-     min-height:400px;
-    margin-top:40px;
-}
+     min-height:200px;
+  }
 .commentsSectionResults{
     display: flex;
     padding: 10px;
@@ -44,7 +43,9 @@
 .enterACommentContainer{
      display: flex;
     align-items: center;
-}
+    position: relative;
+    right:101px;
+   }
 .userProfilePic{
     width:50px;
     height:50px;
@@ -71,7 +72,7 @@
 }
 .commentEnterInputContainer{
      width:600px;
-}
+ }
 .commentInput{
     color:grey;
     border-bottom:1px solid #EEEEEE;
@@ -82,13 +83,11 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    left:30px
-}
+ }
 .commentsItemContainer{
-     min-height:500px;
+     min-height:10px;
      margin-top:50px;
-     margin-left:110px;
-}
+  }
 </style>
 
 
@@ -96,8 +95,8 @@
 <div class="commentsection_container">
     <div class="commentsSectionResults">
         <div class="amountOfComments">
-            771 Comments
-        </div>
+            Comments {{totalComments}}
+         </div>
         <div class="sortBy">
             <div class="sortIcon">  <i class="material-icons">sort</i></div>
             <div class="sortText">
@@ -121,8 +120,7 @@
             
             @click="state.isCommentClicked=true"
             v-on:keyup="anaylyseTextInputted()"
-            v-on:keyup.enter="addComment()"
-            class="commentInput"
+             class="commentInput"
             style="width:100%;"
       v-model="commentText"
         label="Comment"
@@ -141,7 +139,7 @@
         <commentItem v-for="n in commentBoard[0]['result']" :dataComingIn="n" ></commentItem>
     </div>
      
-     
+      
  </div>
 </template>
 
@@ -153,15 +151,20 @@ export default{
     data:function(){
         return {
             commentText:'',
+            totalComments:0,
             state:{
                 isCommentClicked:false,
                 isCommentButtonDisabled:true
             },
             commentsSectionIdentifer:{
                 //unique identifer needed to grab the correct board
-                uniqueIdentifer:'newboard2'
+                uniqueIdentifer:this.uid
             },
             commentBoard:[]
+        }
+    },computed:{
+        boardData(){
+            return this.commentBoard[0]['result'];
         }
     },methods:{
         anaylyseTextInputted(){
@@ -174,7 +177,7 @@ export default{
             }
         },
         addComment(){
-            var userEmail= this.$store.state.authRelated.loginDetails.email;
+             var userEmail= this.$store.state.authRelated.loginDetails.email;
             var home=this;
 
             $.post("http://localhost:8081/comments/addComment/sff",
@@ -188,6 +191,8 @@ export default{
             function(data, status){
                 console.log(data);
                 home.reloadComments();
+                home.commentText="";
+                home.state.isCommentClicked=false;
             });
         },
         grabComments(){
@@ -195,7 +200,10 @@ export default{
             var home=this;
         $.get("http://localhost:8081/comments/comments/"+this.commentsSectionIdentifer.uniqueIdentifer+"/new/chris", function(data, status){
                 home.commentBoard.push(data);
-                console.log(data);
+
+                home.totalComments=data["tresult"][0]["totalComments"];
+                //set total comments of the thread
+ 
         });
         
         },
@@ -210,8 +218,8 @@ export default{
         //retrieve all board comments from the unique identifer
         this.grabComments();
         //retrieve all comments
-         
-    }
+           
+    },props:["uid"]
 }
 
 </script>

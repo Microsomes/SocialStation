@@ -287,10 +287,10 @@ it has no network access and gets its data through slots and props and emits
                   <div class="loadCommentsButton">
                       <v-btn v-if="state.isCommentsOpen==false"  @click="openCommentsSection()" style="padding:0px;font-family: 'Roboto', sans-serif;">Load Comments</v-btn>
                       <v-btn v-if="state.isCommentsOpen==true"  @click="closeCommentsSection()" style="padding:0px;font-family: 'Roboto', sans-serif;">Close Comments</v-btn>
-                  </div>
-                  <div v-if="state.isCommentsOpen" class="commentsDisqusContainer">
+                  </div> 
+                  <div v-if="state.isCommentsOpen"  class="commentsDisqusContainer">
                        <div class="comments">
-                           comments section coming soon{{disqusIdentifiers.page_identifier}}
+                           <ssdisqus :uid='postData.title'></ssdisqus>
                      </div>
                   </div>
                 </div>

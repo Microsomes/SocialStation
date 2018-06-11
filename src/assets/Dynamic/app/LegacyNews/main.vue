@@ -371,7 +371,15 @@ export default {
                 lastEditedBy:this.newsAdderValues.createdBy,
                 title:this.newsAdderValues.title,
                 url:this.newsAdderValues.url,
-            })
+            }).then((result) => {
+                //reload all news
+
+                location.reload();
+
+                
+            }).catch((err) => {
+                
+            });
         }
     },mounted(){
         var home=this;

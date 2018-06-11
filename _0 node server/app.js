@@ -3,6 +3,7 @@ const app = express();
 const product= require("./api/products/products");
 const messages = require("./api/messages/messages");
 const comments = require("./api/comments/comments");
+const comment2= require("./api/comments/comment2");
 const sqldirectflow = require("./api/sqlDirectFlow/sqldirectflow");
 const morgan= require('morgan');
 const bodyParser= require('body-parser');
@@ -13,14 +14,15 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use("/",(req,res,next)=>{
-    res.header("Access-Control-Allow-Origin",'*');
+app.use((req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
     next();
-})
+});
 
 app.use("/products",product);
 app.use("/messages",messages);
 app.use("/comments",comments)
+app.use("/commenttwo",comment2);
  
 app.use((req,res,next)=>{
     const error= new Error("not found");
