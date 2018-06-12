@@ -152,7 +152,7 @@ it has no network access and gets its data through slots and props and emits
     min-height: 10px;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 900px) {
    .standard_newsItem{
        width:100%;
        display: flex;
@@ -172,6 +172,19 @@ it has no network access and gets its data through slots and props and emits
        width:60%;
    }
      .newsFromInfo{
+         width:100%;
+     }
+
+     .commentsSection{
+        width:50%;
+        border:1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+     }
+     .commentsDisqusContainer{
+         border:1px solid black;
          width:100%;
      }
     

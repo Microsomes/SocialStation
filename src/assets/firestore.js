@@ -9,6 +9,10 @@
      messagingSenderId: "442763963102"
  });
 
+app.firestore().settings({
+    timestampsInSnapshots:true
+});
+
 export const db= app.firestore();
  //exporting the database
 export const auth= app.auth();

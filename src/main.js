@@ -120,6 +120,8 @@ import warning_bar from './assets/Dynamic/ModularComponents/waningbar';
 Vue.component("warning_bar",warning_bar);
 
 
+import dyno_confessions from './assets/Dynamic/app/confessions/main.vue';
+
 //registering vue components above
 const routes=[
   {
@@ -208,6 +210,9 @@ const routes=[
      {
        path:'theeidshow',
        component:theeidshow
+     },{
+       path:"confessions",
+       component:dyno_confessions
      }
     ]
   }

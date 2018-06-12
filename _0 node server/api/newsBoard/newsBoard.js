@@ -1,0 +1,1 @@
+//scriot for the news board api handler

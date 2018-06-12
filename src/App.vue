@@ -447,7 +447,7 @@
           <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
         </template>        
         <b-dropdown-item href="#">
-                  <router-link to="/codeModule/legacynews">News Board</router-link>
+                  <router-link to="/codeModule/confessions">Confessions</router-link>
         </b-dropdown-item>
          <b-dropdown-item href="#">
                   <router-link to="/codeModule/news">Popular News</router-link>
@@ -456,20 +456,14 @@
            <router-link to="/codeModule/blog">Blog</router-link>
          </b-dropdown-item>
          <b-dropdown-item  href="#">
-           <router-link to="/codeModule/neverending" >Never ending facts</router-link>
+           <router-link to="/codeModule/neverending" >Never Ending Facts</router-link>
            </b-dropdown-item>
-         <b-dropdown-item href="#">
-           <router-link to="/codeModule/eventsmap">Events Map</router-link>
-         </b-dropdown-item>
-         <b-dropdown-item  href="#">
-           <router-link to="/codeModule/cryptofolio">Crypto Folio</router-link>
-         </b-dropdown-item>
+  
+         
             <b-dropdown-item  href="#">
            <router-link to="/codeModule/qanda">Q/A</router-link>
          </b-dropdown-item>
-         <b-dropdown-item  href="#">
-           <router-link to="/codeModule/sschan">SSBoard</router-link>
-         </b-dropdown-item>
+         
           <b-dropdown-item  href="#">
            <router-link to="/codeModule/theeidshow">THE EID SHOW</router-link>
          </b-dropdown-item>
