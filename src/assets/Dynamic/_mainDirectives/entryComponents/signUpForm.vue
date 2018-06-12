@@ -50,9 +50,11 @@ h1{
             Social station is an open source modular social media platform. Learn more at <a target="_blank" style="color:white" href="https://socialstation.info">socialstation.info</a>
          </div>        </div>
         <div class="signUpContainer">
+            <input v-on:keyup.enter="signUpUser" v-model="formValues.username" type="text" placeholder="username"/>
             <input v-on:keyup.enter="signUpUser" v-model="formValues.email" type="text" placeholder="email"/>
             <input v-on:keyup.enter="signUpUser" v-model="formValues.password" type="password" placeholder="password"/>
             <v-btn @click="signUpUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;padding:0px">Sign Up</v-btn>
+        <em v-if="feedback">{{feedback}}</em>
         </div>
     </div>
 </template>
@@ -60,24 +62,43 @@ h1{
 <script>
 import randomFactsViewer from './../../codeModules/randomFact';
 import {auth} from './../../../firestore.js';
+import {db} from './../../../firestore.js';
 export default{
 data:function(){
     return {
+        feedback:null,
         formValues:{
-            email:'',
-            password:''
+            email:null,
+            password:null,
+            username:null
         }
     }
 },components:{
     randomFactsViewer,
 },methods:{
     signUpUser(){
-        //method will call google auth and sign up a user
-       auth.createUserWithEmailAndPassword(this.formValues.email,this.formValues.password).catch(function(err){
-           var errorCode= err.code;
-           var errorMessage= err.message;
-           alert(errorMessage);
-       });
+
+        if(this.formValues.email && this.formValues.password && this.formValues.username){
+            //attempting to sign you up
+
+            //slugify username
+
+            
+
+            //check if username is unique
+            
+            //sign email with password
+
+        }else{
+            this.feedback="Please enter all fields to sign up";
+        }
+
+    //     //method will call google auth and sign up a user
+    //    auth.createUserWithEmailAndPassword(this.formValues.email,this.formValues.password).catch(function(err){
+    //        var errorCode= err.code;
+    //        var errorMessage= err.message;
+    //        alert(errorMessage);
+    //    });
     }
 }
 }
