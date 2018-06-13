@@ -54,7 +54,7 @@ h1{
             <input v-on:keyup.enter="signUpUser" v-model="formValues.email" type="text" placeholder="email"/>
             <input v-on:keyup.enter="signUpUser" v-model="formValues.password" type="password" placeholder="password"/>
             <v-btn @click="signUpUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;padding:0px">Sign Up</v-btn>
-        <em v-if="feedback">{{feedback}}</em>
+        <em style="text-align:center;" v-if="feedback">{{feedback}}</em>
         </div>
     </div>
 </template>
@@ -63,6 +63,7 @@ h1{
 import randomFactsViewer from './../../codeModules/randomFact';
 import {auth} from './../../../firestore.js';
 import {db} from './../../../firestore.js';
+import slugify from 'slugify';
 export default{
 data:function(){
     return {
@@ -70,7 +71,8 @@ data:function(){
         formValues:{
             email:null,
             password:null,
-            username:null
+            username:null,
+            slug:null
         }
     }
 },components:{
@@ -83,9 +85,61 @@ data:function(){
 
             //slugify username
 
-            
-
+            this.formValues.slug= slugify(this.formValues.username,{
+                replacement:'-',
+                remove:/[$*_+~.()'"!\-:@]/g,
+                lower:true
+            });
+            //create a slug above
             //check if username is unique
+            var ref= db.collection("users").doc(this.formValues.slug);
+            ref.get().then(doc=>{
+                if(doc.exists){
+                    this.feedback="username already exists";
+                }else{
+                    this.feedback="processing";
+                    //username is availble signing user up now
+
+                    //sign up user email and password
+                    auth.createUserWithEmailAndPassword(this.formValues.email,this.formValues.password).then(user=>{
+                          ref.set({
+                             username:this.formValues.username,
+                             slug:this.formValues.slug,
+                             uid:user.user.uid
+                         }).then(status=>{
+                             //the user has signed up now we may redirect the user
+
+                            //before pushing user lets store all the relevant user details within the store
+                            this.$store.state.authRelated.isLoggedIn=true;
+                            //set to true since the user is signed in
+                            this.$store.state.authRelated.loginDetails.profileMeta.profileCompletion=20;
+                            //set profile completion to 20 since the user has just signed in
+                            this.$store.state.authRelated.loginDetails.profileMeta.showNoUsernameWarning=true;
+                            //show message to prompt the user to complete their profile
+                            this.$store.state.authRelated.loginDetails.profileMeta.uid=user.user.uid;
+                            this.$store.state.authRelated.loginDetails.profileMeta.email=user.user.email;
+                            this.$store.state.authRelated.loginDetails.profileMeta.username=this.formValues.username;
+                            this.$store.state.authRelated.loginDetails.profileMeta.username_slug=this.formValues.slug;
+                            
+                            console.log(this.$store.state.authRelated.loginDetails.profileMeta.email);
+
+                            
+
+
+                            //this.$router.push("/dashboard");
+
+                            
+
+                         }).then(err=>{
+                             this.feedback=err;
+                         })
+                    }).catch(err=>{
+                        this.feedback=err.message;
+                    })
+
+                    
+                }
+            })
             
             //sign email with password
 

@@ -605,30 +605,30 @@ import {auth} from './assets/firestore.js';
       home.$router.push("/dashboard");
     }
 
-    //listen to onchangeauth event 
-    auth.onAuthStateChanged(function(user){
-      if(user){
-        //user is logged in
-        var email= user.email;
-        var uid= user.uid;
-        console.log(uid);
-        home.$store.state.authRelated.isLoggedIn=true;
-        //tell local web app that we are logged in
-         home.$store.state.authRelated.loginDetails.uid=uid;
-         home.$store.state.authRelated.loginDetails.email=email;
+    // //listen to onchangeauth event 
+    // auth.onAuthStateChanged(function(user){
+    //   if(user){
+    //     //user is logged in
+    //     var email= user.email;
+    //     var uid= user.uid;
+    //     console.log(uid);
+    //     home.$store.state.authRelated.isLoggedIn=true;
+    //     //tell local web app that we are logged in
+    //      home.$store.state.authRelated.loginDetails.uid=uid;
+    //      home.$store.state.authRelated.loginDetails.email=email;
 
-        home.$router.push("/dashboard");
+    //     home.$router.push("/dashboard");
 
         
-      }else{
-        //user signed out
-        console.log("user is signed out");
-        home.$router.push("/");
-        home.$store.state.authRelated.isLoggedIn=false;
-        //not logged in
+    //   }else{
+    //     //user signed out
+    //     console.log("user is signed out");
+    //     home.$router.push("/");
+    //     home.$store.state.authRelated.isLoggedIn=false;
+    //     //not logged in
 
-      }
-    });
+    //   }
+    // });
   },mounted(){
 
     var home=this;
