@@ -120,13 +120,8 @@ data:function(){
                             this.$store.state.authRelated.loginDetails.profileMeta.email=user.user.email;
                             this.$store.state.authRelated.loginDetails.profileMeta.username=this.formValues.username;
                             this.$store.state.authRelated.loginDetails.profileMeta.username_slug=this.formValues.slug;
-                            
-                            console.log(this.$store.state.authRelated.loginDetails.profileMeta.email);
-
-                            
-
-
-                            //this.$router.push("/dashboard");
+                            this.$router.push("/dashboard");
+                            //push you to the dashboard
 
                             
 

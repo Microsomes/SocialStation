@@ -557,6 +557,7 @@ import memberInfoBar from './assets/Dynamic/ModularComponents/memberInfoBar';
 
 import {auth} from './assets/firestore.js';
 //importing auth needed to listen to on auth change events triggered by firebase
+import {db} from './assets/firestore.js';
 
  export default {
   data:function(){
@@ -605,31 +606,14 @@ import {auth} from './assets/firestore.js';
       home.$router.push("/dashboard");
     }
 
-    // //listen to onchangeauth event 
-    // auth.onAuthStateChanged(function(user){
-    //   if(user){
-    //     //user is logged in
-    //     var email= user.email;
-    //     var uid= user.uid;
-    //     console.log(uid);
-    //     home.$store.state.authRelated.isLoggedIn=true;
-    //     //tell local web app that we are logged in
-    //      home.$store.state.authRelated.loginDetails.uid=uid;
-    //      home.$store.state.authRelated.loginDetails.email=email;
+     
 
-    //     home.$router.push("/dashboard");
-
-        
-    //   }else{
-    //     //user signed out
-    //     console.log("user is signed out");
-    //     home.$router.push("/");
-    //     home.$store.state.authRelated.isLoggedIn=false;
-    //     //not logged in
-
-    //   }
-    // });
+    
   },mounted(){
+
+        //initialize user store details
+
+    
 
     var home=this;
 

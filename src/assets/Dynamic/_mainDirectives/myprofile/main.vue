@@ -134,7 +134,7 @@
 <div class="profileContainer">
 
 <div class="profileTop">
-    {{this.$store.state.authRelated.loginDetails.profileMeta.email}}
+    {{email}}
     
 </div>
 <div class="center">
@@ -247,6 +247,10 @@ export default{
     },created(){
         //add an event listener to listen for the scroll event passed by the dom
         //window.addEventListener('scroll',this.handleScroll);
+    },computed:{
+        email(){
+            return  this.$store.state.authRelated.loginDetails.profileMeta.email;
+        }
     }
 }
 

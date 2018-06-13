@@ -144,7 +144,10 @@ const routes=[
   {
     path:'/dashboard',
     component:dynoHome,
-    name:'dashboard'
+    name:'dashboard',
+    meta:{
+      requiresAuth:true
+    }
   },
   {
     path:'/',
@@ -219,16 +222,51 @@ const routes=[
 
 ]
 
+
+
 //create a router instance
 const router= new VueRouter({
   routes
 })
 
+import {auth} from './assets/firestore';
 
- 
-new Vue({
-  el: '#app',
-  router,
-  store,
-   render: h => h(App)
+router.beforeEach((to,from,next)=>{
+  //check to see if route requires auth
+  if(to.matched.some(rec=>rec.meta.requiresAuth)){
+    console.log("the page we are going to requires auththentication");
+    if(auth.currentUser){
+      next();
+      //current user is signed in proceed
+    }else{
+      next("/");
+      //current user is not signed in do not let him through
+    }
+   }else{
+    next();
+  }
+  
+});
+
+
+
+var app=null;
+
+auth.onAuthStateChanged(auth=>{
+
+  console.log(store.state);
+  
+  if(app){
+    //already initialized
+  }else{
+    app= new Vue({
+      el: '#app',
+      router,
+      store,
+       render: h => h(App)
+    })
+  }
+
 })
+ 
+ 
