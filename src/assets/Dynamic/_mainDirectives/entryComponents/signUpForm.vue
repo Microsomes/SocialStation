@@ -143,13 +143,7 @@ data:function(){
         }else{
             this.feedback="Please enter all fields to sign up";
         }
-
-    //     //method will call google auth and sign up a user
-    //    auth.createUserWithEmailAndPassword(this.formValues.email,this.formValues.password).catch(function(err){
-    //        var errorCode= err.code;
-    //        var errorMessage= err.message;
-    //        alert(errorMessage);
-    //    });
+ 
     }
 }
 }

@@ -225,6 +225,7 @@ export default{
                 case "breif":
                  ref.isBreifSelected=true;
                  home.profileCurrentContent="breifInfo";
+                 home.$router.push("/profile/breifinfo");
                 break;
                 case "education":
                 ref.isEductationSelected=true;
@@ -233,6 +234,7 @@ export default{
                 case "messages":
                 ref.isInterestsSelected=true;
                 home.profileCurrentContent="messages";
+                home.$router.push("/profile/messages");
                 break;
                 case "interests":
                 ref.isFriendsSelected=true;
@@ -241,16 +243,36 @@ export default{
                 case "followers":
                 ref.isFolloweresSelected=true;
                 home.profileCurrentContent="followers";
+                home.$router.push("/profile/friends");
                 break;
             }
         }
     },created(){
         //add an event listener to listen for the scroll event passed by the dom
         //window.addEventListener('scroll',this.handleScroll);
-    },computed:{
+
+         
+     },computed:{
         email(){
             return  this.$store.state.authRelated.loginDetails.profileMeta.email;
         }
+    },mounted(){
+        console.log("---");
+        var pageToGoTo= this.$route.params.page;
+
+        switch(pageToGoTo){
+            case "breif-info":
+            this.goToNavLink("breif");
+            break;
+            case "messages":
+            this.goToNavLink("messages");
+            break;
+            case "friends":
+            this.goToNavLink("followers");
+            break;
+        }
+        
+
     }
 }
 

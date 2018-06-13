@@ -137,7 +137,7 @@ const routes=[
     component:dynoHome
   },
   {
-    path:'/profile',
+    path:'/profile/:page',
     component:myProfilePage,
     name:'myprofile'
   },
