@@ -53,6 +53,7 @@ font-family: 'Roboto', sans-serif;
  
       <v-btn style="padding:0px;" @click="addPin();" class="updateProfileButtons" >Add</v-btn>
     <v-btn style="padding:0px;" @click="cancelPinForm();" class="updateProfileButtons">Cancel</v-btn>
+    <br>
     <em v-if="feedback">{{feedback}}</em>
 </div>
 </template>
