@@ -86,7 +86,11 @@ export default{
     },components:{
         confessionItem,
     },created(){
-        var confessionsRef= db.collection("confessions");
+        
+    },methods:{
+        grabAll(){
+            //method grabs all posts
+             var confessionsRef= db.collection("confessions");
         //confession refernece
         var home=this;
 
@@ -106,6 +110,10 @@ export default{
 
             })
         })
+        }
+    },mounted(){
+        this.grabAll();
+        //call to grab all posts
     }
 }
 
