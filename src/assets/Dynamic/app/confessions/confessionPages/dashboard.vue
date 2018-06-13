@@ -93,8 +93,7 @@ export default{
         confessionsRef.get().then(confession=>{
             confession.forEach(conf=>{
                 var currentData= conf.data();
-                console.log(currentData);
-                
+                 
 
                 home.confessions.push({
                     confessionsTags:currentData.confessionTags,
