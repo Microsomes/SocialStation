@@ -15,16 +15,16 @@ export const store= new vuex.Store({
                 },
                 uid:'',
                 email:'',
+                username:null,
+                username_slug:null,
                 optionalAdditionalData:{
                     //additional alias username is stored here
-                    name:'',//users don't really need to have one
-                    bio:'',
-                    userRole:'nonAdmin',
-                    isHungryRabbit:false, //determines if user gets hungry rabbit previleges
-                    location:'',
-                    website:'',
-                    birthday:'',
-                    highlightedImages:[],
+                    name:null,//users don't really need to have one
+                    bio:null,
+                    location:null,
+                    website:null,
+                    birthday:null,
+                    highlightedImages:null,
                 },
                 extraInfo:{
                     pinnedReads:{

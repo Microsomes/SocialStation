@@ -600,13 +600,7 @@ import {db} from './assets/firestore.js';
        
     var home=this;
 
-    //if user is logged in redirect to dashboard
-    if(home.$store.state.authRelated.isLoggedIn){
-      //user is locally logged in
-      home.$router.push("/dashboard");
-    }
-
-     
+   
 
     
   },mounted(){

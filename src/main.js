@@ -230,7 +230,7 @@ const router= new VueRouter({
 })
 
 import {auth} from './assets/firestore';
-
+import {db} from './assets/firestore';
 router.beforeEach((to,from,next)=>{
   //check to see if route requires auth
   if(to.matched.some(rec=>rec.meta.requiresAuth)){
@@ -254,8 +254,26 @@ var app=null;
 
 auth.onAuthStateChanged(auth=>{
 
-  console.log(store.state);
-  
+  if(auth){
+    //initialize user store details
+    store.state.authRelated.isLoggedIn=true;
+    //set to true since the user is signed in
+    store.state.authRelated.loginDetails.profileMeta.uid=auth.uid;
+    store.state.authRelated.loginDetails.profileMeta.email=auth.email;
+    //need to connect to db to grab this info
+
+
+    // store.state.authRelated.loginDetails.profileMeta.profileCompletion=20;
+    // //set profile completion to 20 since the user has just signed in
+    // this.$store.state.authRelated.loginDetails.profileMeta.showNoUsernameWarning=true;
+    // //show message to prompt the user to complete their profile
+    // this.$store.state.authRelated.loginDetails.profileMeta.username=this.formValues.username;
+    // this.$store.state.authRelated.loginDetails.profileMeta.username_slug=this.formValues.slug;
+  }else{
+    //no user is signed in so no need to initliaze details
+  }
+
+   
   if(app){
     //already initialized
   }else{
