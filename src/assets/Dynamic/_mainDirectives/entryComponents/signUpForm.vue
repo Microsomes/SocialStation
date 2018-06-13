@@ -105,7 +105,8 @@ data:function(){
                           ref.set({
                              username:this.formValues.username,
                              slug:this.formValues.slug,
-                             uid:user.user.uid
+                             uid:user.user.uid,
+                             joinedDay:this.$moment().format()
                          }).then(status=>{
                              //the user has signed up now we may redirect the user
 

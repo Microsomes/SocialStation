@@ -260,20 +260,45 @@ auth.onAuthStateChanged(auth=>{
     //set to true since the user is signed in
     store.state.authRelated.loginDetails.profileMeta.uid=auth.uid;
     store.state.authRelated.loginDetails.profileMeta.email=auth.email;
+    console.log(auth.uid);
     //need to connect to db to grab this info
+    var usersCol= db.collection("users").where('uid','==', store.state.authRelated.loginDetails.profileMeta.uid=auth.uid);
+    //grab currently signed in users details
+    usersCol.get().then(doc=>{
+      
+      doc.forEach(item=>{
+        item=item.data();
+        const username= item.username;
+        const slug= item.slug;
+        const joinedDay= item.joinedDay;
+        console.log(joinedDay);
+      store.state.authRelated.loginDetails.profileMeta.username=username;
+      store.state.authRelated.loginDetails.profileMeta.username_slug=slug;
+      store.state.authRelated.loginDetails.optionalAdditionalData.joinedDay= joinedDay;
+        
+      if(app){
+        //already initialized
+      }else{
+        app= new Vue({
+          el: '#app',
+          router,
+          store,
+           render: h => h(App)
+        })
+      }
 
+      })
+      
+    }).catch(err=>{
+      //error 
+      console.log(err);
+    })
+    
 
-    // store.state.authRelated.loginDetails.profileMeta.profileCompletion=20;
-    // //set profile completion to 20 since the user has just signed in
-    // this.$store.state.authRelated.loginDetails.profileMeta.showNoUsernameWarning=true;
-    // //show message to prompt the user to complete their profile
-    // this.$store.state.authRelated.loginDetails.profileMeta.username=this.formValues.username;
-    // this.$store.state.authRelated.loginDetails.profileMeta.username_slug=this.formValues.slug;
+ 
   }else{
     //no user is signed in so no need to initliaze details
-  }
-
-   
+       
   if(app){
     //already initialized
   }else{
@@ -284,6 +309,9 @@ auth.onAuthStateChanged(auth=>{
        render: h => h(App)
     })
   }
+  }
+
+ 
 
 })
  

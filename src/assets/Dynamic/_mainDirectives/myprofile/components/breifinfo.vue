@@ -23,6 +23,7 @@ height: 40px;
 display: flex;
 align-items: center;
 justify-content: center;
+text-transform:capitalize;
 }
 .bio{
     padding: 10px;
@@ -325,23 +326,23 @@ justify-content: center;
     <div class="leftSide">
         <div class="infoContainer">
             <div class="profileName">
-                Muahmmed T Javed
+                {{username}}
             </div>
             <div class="bio">
-                Wrong do point avoid by fruit learn or in death. So passage however besides invited comfort elderly be me. Walls began of child civil am heard hoped my. Satisfied pretended mr on do determine by. Old post took and ask seen fact rich. Man entrance settling believed eat joy. Money as drift begin on to. Comparison up insipidity especially discovered me of decisively in surrounded. Points six way enough she its father. Folly sex downs tears ham green forty. 
-            </div>
+                {{bio}}
+             </div>
             <div class="iconableInfo">
                 <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">location_on</i></div>
-                    <div class="text">England,Birmingham</div>
+                    <div class="text">{{location}}</div>
                 </div>
                  <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">link</i></div>
-                    <div class="text"><a  target="_blank" href="#">socialstation.io</a></div>
+                    <div class="text"><a  target="_blank" href="#">{{website}}</a></div>
                 </div>
                  <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">access_time</i></div>
-                    <div class="text">Joined 25th June 2018</div>
+                    <div class="text">{{joinedDay}}</div>
                 </div>
                  <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">tag_faces</i></div>
@@ -565,23 +566,55 @@ export default{
             };
         },
       progress(event,progress,stepValue){
-        console.log(stepValue);
-      },
+       },
       progress_end(event){
-        console.log("Circle progress end");
-      },
+       },
       logout(){
            //logout method
             auth.signOut();
             this.$store.state.authRelated.isLoggedIn=false;
             //set  local state isLoggedIn to false
-            console.log(this.$store.state.authRelated.isLoggedIn);
-      }
+       }
     },components:{
         VueCircle,
         updateProfile
     },created(){
             window.scrollTo(0, 200);
+    },computed:{
+        username(){
+            return this.$store.state.authRelated.loginDetails.profileMeta.username;
+        },
+        bio(){
+            if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.bio){
+                //bio exists 
+                return this.$store.state.authRelated.loginDetails.optionalAdditionalData.bio;
+            }else{
+                //bio does not exit
+                return "Please add a bio by clicking the edit profile button typing one in.";
+            }
+         },
+         location(){
+              if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.location){
+                //bio exists 
+                return this.$store.state.authRelated.loginDetails.optionalAdditionalData.location;
+            }else{
+                //bio does not exit
+                return "Please add a location by clicking the edit profile button typing one in.";
+            }
+         },
+         website(){
+                if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.website){
+                //bio exists 
+                return this.$store.state.authRelated.loginDetails.optionalAdditionalData.website;
+            }else{
+                //bio does not exit
+                return "Please add a website by clicking the edit profile button typing one in.";
+            }
+         },
+         joinedDay(){
+             var joined= this.$moment(this.$store.state.authRelated.loginDetails.optionalAdditionalData.joinedDay).fromNow();
+             return "Joined "+joined;
+         }
     }
 }
 

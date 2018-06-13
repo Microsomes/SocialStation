@@ -25,6 +25,7 @@ export const store= new vuex.Store({
                     website:null,
                     birthday:null,
                     highlightedImages:null,
+                    joinedDay:null
                 },
                 extraInfo:{
                     pinnedReads:{
