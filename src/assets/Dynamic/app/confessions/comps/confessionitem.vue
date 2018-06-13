@@ -108,7 +108,7 @@ export default{
     },props:["data"],
     computed:{
         timeAgo(){
-            return this.data.confessionTimestamp
+            return this.$moment(this.data.confessionTimestamp).utc().fromNow()
         },
         perma(){
             var perma="/codeModule/confessions/confessslug/"+this.data.slug;

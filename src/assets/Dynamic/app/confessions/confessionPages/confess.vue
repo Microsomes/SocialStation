@@ -49,7 +49,8 @@ export default{
                     confessionText:currentData.confessionText,
                     confessionTimestamp:currentData.confessionTimestamp,
                     confessionBy:currentData.confessionby,
-                    id:confess.id
+                    id:confess.id,
+                    slug:currentData.slug
                 })
                 })
             }
