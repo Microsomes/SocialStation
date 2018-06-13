@@ -14,7 +14,7 @@ const SSlikedTable= "liketable";
 var con = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root",
+    password: "Ta123lo09",
     database: "socialstation"
   });
 //connect to database

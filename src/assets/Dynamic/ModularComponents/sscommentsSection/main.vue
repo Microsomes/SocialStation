@@ -192,7 +192,7 @@ export default{
              var userEmail= this.$store.state.authRelated.loginDetails.email;
             var home=this;
 
-            $.post("http://localhost:8081/comments/addComment/sff",
+            $.post("http://188.166.158.15/comments/addComment/sff",
             {
                 commentMsg:this.commentText,
                 commentBy:userEmail,
@@ -216,7 +216,7 @@ export default{
             console.log("grabbing comment");
             //grab all comments in the unique identifier thread
             var home=this;
-        $.get("http://localhost:8081/comments/comments/"+this.commentsSectionIdentifer.uniqueIdentifer+"/new/chris", function(data, status){
+        $.get("http://188.166.158.15/comments/comments/"+this.commentsSectionIdentifer.uniqueIdentifer+"/new/chris", function(data, status){
                 home.commentBoard.push(data);
 
                 home.totalComments=data["tresult"][0]["totalComments"];
