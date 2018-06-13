@@ -83,8 +83,11 @@ data:function(){
         if(this.formValues.username && this.formValues.password){
             //password and username are entered
             
+              var userNameLower= this.formValues.username;
+                var low= userNameLower.toLowerCase();
+
             this.feedback="Connecting to db";
-            var ref= db.collection("users").where("username","==",this.formValues.username);
+            var ref= db.collection("users").where("username","==",low);
             ref.get().then(doc=>{
                 if(doc.empty){
                     //username does not exist

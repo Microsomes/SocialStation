@@ -83,8 +83,7 @@ data:function(){
         if(this.formValues.email && this.formValues.password && this.formValues.username){
             //attempting to sign you up
 
-            //slugify username
-
+         
             this.formValues.slug= slugify(this.formValues.username,{
                 replacement:'-',
                 remove:/[$*_+~.()'"!\-:@]/g,
@@ -102,8 +101,10 @@ data:function(){
 
                     //sign up user email and password
                     auth.createUserWithEmailAndPassword(this.formValues.email,this.formValues.password).then(user=>{
+                        var userNameLower= this.formValues.username;
+                        var low= userNameLower.toLowerCase();
                           ref.set({
-                             username:this.formValues.username,
+                             username:low,
                              slug:this.formValues.slug,
                              uid:user.user.uid,
                              joinedDay:this.$moment().format(),
