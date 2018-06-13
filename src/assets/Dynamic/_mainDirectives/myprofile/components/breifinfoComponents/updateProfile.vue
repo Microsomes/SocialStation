@@ -98,7 +98,7 @@ export default{
                         userdoc.ref.update({
                             "optionalAdditionalData.fullname":this.values.fullName
                         }).then(status=>{
-                            this.feedback="name updated";
+                            this.feedback="Updated please refresh to see changes or continue updating";
                         }).catch(err=>{
                         this.feedback="Error please try again. ";
                         })
@@ -109,6 +109,77 @@ export default{
             }
             //the above logic is only for updating full name
 
+             if(this.values.country!=""){
+                //update full name
+                useref.get().then(doc=>{
+                    doc.forEach(userdoc=>{
+                        userdoc.ref.update({
+                            "optionalAdditionalData.country":this.values.country
+                        }).then(status=>{
+                            this.feedback="Updated please refresh to see changes or continue updating";
+                        }).catch(err=>{
+                        this.feedback="Error please try again. ";
+                        })
+                    })
+                }).catch(err=>{
+                    this.feedback="Error please try again. ";
+                })
+            }
+            //the above logic is only for updating country
+
+               if(this.values.bio!=""){
+                //update full name
+                useref.get().then(doc=>{
+                    doc.forEach(userdoc=>{
+                        userdoc.ref.update({
+                            "optionalAdditionalData.bio":this.values.bio
+                        }).then(status=>{
+                            this.feedback="Updated please refresh to see changes or continue updating";
+                        }).catch(err=>{
+                        this.feedback="Error please try again. ";
+                        })
+                    })
+                }).catch(err=>{
+                    this.feedback="Error please try again. ";
+                })
+            }
+            //the above logic is only for bio 
+
+               if(this.values.website!=""){
+                //update full name
+                useref.get().then(doc=>{
+                    doc.forEach(userdoc=>{
+                        userdoc.ref.update({
+                            "optionalAdditionalData.website":this.values.website
+                        }).then(status=>{
+                            this.feedback="Updated please refresh to see changes or continue updating";
+                        }).catch(err=>{
+                        this.feedback="Error please try again. ";
+                        })
+                    })
+                }).catch(err=>{
+                    this.feedback="Error please try again. ";
+                })
+            }
+            //the above logic is only for updating country
+
+               if(this.values.birthday!=""){
+                //update full name
+                useref.get().then(doc=>{
+                    doc.forEach(userdoc=>{
+                        userdoc.ref.update({
+                            "optionalAdditionalData.birthday":this.values.birthday
+                        }).then(status=>{
+                            this.feedback="Updated please refresh to see changes or continue updating";
+                        }).catch(err=>{
+                        this.feedback="Error please try again. ";
+                        })
+                    })
+                }).catch(err=>{
+                    this.feedback="Error please try again. ";
+                })
+            }
+            //the above logic is only for updating country
             
 
             
