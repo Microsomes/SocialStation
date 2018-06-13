@@ -54,7 +54,7 @@ h1{
             <input v-on:keyup.enter="signUpUser" v-model="formValues.email" type="text" placeholder="email"/>
             <input v-on:keyup.enter="signUpUser" v-model="formValues.password" type="password" placeholder="password"/>
             <v-btn @click="signUpUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;padding:0px">Sign Up</v-btn>
-        <em style="text-align:center;" v-if="feedback">{{feedback}}</em>
+        <em style="text-align:center;color:white" v-if="feedback">{{feedback}}</em>
         </div>
     </div>
 </template>

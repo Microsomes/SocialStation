@@ -20,8 +20,7 @@
     width:100px;
 }
 .commentProfilePic{
-    background:white;
-    width:100%;
+     width:100%;
     height:100%;
     display:flex;
     align-items: flex-start;
@@ -37,8 +36,7 @@
     justify-content: center;
     position: relative;
     top:5px;
-    background: #C82333;
-}
+ }
 .comment_right{
     width:450px;
     font-family: 'Roboto', sans-serif;

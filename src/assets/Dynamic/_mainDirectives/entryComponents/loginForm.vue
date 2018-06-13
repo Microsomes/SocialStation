@@ -52,7 +52,7 @@ h1{
             <input v-on:keyup.enter="authenticateUser" v-model="formValues.username" type="text" placeholder="username"/>
             <input v-on:keyup.enter="authenticateUser"  v-model="formValues.password" type="password" placeholder="password"/>
             <v-btn @click="authenticateUser()" style="background:white;margin-top:20px;font-family: 'Roboto', sans-serif;padding:0px;">Login</v-btn>
-            <em style="text-align:center;" v-if="feedback">{{feedback}}</em>
+            <em style="text-align:center;color:white" v-if="feedback">{{feedback}}</em>
         </div>
     </div>
 </template>

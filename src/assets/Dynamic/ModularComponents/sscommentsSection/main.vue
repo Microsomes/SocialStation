@@ -189,13 +189,13 @@ export default{
             }
         },
         addComment(){
-             var userEmail= this.$store.state.authRelated.loginDetails.email;
+             const username=this.$store.state.authRelated.loginDetails.profileMeta.username;
             var home=this;
 
             $.post("http://188.166.158.15/comments/addComment/sff",
             {
                 commentMsg:this.commentText,
-                commentBy:userEmail,
+                commentBy:username,
                 commentProfilePic:"http://images.8tracks.com/cover/i/001/420/987/92895.original-9702.jpg?rect=80,0,319,319&q=98&fm=jpg&fit=max&w=320&h=320",
                 uniqueIdentifier:this.commentsSectionIdentifer.uniqueIdentifer,
                 threadTitle:"trump owned"
