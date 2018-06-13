@@ -28,19 +28,7 @@ export const store= new vuex.Store({
                     joinedDay:null
                 },
                 extraInfo:{
-                    pinnedReads:{
-                        reads:[
-                            //stores data of all the currently pinned reads by the user and other people who pinned to
-                            {
-                                title:'Secrets of trading...',
-                                pinnedBy:'Tayyab'
-                            },
-                            {
-                                title:'Marriage Guide',
-                                pinnedBy:'Tayyab'
-                            }
-                        ]
-                    },
+                   pinnedReads:null,
                     likedBy:{
                         //stores data of all the people that liked the currently signed in user
                         likes:[

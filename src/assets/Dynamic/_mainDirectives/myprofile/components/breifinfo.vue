@@ -570,8 +570,7 @@ export default{
         VueCircle,
         updateProfile
     },created(){
-            window.scrollTo(0, 200);
-    },computed:{
+     },computed:{
         username(){
             return this.$store.state.authRelated.loginDetails.profileMeta.username;
         },
@@ -636,7 +635,7 @@ export default{
          pinnedReads(){
              if(this.$store.state.authRelated.loginDetails.extraInfo.pinnedReads){
                 //bio exists 
-                return null;
+                return this.$store.state.authRelated.loginDetails.extraInfo.pinnedReads;
             }else{
                 //bio does not exit
                 return null;

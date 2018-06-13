@@ -147,9 +147,9 @@
 <div class="detailsContainer">
     <div id="stickyProfileNavBar" v-bind:class="{stickyNav:navState.isProfileNavSticky}" class="detailsNav">
         <div v-bind:class="{active:profileNavState.isBreifSelected}" @click="goToNavLink('breif')" class="detailsNavItem">Brief info</div>
-        <div v-bind:class="{active:profileNavState.isEductationSelected}" @click="goToNavLink('education')" class="detailsNavItem">Education</div>
+        <!-- <div v-bind:class="{active:profileNavState.isEductationSelected}" @click="goToNavLink('education')" class="detailsNavItem">Education</div> -->
         <div v-bind:class="{active:profileNavState.isInterestsSelected}" @click="goToNavLink('messages')" class="detailsNavItem">Messages Centre</div>
-        <div v-bind:class="{active:profileNavState.isFriendsSelected}" @click="goToNavLink('interests')" class="detailsNavItem">Interests/Prefs</div>
+        <!-- <div v-bind:class="{active:profileNavState.isFriendsSelected}" @click="goToNavLink('interests')" class="detailsNavItem">Interests/Prefs</div> -->
         <div v-bind:class="{active:profileNavState.isFolloweresSelected}"@click="goToNavLink('followers')" class="detailsNavItem">Friends/Followers</div>
     </div>
     <div class="profileContentContainer">

@@ -131,8 +131,7 @@ export default{
 
         }
     },created(){
-            window.scrollTo(0, 200);
-    }
+     }
 }
 
 </script>
