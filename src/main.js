@@ -122,6 +122,11 @@ Vue.component("warning_bar",warning_bar);
 
 import dyno_confessions from './assets/Dynamic/app/confessions/main.vue';
 
+
+//import all confessions app pages
+import dyno_confessions_dashboard from './assets/Dynamic/app/confessions/confessionPages/dashboard.vue';
+import dyno_confessions_add_confession from './assets/Dynamic/app/confessions/confessionPages/addconfession.vue';
+
 //registering vue components above
 const routes=[
   {
@@ -230,7 +235,17 @@ const routes=[
        component:theeidshow
      },{
        path:"confessions",
-       component:dyno_confessions
+       component:dyno_confessions,
+       children:[
+         {
+           path:'addconfession',
+           component:dyno_confessions_add_confession
+         },
+         {
+           path:'confessionall',
+           component:dyno_confessions_dashboard
+         }
+       ]
      }
     ]
   }
