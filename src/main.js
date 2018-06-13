@@ -300,28 +300,40 @@ auth.onAuthStateChanged(auth=>{
     //grab currently signed in users details
     usersCol.get().then(doc=>{
       
-      doc.forEach(item=>{
-        item=item.data();
-        const username= item.username;
-        const slug= item.slug;
-        const joinedDay= item.joinedDay;
-        console.log(joinedDay);
-      store.state.authRelated.loginDetails.profileMeta.username=username;
-      store.state.authRelated.loginDetails.profileMeta.username_slug=slug;
-      store.state.authRelated.loginDetails.optionalAdditionalData.joinedDay= joinedDay;
+      if(doc.empty){
         
-      if(app){
-        //already initialized
-      }else{
+        alert("something went wrong with out server. Please refresh your cookies and try to log in again");
         app= new Vue({
           el: '#app',
           router,
           store,
            render: h => h(App)
         })
+      }else{
+        doc.forEach(item=>{
+          item=item.data();
+          const username= item.username;
+          const slug= item.slug;
+          const joinedDay= item.joinedDay;
+          console.log(joinedDay);
+        store.state.authRelated.loginDetails.profileMeta.username=username;
+        store.state.authRelated.loginDetails.profileMeta.username_slug=slug;
+        store.state.authRelated.loginDetails.optionalAdditionalData.joinedDay= joinedDay;
+          
+        if(app){
+          //already initialized
+        }else{
+          app= new Vue({
+            el: '#app',
+            router,
+            store,
+             render: h => h(App)
+          })
+        }
+  
+        })
       }
-
-      })
+     
       
     }).catch(err=>{
       //error 
