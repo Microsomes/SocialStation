@@ -53,8 +53,10 @@ font-family: 'Roboto', sans-serif;
     <input class="textInput" type="text" v-model="values.website" placeholder="Your Website"/>
     <input class="textInput" type="text" v-model="values.birthday" placeholder="Birthday dd/mm/yyyy"/>
     <div class="explanation" style="margin:0px;padding-top:5px;padding-top:5px;">Upload a profile picture</div>
+        <div style="text-align:center;color:grey;text-transform:capitalize">Leave fields blank if you don't want them updated.</div>
+
     <input @change="uploadPicture" type="file" accept="image/x-png,image/gif,image/jpeg" />
-    <v-btn style="padding:0px;" @click="updateProfile();" class="updateProfileButtons" >Update</v-btn>
+     <v-btn style="padding:0px;" @click="updateProfile();" class="updateProfileButtons" >Update</v-btn>
     <v-btn style="padding:0px;" @click="cancelUpdate();" class="updateProfileButtons">Cancel</v-btn>
     <em v-if="feedback">{{feedback}}</em>
 </div>
@@ -72,18 +74,46 @@ export default{
         return {
             feedback:null,
             values:{
-                fullName:null,
-                country:null,
-                bio:null,
-                website:null,
-                birthday:null
+                fullName:'',
+                country:'',
+                bio:'',
+                website:'',
+                birthday:''
             }
         }
     },methods:{
         updateProfile(){
+            this.feedback="Connecting to db";
             //method will connect to my server and update profile
-            alert("updating profile");
-        },cancelUpdate(){
+            const useruid= this.$store.state.authRelated.loginDetails.profileMeta.uid;
+            //user id needed to grab user reference
+
+            //grab user reference
+            var useref= db.collection("users").where("uid","==",useruid);
+
+            if(this.values.fullName!=""){
+                //update full name
+                useref.get().then(doc=>{
+                    doc.forEach(userdoc=>{
+                        userdoc.ref.update({
+                            "optionalAdditionalData.fullname":this.values.fullName
+                        }).then(status=>{
+                            this.feedback="name updated";
+                        }).catch(err=>{
+                        this.feedback="Error please try again. ";
+                        })
+                    })
+                }).catch(err=>{
+                    this.feedback="Error please try again. ";
+                })
+            }
+            //the above logic is only for updating full name
+
+            
+
+            
+
+         },cancelUpdate(){
             //sends canellation emit to its parent to close it
             this.$emit("cancel_profile_update","cancel");
         },
@@ -115,9 +145,7 @@ export default{
                     }else{
                         user.forEach(us=>{
                             us.ref.update({
-                                optionalAdditionalData:{
-                                    profileImage:url
-                                }
+                                "optionalAdditionalData.profileImage":url
                             }).then(sta=>{
                                 this.feedback="Profile image added.";
                             }).catch(err=>{
