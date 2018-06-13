@@ -47,22 +47,36 @@ font-family: 'Roboto', sans-serif;
     <div class="title">Edit Profile</div>
     <div class="explanation">_Full in all the data you feel comforable filling in. Its highly recommeneded that you fill in the entire form to have a more attractive profile.</div>
 
-    <input class="textInput" type="text" placeholder="Your name"/>
+    <input class="textInput" type="text" placeholder="Your Full name"/>
     <input class="textInput" type="text" placeholder="Country,city"/>
     <textarea class="textInput textarea" placeholder="bio"></textarea>
     <input class="textInput" type="text" placeholder="Your Website"/>
-    <input class="textInput" type="text" placeholder="Birthday"/>
+    <input class="textInput" type="text" placeholder="Birthday dd/mm/yyyy"/>
     <div class="explanation" style="margin:0px;padding-top:5px;padding-top:5px;">Upload a profile picture</div>
     <input type="file"/>
-    <v-btn @click="updateProfile();" class="updateProfileButtons" >Update</v-btn>
-    <v-btn @click="cancelUpdate();" class="updateProfileButtons">Cancel</v-btn>
+    <v-btn style="padding:0px;" @click="updateProfile();" class="updateProfileButtons" >Update</v-btn>
+    <v-btn style="padding:0px;" @click="cancelUpdate();" class="updateProfileButtons">Cancel</v-btn>
 </div>
 </template>
 
 <script>
+
+// import {db} from './../../../../../firestore.js';
+//import database to update valeus
+// import {stroage} from './../../../../../firestore.js';
+// //import storage sdk to upload images to firebase
+
 export default{
     data:function(){
-        return {}
+        return {
+            values:{
+                fullName:null,
+                country:null,
+                bio:null,
+                website:null,
+                birthday:null
+            }
+        }
     },methods:{
         updateProfile(){
             //method will connect to my server and update profile
@@ -70,6 +84,9 @@ export default{
         },cancelUpdate(){
             //sends canellation emit to its parent to close it
             this.$emit("cancel_profile_update","cancel");
+        },
+        uploadPicture(){
+            //method called when user uploads a picture
         }
     }
 }

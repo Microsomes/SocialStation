@@ -456,29 +456,7 @@
                 <v-btn @click="createAFact()" style="padding:0px">Add a fact</v-btn>
             </div>
             
-            <div class="postStatusContainer">
-                <div class="title">Weekly Posts Goal</div>
-                <div>
-                 <vue-circle
-        :progress="1"
-        :size="150"
-        :reverse="false"
-        line-cap="round"
-        :fill="fill"
-        empty-fill="rgba(0, 0, 0, .1)"
-        :animation-start-value="0.0"
-        :start-angle="0"
-        insert-mode="append"
-        :thickness="5"
-        :show-percent="false"
-        @vue-circle-progress="progress"
-        @vue-circle-end="progress_end">
-          <p>0/100</p>
-      </vue-circle>
-                </div>
-                 
-                
-            </div>
+             
             
             <div class="joinContainer">
                 <div class="joinContainerButton">

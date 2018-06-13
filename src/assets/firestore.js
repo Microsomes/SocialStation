@@ -20,4 +20,4 @@ export const db= app.firestore();
 export const auth= app.auth();
 //exporting auth 
 
-
+ 

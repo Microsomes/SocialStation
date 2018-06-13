@@ -241,8 +241,7 @@ const routes=[
 
 //create a router instance
 const router= new VueRouter({
-  mode: 'history',
-  routes
+   routes
 })
 
 import {auth} from './assets/firestore';
