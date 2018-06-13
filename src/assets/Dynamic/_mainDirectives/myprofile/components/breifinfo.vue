@@ -375,10 +375,10 @@ text-transform:capitalize;
             </div>
             <div class="memorialSubline">How will people remember you about you die? Write down your dearest, important thoughts memories and ideas here. </div>
             <div class="typeSomething">
-                <input type="text" placeholder="get typing... and push enter to submit"/>
+                <input v-model="memorialState.memorialtxt" v-on:keydown.enter="addMemorial()"  type="text" placeholder="get typing... and push enter to submit"/>
                  
-    
-            </div><!-- end of type something-->
+               </div><!-- end of type something-->
+               <div style="color:greyfont-family: 'Roboto', sans-serif;" v-if="memorialState.feedback">{{memorialState.feedback}}</div>
 
             <div class="memorialItemsContainer">  <!-- this is the start of the memorial items container -->
                <div style="padding:10px;" v-if="memorialWall==null">Add your thoughts desires ideas and goals here. This is your place to talk about you.</div>
@@ -530,6 +530,7 @@ text-transform:capitalize;
 
 <script>
  
+import {db} from './../../../../firestore.js';
 import {auth} from './../../../../firestore.js';
 import VueCircle from 'vue2-circle-progress';
 //imported the circle progress needed for the beief profile page
@@ -541,15 +542,45 @@ import addPinendRead from './breifinfoComponents/addPinnedReads';
 export default{
     data:function(){
         return {
+            memorialState:{
+                feedback:null,
+                memorialtxt:null
+            },
             breifInfoState:{
                 isUpdateProfileOpen:false,
-                isAddPinReadFormOpen:true,
+                isAddPinReadFormOpen:false,
             },
             profileTips:"Adding a name to your profile goes a long way. Additionally you may add a location, birthday, bio and a few highligted pictures of yourself.",
         fill : { gradient: ["#D35B5B", "grey", "grey"] },
         }
     },
     methods:{
+        addMemorial(){
+            //method used to handle adding a memorial
+            //check if memorial text has been filled
+            this.memorialState.feedback="Adding memorial to db";
+         const useruid= this.$store.state.authRelated.loginDetails.profileMeta.uid;
+        //user id needed to grab user reference
+        //grab a user ref
+        var userref= db.collection("users").where("uid","==",useruid);    
+        
+        userref.get().then(user=>{
+            user.forEach(u=>{
+                u.ref.collection("memorialwall").add({
+                    memorailText:this.memorialState.memorialtxt,
+                    timestamp:this.$moment().format()
+                }).then(status=>{
+                    this.memorialState.feedback="Memorial Added";
+                }).catch(err=>{
+                    this.memorialState.feedback="Error please try again.";
+                })
+            })
+        }).catch(err=>{
+            this.memorialState.feedback="Error please try again.";
+        })
+
+
+        },
         closePin(){
             this.breifInfoState.isAddPinReadFormOpen=false;
         },
