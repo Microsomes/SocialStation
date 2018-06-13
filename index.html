@@ -37,10 +37,54 @@
        text-transform:unset;
      }
 
+     .lds-circle {
+  display: inline-block;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border-radius: 50%;
+  background: #D35B5B;
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  transition: all .2s;
+}
+@keyframes lds-circle {
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    transform: rotateY(3600deg);
+  }
+}
+
+
     </style>
 
   </head>
   <body>
+    
+
+      <div class="lds-circle"></div>
+
+      <script>
+      
+      var loader= document.querySelector(".lds-circle");
+
+      setTimeout(()=>{
+        loader.style.opacity = 0;
+        setTimeout(()=>{
+          loader.style.height="0px";
+        },500)
+      },1000)
+      
+      </script>
+
     <div id="app">
 
     </div>

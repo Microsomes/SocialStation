@@ -345,8 +345,8 @@ text-transform:capitalize;
                     <div class="text">{{joinedDay}}</div>
                 </div>
                  <div class="inconableInfoItem">
-                    <div class="icon">  <i class="material-icons">tag_faces</i></div>
-                    <div class="text">Born on 6th Febuary 1998</div>
+                    <div class="icon">  <i class="material-icons">pan_tool</i></div>
+                    <div class="text">{{birthday}}</div>
                 </div>
             </div>
             <div class="photosAndImagesContainer">
@@ -356,27 +356,14 @@ text-transform:capitalize;
                     <div class="text">Highlighted Pictures</div>
                 </div>  
                 <div class="photosContainer">
-                    <div class="photoItem">
-                        <img height="100%" width="100%" src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg"/>
+                    <div style="text-align:center;" v-if="highlightedImages==null">
+                        You have no highlighted images, you can upload some by clicking the button below.
+                        <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Upload Highlighted Images</v-btn>
                     </div>
-                       <div class="photoItem">
-                        <img height="100%" width="100%" src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg"/>
+                    <div v-if="highlightedImages" v-for="n in highlightedImages" class="photoItem">
+                        <img height="100%" width="100%" :src="n"/>
                     </div>
-                       <div class="photoItem">
-                        <img height="100%" width="100%" src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg"/>
-                    </div>
-                       <div class="photoItem">
-                        <img height="100%" width="100%" src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg"/>
-                    </div>
-                       <div class="photoItem">
-                        <img height="100%" width="100%" src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg"/>
-                    </div>
-                       <div class="photoItem">
-                        <img height="100%" width="100%" src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg"/>
-                    </div>
-                       <div class="photoItem">
-                        <img height="100%" width="100%" src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/68dd54ca-60cf-4ef7-898b-26d7cbe48ec7/10-dithering-opt.jpg"/>
-                    </div>
+                        
                   
                 </div>
                  </div>
@@ -394,23 +381,23 @@ text-transform:capitalize;
             </div><!-- end of type something-->
 
             <div class="memorialItemsContainer">  <!-- this is the start of the memorial items container -->
-               
+               <div style="padding:10px;" v-if="memorialWall==null">Add your thoughts desires ideas and goals here. This is your place to talk about you.</div>
                <!-- start of memorial item div-->
-                <div class="memorialItem">
+                <div v-if="memorialWall" v-for="n in memorialWall" class="memorialItem">
                     <!-- start of memorial left icon div-->
                     <div class="memorialLeftIcon">
                           <i class="material-icons">import_contacts</i>
                         <div style="font-size:10px;text-align:center;" class="explanation">
-                            Created by: Tayyab@gmail.com
+                            Created by: {{n.createdBy}}
                         </div>
                          <div style="font-size:10px;margin:-10px;text-align:center;" class="explanation">
-                         1 hour ago
+                         {{n.timestamp}}
                         </div>
                     </div><!-- end of memorial left icon div-->
                     <!-- start of memorial right info div-->
                     <div class="memorailRightInfo">
                         <div class="explanation">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dignissim ex at fringilla cursus. In nulla nunc, condimentum tincidunt pharetra quis, aliquet ac sapien. Sed quis cursus neque, sit amet feugiat turpis. Fusce congue dolor eros, eu consectetur dolor efficitur non. Aenean dui ex, egestas sit amet odio eget, fermentum lacinia magna. Nunc tempor massa ac libero semper sagittis. Donec dapibus, nulla at vulputate tempor, felis massa porttitor justo, ut pellentesque ante turpis eu odio. Phasellus odio lorem, auctor a dolor ornare, auctor laoreet neque. Nunc dignissim mi et tristique viverra. Curabitur pretium ex sed lorem ultricies, vitae ultricies leo fermentum. Donec euismod, eros vel condimentum posuere, lorem tortor viverra purus, vitae vestibulum est felis in eros. Pellentesque suscipit velit sed mi efficitur, vitae pretium ligula egestas. Morbi ut luctus diam, nec egestas lorem. Integer sollicitudin ante eget velit facilisis, sit amet feugiat eros pretium. Etiam bibendum fermentum quam. Vestibulum ut posuere ex.
+                            {{n.memorialText}}
                         </div>
                     </div><!-- end of memorial right info div-->
                 </div><!-- end of memorial item-->
@@ -421,7 +408,7 @@ text-transform:capitalize;
         
  
             <div class="profileCompletion">
-                <div class="title">
+                <!-- <div class="title">
                     Profile Completion
                 </div>
                 <div class="progressionCircle">
@@ -440,9 +427,8 @@ text-transform:capitalize;
         @vue-circle-progress="progress"
         @vue-circle-end="progress_end">
           <p>Completion</p>
-      </vue-circle>
-                </div>
-             <div class="profiletext">Want to make your profile more attractive?</div>
+      </vue-circle> -->
+              <div class="profiletext">Want to make your profile more attractive?</div>
             <div class="profileCompletionTips">{{profileTips}}</div>
             <div class="editProfileContainer">
                 
@@ -453,7 +439,12 @@ text-transform:capitalize;
             </div>
         <!-- profile completion code is above-->
             <!-- pigged reads starts here-->
-            <div class="piggedReads">
+            <div v-if="pinnedReads==null" class="title">Pinned Reads</div>
+            <div style="text-align:center;display:flex;flex-flow:column" v-if="pinnedReads==null">
+                You have no pinned reads you may pin something to read later by clicking the pin button below.
+                <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Pin read</v-btn>
+            </div>
+            <div v-if="pinnedReads" class="piggedReads">
                 <div class="title">Pinned Reads</div>
                 <div class="explanation">Here you will be everyone who has pinned for you to read articles,websites, blogs or polls on Social Station. You can set who can pin your reads in your privacy setting. By default it is set to everyone.
                 </div>
@@ -480,7 +471,7 @@ text-transform:capitalize;
                 </div>
                 <!-- pinned reads ends here-->
 
-                <div class="likedPeopleOverview">
+                <div style="display:none" class="likedPeopleOverview">
                     <div class="title">
                         People who liked you...
                     </div>
@@ -614,6 +605,42 @@ export default{
          joinedDay(){
              var joined= this.$moment(this.$store.state.authRelated.loginDetails.optionalAdditionalData.joinedDay).fromNow();
              return "Joined "+joined;
+         },
+         birthday(){
+              if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.birthday){
+                //bio exists 
+                return this.$store.state.authRelated.loginDetails.optionalAdditionalData.birthday;
+            }else{
+                //bio does not exit
+                return "Please add your birthday by clicking the edit profile button typing one in.";
+            }
+         },
+         highlightedImages(){
+              if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.highlightedImages){
+                //bio exists 
+                return this.$store.state.authRelated.loginDetails.optionalAdditionalData.highlightedImages;
+            }else{
+                //bio does not exit
+                return null;
+            }
+         },
+         memorialWall(){
+              if(this.$store.state.authRelated.loginDetails.extraInfo.memorial){
+                //bio exists 
+                return this.$store.state.authRelated.loginDetails.extraInfo.memorial;
+            }else{
+                //bio does not exit
+                return null;
+            }
+         },
+         pinnedReads(){
+             if(this.$store.state.authRelated.loginDetails.extraInfo.pinnedReads){
+                //bio exists 
+                return null;
+            }else{
+                //bio does not exit
+                return null;
+            } 
          }
     }
 }

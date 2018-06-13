@@ -54,16 +54,9 @@ export const store= new vuex.Store({
                             }
                         ]
                     },
-                    memorialWall:{
-                        //stores all the entries on the memorial wall
-                        memorial:[
-                            {
-                                createdBy:'Tayyab Javed',
-                                timeStamp:'1 hour ago',
-                                text:'memorial text'
-                            }
-                        ]
-                    }
+                    memorial:null
+                    
+                    
                 }//end of extra info
                 
             }//end of login details
