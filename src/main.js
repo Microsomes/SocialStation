@@ -134,7 +134,10 @@ const routes=[
   },
   {
     path:'*',
-    component:dynoHome
+    component:dynoHome,
+    meta:{
+      requiresAuth:true
+    }
   },
   {
     path:'/profile/:page',
@@ -155,11 +158,17 @@ const routes=[
   },
   {
     path:'/help',
-    component:staticHelp
+    component:staticHelp,
+    meta:{
+      requiresAuth:true
+    }
   },
   {
     path:'/rules',
-    component:staticRules
+    component:staticRules,
+    meta:{
+      requiresAuth:true
+    }
   },
   {
     path:'/create',
@@ -168,11 +177,17 @@ const routes=[
       path:'fact',
       component:dynoCreateRandomFact
     }
-    ]
+    ],
+    meta:{
+      requiresAuth:true
+    }
   },
   {
     path:'/codeModule',
     component:dynoModuler,
+    meta:{
+      requiresAuth:true
+    },
     children:[
       {
         path:'news',

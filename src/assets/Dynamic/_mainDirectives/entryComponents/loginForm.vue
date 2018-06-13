@@ -96,6 +96,8 @@ data:function(){
                     //grabbed user email time to sign him/her in now
                     auth.signInWithEmailAndPassword(userEmail,this.formValues.password).then(auth=>{
                         //signed in
+                        this.feedback="Success";
+                        this.$router.push("/dashboard");
                     }).catch(err=>{
                         this.feedback=err.message;
                     })
