@@ -442,7 +442,10 @@ text-transform:capitalize;
             <div v-if="pinnedReads==null" class="title">Pinned Reads</div>
             <div style="text-align:center;display:flex;flex-flow:column" v-if="pinnedReads==null">
                 You have no pinned reads you may pin something to read later by clicking the pin button below.
-                <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Pin read</v-btn>
+             </div>
+            <v-btn v-if="breifInfoState.isAddPinReadFormOpen==false" @click="breifInfoState.isAddPinReadFormOpen=true" style="padding:0px;font-family: 'Roboto', sans-serif;">Pin read</v-btn>
+            <div v-if="breifInfoState.isAddPinReadFormOpen" class="addPinnedReadForm">
+                <addPinendRead @closePinForm="closePin"></addPinendRead>
             </div>
             <div v-if="pinnedReads" class="piggedReads">
                 <div class="title">Pinned Reads</div>
@@ -533,18 +536,23 @@ import VueCircle from 'vue2-circle-progress';
 
 import updateProfile from './breifinfoComponents/updateProfile';
 //imported the update profile ui
+import addPinendRead from './breifinfoComponents/addPinnedReads';
 
 export default{
     data:function(){
         return {
             breifInfoState:{
-                isUpdateProfileOpen:false
+                isUpdateProfileOpen:false,
+                isAddPinReadFormOpen:true,
             },
             profileTips:"Adding a name to your profile goes a long way. Additionally you may add a location, birthday, bio and a few highligted pictures of yourself.",
         fill : { gradient: ["#D35B5B", "grey", "grey"] },
         }
     },
     methods:{
+        closePin(){
+            this.breifInfoState.isAddPinReadFormOpen=false;
+        },
         handleOutsiders(evt){
             //listens and handles all emits from its child components
             const home = this;
@@ -568,7 +576,8 @@ export default{
        }
     },components:{
         VueCircle,
-        updateProfile
+        updateProfile,
+        addPinendRead
     },created(){
      },computed:{
         username(){
