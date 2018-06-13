@@ -4,7 +4,7 @@
 
 .commentsection_container{
      min-height:200px;
-  }
+   }
 .commentsSectionResults{
     display: flex;
     padding: 10px;
@@ -44,8 +44,7 @@
      display: flex;
     align-items: center;
     position: relative;
-    right:101px;
-   }
+    }
 .userProfilePic{
     width:50px;
     height:50px;
@@ -90,12 +89,13 @@
   }
 
 
-  @media only screen and (max-width:860px){
+  @media only screen and (max-width:1060px){
       .commentsection_container{
          width:100%;
       }
       .enterACommentContainer{
           right:0px;
+           background: red;
       }
 
       .commentsItemContainer{

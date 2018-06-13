@@ -6,11 +6,78 @@
 <!--
 @author Muhammed T Javed
 @date 13/06/2018
--- add confession form
+-- dashboard here displays all the confessions added
 -->
 
+<style scoped>
+.dashboard{
+    margin:10px;
+}
+.confessionItem{
+    min-height:300px;
+    width:300px;
+    border:1px solid gray;
+}
+.confessionText{
+    min-height:200px;
+    font-size:15px;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-wrap:  break-word;
+}
+.metaItem{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.metaText{
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    top:-1px;
+    left:10px;
+}
+.comment{
+    position: relative;
+    top:-1px;
+}
+.tagContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.tag{
+     min-width:50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: orange;
+    margin:3px;
+    border-radius: 10px;
+}
+</style>
+
 <template>
-<div>
-    <h1>confession dashboard</h1>
+<div class="dashboard">
+    <confessionItem></confessionItem>
 </div>
 </template>
+
+<script>
+import confessionItem from './../comps/confessionitem';
+
+export default{
+    data:function(){
+        return {
+
+        }
+    },components:{
+        confessionItem,
+    }
+}
+
+</script>
