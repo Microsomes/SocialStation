@@ -77,6 +77,10 @@
                 <div class="metaText">Created last week</div>
             </div>
             <div class="metaItem">
+                <div class="metaIcon">  <i class="material-icons">link</i></div>
+                <div class="metaText comment"><a href="#">Perma Link</a></div>
+             </div>
+             <div class="metaItem">
                 <div class="metaIcon">  <i class="material-icons">comment</i></div>
                 <div class="metaText comment">1 comment</div>
              </div>

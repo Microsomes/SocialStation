@@ -24,7 +24,7 @@
   </b-nav-item>
   </b-nav>
 
-  <div class="title">Confess anything annonymously.</div>
+  <div class="title">Confess anything for fun.</div>
      <router-view/>
 </div>
     
