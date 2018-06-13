@@ -12,6 +12,11 @@
 <style scoped>
 .dashboard{
     margin:10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
 }
 .confessionItem{
     min-height:300px;
@@ -63,20 +68,44 @@
 
 <template>
 <div class="dashboard">
-    <confessionItem></confessionItem>
+    <confessionItem v-for="n in confessions" :data="n"></confessionItem>
 </div>
 </template>
 
 <script>
 import confessionItem from './../comps/confessionitem';
+import {db} from './../../../../firestore.js';
 
 export default{
     data:function(){
         return {
-
+            confessions:[
+                 
+            ]
         }
     },components:{
         confessionItem,
+    },created(){
+        var confessionsRef= db.collection("confessions");
+        //confession refernece
+        var home=this;
+
+        confessionsRef.get().then(confession=>{
+            confession.forEach(conf=>{
+                var currentData= conf.data();
+                console.log(currentData);
+                
+
+                home.confessions.push({
+                    confessionsTags:currentData.confessionTags,
+                    confessionText:currentData.confessionText,
+                    confessionTimestamp:currentData.confessionTimestamp,
+                    confessionBy:currentData.confessionby,
+                    id:conf.id
+                })
+
+            })
+        })
     }
 }
 

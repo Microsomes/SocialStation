@@ -95,8 +95,7 @@
       }
       .enterACommentContainer{
           right:0px;
-           background: red;
-      }
+       }
 
       .commentsItemContainer{
       }
