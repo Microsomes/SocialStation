@@ -581,6 +581,7 @@ import {db} from './assets/firestore.js';
             this.$store.state.authRelated.isLoggedIn=false;
             //set  local state isLoggedIn to false
             console.log(this.$store.state.authRelated.isLoggedIn);
+            this.$route.push("/");
     },
     toggleModuleWindow(){
       //toggle the recent module window 

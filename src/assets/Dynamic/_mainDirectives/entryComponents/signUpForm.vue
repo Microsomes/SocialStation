@@ -106,7 +106,8 @@ data:function(){
                              username:this.formValues.username,
                              slug:this.formValues.slug,
                              uid:user.user.uid,
-                             joinedDay:this.$moment().format()
+                             joinedDay:this.$moment().format(),
+                             email:this.formValues.email
                          }).then(status=>{
                              //the user has signed up now we may redirect the user
 
