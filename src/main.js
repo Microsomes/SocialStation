@@ -126,7 +126,7 @@ import dyno_confessions from './assets/Dynamic/app/confessions/main.vue';
 //import all confessions app pages
 import dyno_confessions_dashboard from './assets/Dynamic/app/confessions/confessionPages/dashboard.vue';
 import dyno_confessions_add_confession from './assets/Dynamic/app/confessions/confessionPages/addconfession.vue';
-
+import dyno_confessions_slug_view from './assets/Dynamic/app/confessions/confessionPages/confess.vue';
 //registering vue components above
 const routes=[
   {
@@ -244,6 +244,10 @@ const routes=[
          {
            path:'confessionall',
            component:dyno_confessions_dashboard
+         },
+         {
+           path:'confessslug/:slug',
+           component:dyno_confessions_slug_view
          }
        ]
      }

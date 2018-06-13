@@ -100,7 +100,8 @@ export default{
                     confessionText:currentData.confessionText,
                     confessionTimestamp:currentData.confessionTimestamp,
                     confessionBy:currentData.confessionby,
-                    id:conf.id
+                    id:conf.id,
+                    slug:currentData.slug
                 })
 
             })

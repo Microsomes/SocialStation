@@ -78,7 +78,7 @@
             </div>
             <div class="metaItem">
                 <div class="metaIcon">  <i class="material-icons">link</i></div>
-                <div class="metaText comment"><a href="#">Perma Link</a></div>
+                <div class="metaText comment"><a href="#"><router-link :to="perma">Perma Link</router-link></a></div>
              </div>
              <div class="metaItem">
                 <div class="metaIcon">  <i class="material-icons">comment</i></div>
@@ -109,6 +109,10 @@ export default{
     computed:{
         timeAgo(){
             return this.data.confessionTimestamp
+        },
+        perma(){
+            var perma="/codeModule/confessions/confessslug/"+this.data.slug;
+            return perma;
         }
     }
 }

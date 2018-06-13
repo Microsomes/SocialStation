@@ -88,6 +88,8 @@ textarea{
 
 import {db} from './../../../../firestore.js';
 //import firebase database sdk
+import slugify from 'slugify';
+//import the slugify library
 
 export default{
     data:function(){
@@ -112,15 +114,24 @@ export default{
         addConfession(){
              const username=this.$store.state.authRelated.loginDetails.profileMeta.username;
             //grab currently signed in username
+
+            
           
             this.feedback="Adding confession.";
             if(this.confessionText && this.tags.length>=1){
             this.feedback="Adding confession.";
+             //create a slug and tac a timestamp at the end
+             var slug= slugify(this.$moment().format()+"-"+this.confessionText,{
+                replacement:'-',
+                remove:/[$*_+~.()'"!\-:@]/g,
+                lower:true
+            });
                 db.collection("confessions").add({
                     confessionText:this.confessionText,
                     confessionTimestamp:this.$moment().format(),
                     confessionby:username,
-                    confessionTags:this.tags
+                    confessionTags:this.tags,
+                    slug:slug
                 }).then(stats=>{
                     this.feedback="Confession Added";
                     this.confessionText=""

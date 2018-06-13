@@ -204,8 +204,7 @@ export default{
                 console.log(data);
                 // home.reloadComments();
                  home.state.isCommentClicked=false;
-                console.log("comment added");
-                home.commentText="";
+                 home.commentText="";
                 //empty comment text here
                 home.reloadComments();
 
