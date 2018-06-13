@@ -90,6 +90,7 @@ data:function(){
                 }
             });
             console.log("logging in");
+            this.$router.push("/dashboard");
 
             return;
         }

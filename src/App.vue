@@ -490,7 +490,7 @@
           <em style="color:white;font-family: 'Roboto', sans-serif;">User</em>
         </template>        
         <b-dropdown-item href="#">
-                  <router-link to="/profile">Profile</router-link>
+                  <router-link to="/profile/breifinfo">Profile</router-link>
         </b-dropdown-item>
          <b-dropdown-item @click="signout()" href="#">Signout</b-dropdown-item>
       </b-nav-item-dropdown>
@@ -581,7 +581,8 @@ import {db} from './assets/firestore.js';
             this.$store.state.authRelated.isLoggedIn=false;
             //set  local state isLoggedIn to false
             console.log(this.$store.state.authRelated.isLoggedIn);
-            this.$route.push("/");
+            this.$router.push("/");
+          location.reload();
     },
     toggleModuleWindow(){
       //toggle the recent module window 
