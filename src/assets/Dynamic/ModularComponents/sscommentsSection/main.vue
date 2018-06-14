@@ -144,7 +144,7 @@
     <div v-if="state.isCommentClicked" class="commentsCancelOrSubmitButtons">
         <v-btn @click="state.isCommentClicked=false;commentText='';anaylyseTextInputted()" style="padding:0px;font-family: 'Roboto', sans-serif;">Cancel</v-btn>
         <v-btn v-if="state.isCommentButtonDisabled==true" style="padding:0px;background:#AE2828;color:white;font-family: 'Roboto', sans-serif;" disabled>Comment</v-btn>
-        <v-btn @click="addComment()" v-if="state.isCommentButtonDisabled==false" style="padding:0px;background:#AE2828;color:white;font-family: 'Roboto', sans-serif;" >Comment</v-btn>
+        <v-btn @click="addCommentFirebase()" v-if="state.isCommentButtonDisabled==false" style="padding:0px;background:#AE2828;color:white;font-family: 'Roboto', sans-serif;" >Comment</v-btn>
     </div>
 
     <div class="commentsItemContainer">
@@ -176,7 +176,7 @@ export default{
             },
             commentsSectionIdentifer:{
                 //unique identifer needed to grab the correct board
-                uniqueIdentifer:'comment-bb'
+                uniqueIdentifer:'comment-bb2'
             },
             commentBoard:[
                 {
@@ -224,18 +224,42 @@ export default{
  
             });
         },
-        grabComments(){
-            //
+        addCommentFirebase(){
+            const username=this.$store.state.authRelated.loginDetails.profileMeta.username;
+            //add comment is same to add comment but with firebase
             console.log("grabbing comment");
             //grab all comments in the unique identifier thread
             var home=this;
-        $.get("http://188.166.158.15/comments/comments/"+this.commentsSectionIdentifer.uniqueIdentifer+"/new/chris", function(data, status){
-                home.commentBoard.push(data);
 
-                home.totalComments=data["tresult"][0]["totalComments"];
-                //set total comments of the thread
- 
-        });
+            var commentsRef= db.collection("commentingSystem");
+
+            commentsRef.where("slug","==",home.commentsSectionIdentifer.uniqueIdentifer).get().then(u=>{
+                if(u.empty){
+                    //no thread 
+                    console.log("no thread");
+                }else{
+                    console.log("thrad already exsits");
+
+                    u.forEach(thrad=>{
+                        
+                        var theadCommentRef= thrad.ref.collection("comments");
+                        theadCommentRef.add({
+                            commentMsg:home.commentText,
+                            timestamp:this.$moment().format(),
+                            userCreated:username,
+                            waves:0
+                        }).then(sta=>{
+                            console.log("comment added");
+                        }).catch(err=>{
+                            console.log("comment not added error occured");
+                        })
+                    })
+
+                }
+            })
+
+            
+
         
         },
         grabCommentsFirebase(){
@@ -264,8 +288,7 @@ export default{
                                 let waves=commdoc.data().waves;
                             })
                         }).catch(err=>{
-                            console.log(err);
-                        });
+                         });
 
 
 
