@@ -16,6 +16,7 @@ export const store= new vuex.Store({
                 uid:'',
                 email:'',
                 username:null,
+                profileImageURL:null,//stores the current users profile image
                 username_slug:null,
                 optionalAdditionalData:{
                     //additional alias username is stored here

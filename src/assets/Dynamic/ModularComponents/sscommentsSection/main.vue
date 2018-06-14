@@ -124,7 +124,7 @@
     <div class="enterACommentContainer">
 
         <div class="userProfilePICContainer">
-        <div class="userProfilePic">P</div>
+        <div class="userProfilePic"></div>
         </div>
 
         <div class="commentEnterInputContainer">
@@ -176,7 +176,7 @@ export default{
             },
             commentsSectionIdentifer:{
                 //unique identifer needed to grab the correct board
-                uniqueIdentifer:'comment-bb2'
+                uniqueIdentifer:'comment-bb4'
             },
             commentBoard:[
                 {
@@ -203,6 +203,16 @@ export default{
         },
         addComment(){
              const username=this.$store.state.authRelated.loginDetails.profileMeta.username;
+             const profileImage=this.$store.state.authRelated.loginDetails.profileMeta.profileImageURL;
+             //grab currently signed in users profile image
+
+            if(profileImage){
+                //profile image not equal to null
+                console.log("use the users current profile image");
+            }else{
+                console.log("use a default image");
+            }
+
             var home=this;
 
             $.post("http://188.166.158.15/comments/addComment/sff",
@@ -227,6 +237,18 @@ export default{
         addCommentFirebase(){
             const username=this.$store.state.authRelated.loginDetails.profileMeta.username;
             //add comment is same to add comment but with firebase
+
+              var profileImage=this.$store.state.authRelated.loginDetails.profileMeta.profileImageURL;
+             //grab currently signed in users profile image
+
+            if(profileImage){
+                //profile image not equal to null
+                console.log("use the users current profile image");
+            }else{
+                profileImage="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fdefault%20image%2FPlaceholder.png?alt=media&token=b5d9d748-e2aa-4354-a331-adfc1cfcac15";
+            }
+
+
             console.log("grabbing comment");
             //grab all comments in the unique identifier thread
             var home=this;
@@ -242,8 +264,23 @@ export default{
                         slug:home.commentsSectionIdentifer.uniqueIdentifer
                     }).then(sta=>{
                         console.log("thread created");
-                        home.commentText="";
-                        //empty comment text
+                         
+                        sta.collection("comments").add({
+                            commentMsg:home.commentText,
+                            timestamp:this.$moment().format(),
+                            userCreated:username,
+                            waves:0,
+                            commenedByProfileImg:profileImage
+                        }).then(u=>{
+                            //comment added to thread
+                            home.commentText="";
+                            //empty comment text
+                            this.grabCommentsFirebase();
+
+                        }).catch(err=>{
+                            console.log("error ");
+                        })
+
                     }).catch(err=>{
                         console.log("thread cannot be created");
                     })
@@ -258,7 +295,8 @@ export default{
                             commentMsg:home.commentText,
                             timestamp:this.$moment().format(),
                             userCreated:username,
-                            waves:0
+                            waves:0,
+                            commenedByProfileImg:profileImage
                         }).then(sta=>{
                             console.log("comment added");
                             home.commentText="";
@@ -304,13 +342,18 @@ export default{
                                 let timestamp= commdoc.data().timestamp;
                                 let userCreated=commdoc.data().userCreated;
                                 let waves=commdoc.data().waves;
+                                let commenedByProfileImg= commdoc.data().commenedByProfileImg;
+
+                                
 
                                 home.commentBoard.push({
                                      commentMsg:commentMsg,
                                         commentedBy:userCreated,
                                         commenedByProfileImg:'image',
-                                        timestamp:timestamp
+                                        timestamp:timestamp,
+                                        commenedByProfileImg:commenedByProfileImg
                                 });
+                                home.state.isCommentClicked=false;
                             })
                         }).catch(err=>{
                          });
