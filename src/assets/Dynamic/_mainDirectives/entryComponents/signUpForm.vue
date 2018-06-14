@@ -108,7 +108,15 @@ data:function(){
                              slug:this.formValues.slug,
                              uid:user.user.uid,
                              joinedDay:this.$moment().format(),
-                             email:this.formValues.email
+                             email:this.formValues.email,
+                             optionalAdditionalData:{
+                                 bio:null,
+                                 birthday:null,
+                                 country:null,
+                                 fullname:null,
+                                 profileImage:null,
+                                 website:null
+                             }
                          }).then(status=>{
                              //the user has signed up now we may redirect the user
 

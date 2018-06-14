@@ -312,6 +312,26 @@ auth.onAuthStateChanged(auth=>{
       }else{
         doc.forEach(item=>{
           item=item.data();
+
+          var additionaldata=item.optionalAdditionalData;
+
+
+          const bio= additionaldata.bio;
+          const birthday= additionaldata.birthday;
+          const country= additionaldata.country;
+          const fullname= additionaldata.fullname;
+          const profileImage= additionaldata.profileImage;
+          const website= additionaldata.website;
+          //pass the above data to store
+          var optionaldata= store.state.authRelated.loginDetails.optionalAdditionalData;
+          optionaldata.bio= bio;
+          optionaldata.website= website;
+          optionaldata.birthday=birthday;
+          optionaldata.name= fullname;
+          store.state.authRelated.loginDetails.profileImageURL= profileImage;
+          optionaldata.location=country;
+          
+       
           const username= item.username;
           const slug= item.slug;
           const joinedDay= item.joinedDay;
