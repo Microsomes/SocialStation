@@ -101,6 +101,7 @@
 
 <template>
 <div class="commentsection_container">
+   
     <div class="commentsSectionResults">
         <div class="amountOfComments">
             Comments {{totalComments}}
@@ -172,7 +173,7 @@ export default{
             },
             commentsSectionIdentifer:{
                 //unique identifer needed to grab the correct board
-                uniqueIdentifer:'comment-bb5'
+                uniqueIdentifer:this.uid
             },
             commentBoard:[
                 {

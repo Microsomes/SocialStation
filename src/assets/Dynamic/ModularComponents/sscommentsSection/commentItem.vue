@@ -12,9 +12,10 @@
 }
 
 .comment_container{
-    width:500px;
+    min-width:100px;
     min-height:100px;
     display: flex;
+
 }
 .comment_left{
     width:100px;
