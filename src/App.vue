@@ -453,7 +453,7 @@
                   <router-link to="/c/news">Popular News</router-link>
         </b-dropdown-item>
          <b-dropdown-item  href="#">
-           <router-link to="/c/blog">Blog</router-link>
+           <router-link to="/c/b/all">Blog</router-link>
          </b-dropdown-item>
          <b-dropdown-item  href="#">
            <router-link to="/c/neverending" >Never Ending Facts</router-link>

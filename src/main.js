@@ -128,6 +128,11 @@ import dyno_confessions_dashboard from './assets/Dynamic/app/confessions/confess
 import dyno_confessions_add_confession from './assets/Dynamic/app/confessions/confessionPages/addconfession.vue';
 import dyno_confessions_slug_view from './assets/Dynamic/app/confessions/confessionPages/confess.vue';
 //registering vue components above
+
+import dyno_blog_add_blog from './assets/Dynamic/app/blog/confessionPages/addconfession.vue';
+import dyno_blog_view_all from './assets/Dynamic/app/blog/confessionPages/dashboard.vue';
+
+
 const routes=[
   {
     path:'/examples',
@@ -211,8 +216,18 @@ const routes=[
        component:legacy_news
      },
      {
-       path:'blog',
-       component:blog
+       path:'b',
+       component:blog,
+       children:[
+         {
+           path:'add',
+           component:dyno_blog_add_blog
+         },
+         {
+           path:'all',
+           component:dyno_blog_view_all
+         }
+       ]
      },
      {
        path:'neverending',
@@ -336,7 +351,7 @@ auth.onAuthStateChanged(auth=>{
           optionaldata.location=country;
           optionaldata.highlightedImages=highlightedImages;
 
-          console.log(store);
+        
        
           const username= item.username;
           const slug= item.slug;
