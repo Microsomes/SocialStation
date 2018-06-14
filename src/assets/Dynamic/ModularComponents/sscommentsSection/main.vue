@@ -235,8 +235,19 @@ export default{
 
             commentsRef.where("slug","==",home.commentsSectionIdentifer.uniqueIdentifer).get().then(u=>{
                 if(u.empty){
-                    //no thread 
-                    console.log("no thread");
+                    //no thread  create a thead
+                    commentsRef.add({
+                        amountOfComments:"yes",
+                        dateCreated:this.$moment().format(),
+                        slug:home.commentsSectionIdentifer.uniqueIdentifer
+                    }).then(sta=>{
+                        console.log("thread created");
+                        home.commentText="";
+                        //empty comment text
+                    }).catch(err=>{
+                        console.log("thread cannot be created");
+                    })
+                    
                 }else{
                     console.log("thrad already exsits");
 
@@ -250,6 +261,11 @@ export default{
                             waves:0
                         }).then(sta=>{
                             console.log("comment added");
+                            home.commentText="";
+                            //empty comment text
+                            //referese and request an update of the comments
+                            //this.grabCommentsFirebase();
+
                         }).catch(err=>{
                             console.log("comment not added error occured");
                         })
