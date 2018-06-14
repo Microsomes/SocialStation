@@ -111,7 +111,7 @@ export default{
             return this.$moment(this.data.confessionTimestamp).utc().fromNow()
         },
         perma(){
-            var perma="/codeModule/confessions/confessslug/"+this.data.slug;
+            var perma="/c/confessions/confessslug/"+this.data.slug;
             return perma;
         }
     }
