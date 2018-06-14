@@ -152,7 +152,10 @@ const routes=[
   {
     path:'/profile/:page',
     component:myProfilePage,
-    name:'myprofile'
+    name:'myprofile',
+    meta:{
+      requiresAuth:true
+    }
   },
   {
     path:'/dashboard',
@@ -195,9 +198,6 @@ const routes=[
   {
     path:'/c',
     component:dynoModuler,
-    meta:{
-      requiresAuth:true
-    },
     children:[
       {
         path:'news',
@@ -221,7 +221,10 @@ const routes=[
        children:[
          {
            path:'add',
-           component:dyno_blog_add_blog
+           component:dyno_blog_add_blog,
+           meta:{
+             requiresAuth:true
+           }
          },
          {
            path:'all',
@@ -258,7 +261,10 @@ const routes=[
        children:[
          {
            path:'add',
-           component:dyno_confessions_add_confession
+           component:dyno_confessions_add_confession,
+           meta:{
+             requiresAuth:true
+           }
          },
          {
            path:'all',
