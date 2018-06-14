@@ -234,19 +234,19 @@ const routes=[
        path:'theeidshow',
        component:theeidshow
      },{
-       path:"confessions",
+       path:"con",
        component:dyno_confessions,
        children:[
          {
-           path:'addconfession',
+           path:'add',
            component:dyno_confessions_add_confession
          },
          {
-           path:'confessionall',
+           path:'all',
            component:dyno_confessions_dashboard
          },
          {
-           path:'confessslug/:slug',
+           path:'perma/:slug',
            component:dyno_confessions_slug_view
          }
        ]

@@ -17,10 +17,10 @@
 <div class="confessionContainer">
     <b-nav tabs>
   <b-nav-item :class="{active:navState.isConfession}" @click="changeNav('is')">
-      <router-link to="/c/confessions/confessionall">Confessions</router-link>
+      <router-link to="/c/con/all">All Confessions</router-link>
   </b-nav-item>
   <b-nav-item :class="{active:navState.isAddConfession}" @click="changeNav('nay')">
-      <router-link to="/c/confessions/addconfession">Add Confession</router-link>
+      <router-link to="/c/con/add">Add Confession</router-link>
   </b-nav-item>
   </b-nav>
 

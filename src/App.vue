@@ -447,7 +447,7 @@
           <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
         </template>        
         <b-dropdown-item href="#">
-                  <router-link to="/c/confessions/confessionall">Confessions</router-link>
+                  <router-link to="/c/con/all">Confessions</router-link>
         </b-dropdown-item>
          <b-dropdown-item href="#">
                   <router-link to="/c/news">Popular News</router-link>

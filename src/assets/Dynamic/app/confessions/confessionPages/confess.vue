@@ -32,6 +32,9 @@ export default{
             ]
         }
     },created(){
+
+        window.scrollTo(0,200);
+
         var home=this;
         //grab confession item by slug
         var confessRef= db.collection("confessions").where("slug","==",this.$route.params.slug);

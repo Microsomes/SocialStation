@@ -65,7 +65,7 @@
             {{data.confessionText}}
         </div>
         <div class="tagContainer">
-            <div v-for="n in data.confessionsTags" class="tag">{{n}}</div>
+            <div v-for="n in data.conTags" class="tag">{{n}}</div>
            
         </div>
         <div class="confessionMetaData">
@@ -111,7 +111,7 @@ export default{
             return this.$moment(this.data.confessionTimestamp).utc().fromNow()
         },
         perma(){
-            var perma="/c/confessions/confessslug/"+this.data.slug;
+            var perma="/c/con/perma/"+this.data.slug;
             return perma;
         }
     }
