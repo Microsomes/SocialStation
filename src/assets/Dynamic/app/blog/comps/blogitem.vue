@@ -102,7 +102,7 @@
     <div class="blogTitle">
         {{data.itam.title}}
     </div>
-    <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Read</v-btn>
+    <v-btn @click="goTo" style="padding:0px;font-family: 'Roboto', sans-serif;">Read</v-btn>
 </div>
 
 
@@ -120,6 +120,10 @@ export default{
     computed:{
         timeAgo(){
             return this.$moment(this.data.itam.timestamp).fromNow();
+        }
+    },methods:{
+        goTo(){
+            this.$router.push("/c/b/perma/"+this.data.itam.slug);
         }
     }
 }
