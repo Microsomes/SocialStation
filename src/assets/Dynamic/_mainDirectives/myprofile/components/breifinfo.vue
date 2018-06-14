@@ -568,11 +568,15 @@ export default{
                     if(users.empty){
                         console.log("no users found");
                     }else{
+
+                        var fullPath= sta.metadata.fullPath;
                         
                         //grab the highlighed image ref
                         users.forEach(u=>{
                             u.ref.collection("highlightedImages").add({
-                                link:url
+                                link:url,
+                                fullPath:fullPath
+                                
                             }).then(st=>{
                                 this.uploadHighlightedImageFeedback="Success please refresh to see changes.";
                             }).catch(err=>{
