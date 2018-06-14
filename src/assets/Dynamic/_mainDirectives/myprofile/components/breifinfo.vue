@@ -438,6 +438,7 @@ text-transform:capitalize;
                 </div>
             </div>
         <!-- profile completion code is above-->
+         
             <!-- pigged reads starts here-->
             <div v-if="pinnedReads==null" class="title">Pinned Reads</div>
             <div style="text-align:center;display:flex;flex-flow:column" v-if="pinnedReads==null">
@@ -447,30 +448,15 @@ text-transform:capitalize;
             <div v-if="breifInfoState.isAddPinReadFormOpen" class="addPinnedReadForm">
                 <addPinendRead @closePinForm="closePin"></addPinendRead>
             </div>
-            <div v-if="pinnedReads" class="piggedReads">
+             <div v-if="pinnedReads" class="piggedReads">
                 <div class="title">Pinned Reads</div>
                 <div class="explanation">Here you will be everyone who has pinned for you to read articles,websites, blogs or polls on Social Station. You can set who can pin your reads in your privacy setting. By default it is set to everyone.
                 </div>
-                <div class="pinnedItem"><!-- pinned items starts here-->
-                    <div class="pinnedIcon">
-                        
-                          <i class="material-icons">book</i>
-                    </div>
-                    <div class="pinnedTextContainer">
-                        <div class="pinnedText">Secrets of trading...</div>
-                        <div class="pinnedPinnedBy">_pinned by Tayyab</div>
-                         </div>
-                </div><!-- pinned ends here-->
-                            <div class="pinnedItem"><!-- pinned items starts here-->
-                    <div class="pinnedIcon">
-                        
-                          <i class="material-icons">book</i>
-                    </div>
-                    <div class="pinnedTextContainer">
-                        <div  class="pinnedText">Marriage Guide</div>
-                        <div class="pinnedPinnedBy">_pinned by Tayyab</div>
-                         </div>
-                </div><!-- pinned ends here-->
+
+                <pinned_item_template v-for="n in localPinned"  :data="n"></pinned_item_template>
+                <!-- rendering pinned items-->
+                
+                           
                 </div>
                 <!-- pinned reads ends here-->
 
@@ -539,9 +525,13 @@ import updateProfile from './breifinfoComponents/updateProfile';
 //imported the update profile ui
 import addPinendRead from './breifinfoComponents/addPinnedReads';
 
+import pinned_item_template from './breifinfoComponents/pinnedItem';
+//imported the pinned item template
+
 export default{
     data:function(){
         return {
+            localPinned:null,
             memorialState:{
                 feedback:null,
                 memorialtxt:null
@@ -555,6 +545,49 @@ export default{
         }
     },
     methods:{
+        grabAllPinnedReads(){
+            //method will grab pinned reads
+            const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
+            //persons username
+
+            //grab users reference
+            db.collection("users").where("username","==",username).get().then(res=>{
+                    
+                    if(res.empty){
+                        //user does not exist log out now
+                        this.$router.push("/");
+                        //push user to sign up 
+                    }else{
+                        //prepare local pinned to start accepting data
+                        this.localPinned=[];
+                        //set up as an empty array
+                        res.forEach(user=>{
+                          var pinnedReadsRef=user.ref.collection("pinnedReads");
+                          pinnedReadsRef.get().then(u=>{
+                              if(u.empty){
+                                  //no pinned reads
+                              }else{
+                                  //parse the pinned reads now
+                                u.forEach(pin=>{
+                                    var data= pin.data();
+                                    this.localPinned.push({
+                                        data,
+                                    })
+                                })
+
+                              }
+                          }).catch(err=>{
+
+                              console.log(err);
+                          })
+                        })
+                    }
+                    
+            }).catch(err=>{
+                console.log("error grabbing users data");
+            })
+
+        },
         addMemorial(){
             //method used to handle adding a memorial
             //check if memorial text has been filled
@@ -608,8 +641,11 @@ export default{
     },components:{
         VueCircle,
         updateProfile,
-        addPinendRead
+        addPinendRead,
+        pinned_item_template
     },created(){
+        this.grabAllPinnedReads();
+        //grab pinned reads
      },computed:{
         username(){
             return this.$store.state.authRelated.loginDetails.profileMeta.username;
@@ -673,9 +709,9 @@ export default{
             }
          },
          pinnedReads(){
-             if(this.$store.state.authRelated.loginDetails.extraInfo.pinnedReads){
+             if(this.localPinned){
                 //bio exists 
-                return this.$store.state.authRelated.loginDetails.extraInfo.pinnedReads;
+                return this.localPinned
             }else{
                 //bio does not exit
                 return null;

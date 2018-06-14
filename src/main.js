@@ -341,6 +341,7 @@ auth.onAuthStateChanged(auth=>{
 
           var additionaldata=item.optionalAdditionalData;
 
+ 
 
           const bio= additionaldata.bio;
           const birthday= additionaldata.birthday;
