@@ -148,7 +148,7 @@
     </div>
 
     <div class="commentsItemContainer">
-        <commentItem v-for="(n,index) in commentBoard[0]['result']" :dataComingIn="n" :key="index" ></commentItem>
+        <commentItem v-for="(n,index) in commentBoard" :dataComingIn="n" :key="index" ></commentItem>
     </div>
      
       
@@ -158,10 +158,16 @@
 <script>
 import commentItem from './commentItem.vue';
 
+import {db} from './../../../firestore.js';
+//import database sdk
+
+//comment layout
+
  
 export default{
     data:function(){
         return {
+            commentsRef:null,
             commentText:'',
             totalComments:0,
             state:{
@@ -170,9 +176,16 @@ export default{
             },
             commentsSectionIdentifer:{
                 //unique identifer needed to grab the correct board
-                uniqueIdentifer:this.uid
+                uniqueIdentifer:'comment-bb'
             },
-            commentBoard:[]
+            commentBoard:[
+                {
+                    commentMsg:'my name is jeff',
+                    commentedBy:'microsomes',
+                    commenedByProfileImg:'image',
+                    timestamp:'today'
+                }
+            ]
         }
     },computed:{
         boardData(){
@@ -225,6 +238,49 @@ export default{
         });
         
         },
+        grabCommentsFirebase(){
+            var home=this;
+            //this method will do exactly what grab comments does but uses firebase as its backend
+            this.commentsRef = db.collection("commentingSystem");
+
+            this.commentsRef.where("slug","==",home.commentsSectionIdentifer.uniqueIdentifer).get().then(u=>{
+                if(u.empty){
+                    //no thrad or comments exist no big problem
+                    home.totalComments="None";
+                }else{
+                    u.forEach(element => {
+                        //since a thred exists lets try and extract its comments data
+                        let amountOfComments= element.data().amountOfComments;
+                        let timestamp= element.data().dateCreated;
+                        let slug= element.data().slug;
+                        home.totalComments= amountOfComments;
+                        //set total ammount of comments
+
+                        element.ref.collection("comments").get().then(comment=>{
+                            comment.forEach(commdoc=>{                               
+                                let commentMsg= commdoc.data().commentMsg;
+                                let timestamp= commdoc.data().timestamp;
+                                let userCreated=commdoc.data().userCreated;
+                                let waves=commdoc.data().waves;
+                            })
+                        }).catch(err=>{
+                            console.log(err);
+                        });
+
+
+
+
+                     });
+                }
+            }).catch(err=>{
+                console.log(err);
+            })
+
+
+
+
+
+        },
         reloadComments(){
             //method used to reload comments
                         console.log("erased");
@@ -237,8 +293,10 @@ export default{
         commentItem:commentItem
     },mounted(){
         //retrieve all board comments from the unique identifer
-        this.grabComments();
+        this.grabCommentsFirebase();
         //retrieve all comments
+
+
            
     },props:["uid"]
 }
