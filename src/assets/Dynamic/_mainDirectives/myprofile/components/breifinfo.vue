@@ -369,6 +369,7 @@ text-transform:capitalize;
                  </div>
             </div>
         </div><!-- end of info container-->
+       
         <div class="memoralWallContainer"><!-- start of memorial wall-->
             <div class="memoraiTitle">
                 Memorial wall
@@ -380,27 +381,10 @@ text-transform:capitalize;
                </div><!-- end of type something-->
                <div style="color:greyfont-family: 'Roboto', sans-serif;" v-if="memorialState.feedback">{{memorialState.feedback}}</div>
 
-            <div class="memorialItemsContainer">  <!-- this is the start of the memorial items container -->
+             <div class="memorialItemsContainer">  <!-- this is the start of the memorial items container -->
                <div style="padding:10px;" v-if="memorialWall==null">Add your thoughts desires ideas and goals here. This is your place to talk about you.</div>
                <!-- start of memorial item div-->
-                <div v-if="memorialWall" v-for="n in memorialWall" class="memorialItem">
-                    <!-- start of memorial left icon div-->
-                    <div class="memorialLeftIcon">
-                          <i class="material-icons">import_contacts</i>
-                        <div style="font-size:10px;text-align:center;" class="explanation">
-                            Created by: {{n.createdBy}}
-                        </div>
-                         <div style="font-size:10px;margin:-10px;text-align:center;" class="explanation">
-                         {{n.timestamp}}
-                        </div>
-                    </div><!-- end of memorial left icon div-->
-                    <!-- start of memorial right info div-->
-                    <div class="memorailRightInfo">
-                        <div class="explanation">
-                            {{n.memorialText}}
-                        </div>
-                    </div><!-- end of memorial right info div-->
-                </div><!-- end of memorial item-->
+                 <memorial_item_template v-for="n in memorialWallLocal" :data="n"></memorial_item_template>
              </div><!--this is the end of the memorial items container-->
             
         </div><!-- end of memorail wall-->
@@ -528,10 +512,13 @@ import addPinendRead from './breifinfoComponents/addPinnedReads';
 import pinned_item_template from './breifinfoComponents/pinnedItem';
 //imported the pinned item template
 
+import memorial_item_template from './breifinfoComponents/memorialitem';
+
 export default{
     data:function(){
         return {
             localPinned:null,
+            memorialWallLocal:null,
             memorialState:{
                 feedback:null,
                 memorialtxt:null
@@ -546,20 +533,36 @@ export default{
     },
     methods:{
         grabAllMemorial(){
+            this.memorialWallLocal=[];
+            //prepare memorialwall for inputting data
+
             //grab all memorial items from the database
             const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
             //persons username
             db.collection("users").where("username","==",username).get().then(us=>{
                 if(us.empty){
                     //the user does not have any memoral records
+                    this.$router.push("/");
+                    // the user does not exist send them to the sign up page
                 }else{
                     //memorial records exist
-                    us.forEach(uss=>{
-                        console.log(uss.data());
+                    us.forEach(elemnt=>{
+                        elemnt.ref.collection("memorialwall").get().then(mem=>{
+                            mem.forEach(memo=>{
+                                var memoItem= memo.data();
+                                this.memorialWallLocal.push({
+                                    memoItem,
+                                });
+                            })
+                            console.log(this.memorialWallLocal);
+                        }).catch(err=>{
+                            console.log("error");
+                        })
                     })
                 }
             }).catch(err=>{
                 console.log("error");
+                console.log(err);
             })
         },
         grabAllPinnedReads(){
@@ -620,7 +623,7 @@ export default{
                     memorailText:this.memorialState.memorialtxt,
                     timestamp:this.$moment().format()
                 }).then(status=>{
-                    this.memorialState.feedback="Memorial Added";
+                    this.memorialState.feedback="Memorial Added. Please refresh to see.";
                 }).catch(err=>{
                     this.memorialState.feedback="Error please try again.";
                 })
@@ -659,10 +662,13 @@ export default{
         VueCircle,
         updateProfile,
         addPinendRead,
-        pinned_item_template
+        pinned_item_template,
+        memorial_item_template
     },created(){
         this.grabAllPinnedReads();
         //grab pinned reads
+        this.grabAllMemorial();
+        //grab memorial wall items
      },computed:{
         username(){
             return this.$store.state.authRelated.loginDetails.profileMeta.username;
@@ -717,9 +723,9 @@ export default{
             }
          },
          memorialWall(){
-              if(this.$store.state.authRelated.loginDetails.extraInfo.memorial){
+              if(this.memorialWallLocal){
                 //bio exists 
-                return this.$store.state.authRelated.loginDetails.extraInfo.memorial;
+                return this.memorialWallLocal;
             }else{
                 //bio does not exit
                 return null;
