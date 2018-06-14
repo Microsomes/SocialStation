@@ -90,6 +90,13 @@
  .commentSection{
      border-top:1px solid lightblue;
  }
+
+  @media only screen and (max-width:500px){
+       
+     .blogItemContainer{
+         width: 100%;
+     }
+  }
 </style>
 
 

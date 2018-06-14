@@ -168,7 +168,7 @@ export default{
             commentText:'',
             totalComments:0,
             state:{
-                isCommentClicked:true,
+                isCommentClicked:false,
                 isCommentButtonDisabled:true
             },
             commentsSectionIdentifer:{
