@@ -120,8 +120,13 @@ export default{
             this.feedback="Adding confession.";
             if(this.confessionText && this.tags.length>=1){
             this.feedback="Adding confession.";
+
+            var toSlug= this.confessionText;
+            var toSlugProcessed= toSlug.substr(0, 30);
+            //cut the slug of the confession text
+
              //create a slug and tac a timestamp at the end
-             var slug= slugify(this.$moment().format()+"-"+this.confessionText,{
+             var slug= slugify(this.$moment().format()+"-"+toSlugProcessed,{
                 replacement:'-',
                 remove:/[$*_+~.()'"!\-:@]/g,
                 lower:true
