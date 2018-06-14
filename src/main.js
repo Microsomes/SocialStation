@@ -131,7 +131,7 @@ import dyno_confessions_slug_view from './assets/Dynamic/app/confessions/confess
 
 import dyno_blog_add_blog from './assets/Dynamic/app/blog/confessionPages/addconfession.vue';
 import dyno_blog_view_all from './assets/Dynamic/app/blog/confessionPages/dashboard.vue';
-
+import dyno_blog_slug_view from './assets/Dynamic/app/blog/confessionPages/blogPerma.vue';
 
 const routes=[
   {
@@ -226,6 +226,10 @@ const routes=[
          {
            path:'all',
            component:dyno_blog_view_all
+         },
+         {
+           path:'perma/:slug',
+           component:dyno_blog_slug_view
          }
        ]
      },

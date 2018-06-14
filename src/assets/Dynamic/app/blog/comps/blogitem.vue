@@ -86,6 +86,7 @@
 <div class="blogItemContainer">
     <div class="blogItemDetails">
         <div class="image">
+                    <img height="70%" style="border-radius:5px;" :src="data.itam.imageurl"/>
          </div>
         <div class="textDetails">
             <div class="by">{{data.itam.createdBy}}</div>
@@ -94,7 +95,7 @@
         <div class="when">{{timeAgo}}</div>
     </div>
     <div class="imagePreview">
-        <img height="100%" :src="data.itam.imageurl"/>
+        <img height="100%" width="100%" :src="data.itam.imageurl"/>
     </div>
     <div class="blogTitle">
         {{data.itam.title}}
