@@ -172,7 +172,7 @@ export default{
             },
             commentsSectionIdentifer:{
                 //unique identifer needed to grab the correct board
-                uniqueIdentifer:'comment-bb4'
+                uniqueIdentifer:'comment-bb5'
             },
             commentBoard:[
                 {
