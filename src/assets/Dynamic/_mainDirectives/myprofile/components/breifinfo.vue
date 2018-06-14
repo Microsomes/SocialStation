@@ -360,7 +360,8 @@ text-transform:capitalize;
                         You have no highlighted images, you can upload some by clicking the button below.
                         <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Upload Highlighted Images</v-btn>
                         <input type="file" @change="fileUploadProcess" accept="image/x-png,image/gif,image/jpeg"/>
-                        <em>Images will upload automatically</em>
+                        <em>Images will upload automatically</em><br>
+                        <em v-if="uploadHighlightedImageFeedback">{{uploadHighlightedImageFeedback}}</em>
                     </div>
                     <div v-if="highlightedImages" v-for="n in highlightedImages" class="photoItem">
                         <img height="100%" width="100%" :src="n"/>
@@ -534,6 +535,7 @@ import pinned_item_template from './breifinfoComponents/pinnedItem';
 export default{
     data:function(){
         return {
+            uploadHighlightedImageFeedback:null,
             localPinned:null,
             memorialState:{
                 feedback:null,
@@ -549,10 +551,53 @@ export default{
     },
     methods:{
         fileUploadProcess(file){
+            const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
+            //persons username
+             this.uploadHighlightedImageFeedback="Attempting to upload image";
             var fileSelected=file.target.files[0];
 
             //grab storage reference
+            var highlightedImages = storage.ref("user_profile_image/"+"highlighted"+username+this.$moment().format());
+
+            highlightedImages.put(fileSelected).then(sta=>{
+                this.uploadHighlightedImageFeedback="Uploaded. Adding to DB now.";
+
+                storage.ref(sta.metadata.fullPath).getDownloadURL().then(url=>{
+                    
+                    db.collection("users").where("username","==",username).get().then(users=>{
+                    if(users.empty){
+                        console.log("no users found");
+                    }else{
+                        
+                        //grab the highlighed image ref
+                        users.forEach(u=>{
+                            u.ref.collection("highlightedImages").add({
+                                link:url
+                            }).then(st=>{
+                                this.uploadHighlightedImageFeedback="Success please refresh to see changes.";
+                            }).catch(err=>{
+                                this.uploadHighlightedImageFeedback="Error please try again";
+                            })
+                        })
+                    }
+                }).catch(err=>{
+                    //error
+                    this.uploadHighlightedImageFeedback="Error please try again.";
+                })
+
+                }).catch(err=>{
+                    this.uploadHighlightedImageFeedback="...";
+                })
+
+               
+
+            }).catch(err=>{
+                console.log(err);
+            })
+
             
+
+
             
 
         },
