@@ -121,7 +121,7 @@ textarea{
             <div class="icon">
                   <i class="material-icons">broken_image</i>
             </div>
-            Upload a footer image. Optional.
+            Upload a footer image.
             <div><input @change="handleImage" type="file" accept="image/x-png,image/gif,image/jpeg"/></div>
         </div>
 
@@ -132,9 +132,9 @@ textarea{
         
        
 
-        <v-btn v-if="isMultiAdd==false" @click="addConfession()" style="padding:0px;font-family: 'Roboto', sans-serif;">Add Single</v-btn>
+        <v-btn  v-if="isMultiAdd==false" @click="addSingle()" style="padding:0px;font-family: 'Roboto', sans-serif;">Add Single</v-btn>
         <v-btn v-if="isMultiAdd" @click="addConfession()" style="padding:0px;font-family: 'Roboto', sans-serif;">Add All</v-btn>
-        <v-btn @click="inputAnother()" style="padding:0px;font-family: 'Roboto', sans-serif;">or Input another first</v-btn>
+        <v-btn @click="inputAnother()" style="padding:0px;font-family: 'Roboto', sans-serif;display:none">or Input another first</v-btn>
         <em style="text-align:center;" v-if="feedback">{{feedback}}</em>
          </div>
      
@@ -147,6 +147,8 @@ textarea{
 
 import {db} from './../../../../firestore.js';
 //import firebase database sdk
+import {storage} from './../../../../firestore.js';
+//import storage sdk so we can upload user pictures
 import slugify from 'slugify';
 //import the slugify library
 
@@ -208,6 +210,68 @@ export default{
         },
         addSingle(){
             //method hadnles adding a single blog
+            this.feedback="Connecting to db";
+            //check if all fields are typed
+               const userusername= this.$store.state.authRelated.loginDetails.profileMeta.username;
+            //currently signed in users username
+
+            if(this.title && this.blogContents && this.tags.length>=1){
+                this.feedback="Blog approved, storing it now.";
+
+                //slugify title
+            var slug= slugify(this.$moment().format()+"-"+this.title,{
+                replacement:'-',
+                remove:/[$*_+~.()'"!\-:@]/g,
+                lower:true
+            });
+
+            if(this.imageFile==null){
+                this.feedback="Please upload an image before submitting";
+                return;
+            }
+
+            //upload the image first then add the text
+
+            //storage ref
+            var imageref= storage.ref("blog/images/"+slug);
+            imageref.put(this.imageFile).then(status=>{
+                console.log(status);
+                this.feedback="Image uploaded, submitting blog";
+
+                storage.ref(status.metadata.fullPath).getDownloadURL().then(url=>{
+                    //grab blog collection reference
+                        db.collection("blogs").add({
+                            slug:slug,
+                            title:this.title,
+                            blogContents:this.blogContents,
+                            tags:this.tags,
+                            timestamp:this.$moment().format(),
+                            createdBy:userusername,
+                            imageurl:url
+                        }).then(done=>{
+                            //success blog uploaded now lets upload the image
+                            this.feedback="Blog submitted";
+                            console.log(done);
+                        }).catch(err=>{
+                            this.feedback="Error please try again.";
+                        })
+                })
+      
+                   
+
+                
+            }).catch(err=>{
+                this.feedback="Error something went wrong.";
+            })
+           
+
+       
+
+
+            }else{
+                this.feedback="Please enter all fields";
+            }
+            
         },
         handleImage(evt){
             this.feedback="Not all fields are filled";
