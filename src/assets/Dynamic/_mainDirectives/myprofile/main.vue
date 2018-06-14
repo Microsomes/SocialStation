@@ -40,7 +40,7 @@
     color:white;
     top:-50px;
     box-shadow: 5px 5px 5px #D35B5B;
-    transform: rotate(88deg);
+    transform: rotate(0deg);
         box-shadow: -5px 10px 5px 2px white;
 
         

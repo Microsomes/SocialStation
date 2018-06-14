@@ -68,14 +68,16 @@
 
 <template>
 <div class="dashboard">
-    <confessionItem v-for="n in confessions" :data="n"></confessionItem>
-</div>
+    <blogitem></blogitem>
+ </div>
 </template>
 
 <script>
 import confessionItem from './../comps/confessionitem';
 import {db} from './../../../../firestore.js';
 
+import blogitem from './../comps/blogitem';
+//blog item
 export default{
     data:function(){
         return {
@@ -85,6 +87,7 @@ export default{
         }
     },components:{
         confessionItem,
+        blogitem
     },created(){
         
     },methods:{
