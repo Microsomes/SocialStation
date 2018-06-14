@@ -264,7 +264,7 @@ export default{
                             home.commentText="";
                             //empty comment text
                             //referese and request an update of the comments
-                            //this.grabCommentsFirebase();
+                            this.grabCommentsFirebase();
 
                         }).catch(err=>{
                             console.log("comment not added error occured");
@@ -279,6 +279,8 @@ export default{
         
         },
         grabCommentsFirebase(){
+            this.commentBoard=[];
+            //clear comments board
             var home=this;
             //this method will do exactly what grab comments does but uses firebase as its backend
             this.commentsRef = db.collection("commentingSystem");
@@ -302,6 +304,13 @@ export default{
                                 let timestamp= commdoc.data().timestamp;
                                 let userCreated=commdoc.data().userCreated;
                                 let waves=commdoc.data().waves;
+
+                                home.commentBoard.push({
+                                     commentMsg:commentMsg,
+                                        commentedBy:userCreated,
+                                        commenedByProfileImg:'image',
+                                        timestamp:timestamp
+                                });
                             })
                         }).catch(err=>{
                          });
