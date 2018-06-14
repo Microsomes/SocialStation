@@ -235,7 +235,7 @@ export default{
             const username=this.$store.state.authRelated.loginDetails.profileMeta.username;
             //add comment is same to add comment but with firebase
 
-              var profileImage=this.$store.state.authRelated.loginDetails.profileMeta.profileImageURL;
+              var profileImage=this.$store.state.authRelated.loginDetails.optionalAdditionalData.profileImage;
              //grab currently signed in users profile image
 
             if(profileImage){
