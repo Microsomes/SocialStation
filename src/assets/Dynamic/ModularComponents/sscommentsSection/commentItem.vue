@@ -132,6 +132,8 @@
   @media only screen and (max-width:860px){
     .comment_container{
         width:100%;
+        overflow: hidden;
+
     }
   }
 </style>

@@ -82,23 +82,19 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    top:30px;
  }
 .commentsItemContainer{
      min-height:10px;
      margin-top:50px;
-  }
+   }
 
 
   @media only screen and (max-width:1060px){
       .commentsection_container{
          width:100%;
       }
-      .enterACommentContainer{
-          right:0px;
-       }
-
-      .commentsItemContainer{
-      }
+     
   }
 </style>
 
@@ -109,7 +105,7 @@
         <div class="amountOfComments">
             Comments {{totalComments}}
          </div>
-        <div class="sortBy">
+        <div style="display:none" class="sortBy">
             <div class="sortIcon">  <i class="material-icons">sort</i></div>
             <div class="sortText">
                 <b-dropdown variant="danger" class="dropdownButton" style="padding:0px;margin:0px;font-family: 'Roboto', sans-serif;"  text="Sort" >
@@ -124,7 +120,7 @@
     <div class="enterACommentContainer">
 
         <div class="userProfilePICContainer">
-        <div class="userProfilePic"></div>
+        <div class="userProfilePic" style="text-transform:uppercase">{{this.$store.state.authRelated.loginDetails.profileMeta.username[0]}}</div>
         </div>
 
         <div class="commentEnterInputContainer">
@@ -171,7 +167,7 @@ export default{
             commentText:'',
             totalComments:0,
             state:{
-                isCommentClicked:false,
+                isCommentClicked:true,
                 isCommentButtonDisabled:true
             },
             commentsSectionIdentifer:{
