@@ -323,7 +323,7 @@ text-transform:capitalize;
 
 <template>
 <div class="breifInfoContainer">
-    <div class="leftSide">
+          <div class="leftSide">
         <div class="infoContainer">
             <div class="profileName">
                 {{username}}
@@ -356,18 +356,17 @@ text-transform:capitalize;
                     <div class="text">Highlighted Pictures</div>
                 </div>  
                 <div class="photosContainer">
-                    <div style="text-align:center;" v-if="highlightedImages==null">
-                        You have no highlighted images, you can upload some by clicking the button below.
+                    <div style="text-align:center;" >
+                         You can upload some by clicking the button below.
                         <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Upload Highlighted Images</v-btn>
                         <input type="file" @change="fileUploadProcess" accept="image/x-png,image/gif,image/jpeg"/>
                         <em>Images will upload automatically</em><br>
                         <em v-if="uploadHighlightedImageFeedback">{{uploadHighlightedImageFeedback}}</em>
                     </div>
                     <div v-if="highlightedImages" v-for="n in highlightedImages" class="photoItem">
-                        <img height="100%" width="100%" :src="n"/>
+                        <img height="100%" width="100%" :src="n.hdata.link"/>
                     </div>
-                        
-                  
+                   
                 </div>
                  </div>
             </div>
@@ -376,7 +375,7 @@ text-transform:capitalize;
         <div class="memoralWallContainer"><!-- start of memorial wall-->
             <div class="memoraiTitle">
                 Memorial wall
-            </div>
+             </div>
             <div class="memorialSubline">How will people remember you about you die? Write down your dearest, important thoughts memories and ideas here. </div>
             <div class="typeSomething">
                 <input v-model="memorialState.memorialtxt" v-on:keydown.enter="addMemorial()"  type="text" placeholder="get typing... and push enter to submit"/>
@@ -523,6 +522,7 @@ export default{
         return {
             uploadHighlightedImageFeedback:null,
             localPinned:null,
+            highlightedImagesLocal:null,
             memorialWallLocal:null,
             memorialState:{
                 feedback:null,
@@ -537,6 +537,44 @@ export default{
         }
     },
     methods:{
+        grabAllHighlightedImages(){
+            this.highlightedImagesLocal=[];
+            //perpare to accet highlighed images local
+        //method that grabs all highligted images
+            const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
+            //persons usernam
+
+            db.collection("users").where("username","==",username).get().then(userdocs=>{
+                if(userdocs.empty){
+                    //the user should
+                }else{
+                    userdocs.forEach(u=>{
+                        var udata= u.data();
+                        console.log("log log log");
+                         u.ref.collection("highlightedImages").get().then(high=>{
+                             if(high.empty){
+                                 //no highligted images
+                                 this.highlightedImagesLocal=null;
+                             }else{
+                            high.forEach(h=>{
+                                var hdata= h.data();
+                                console.log(hdata.link);
+                                this.highlightedImagesLocal.push({
+                                    hdata,
+                                });
+                            })
+                             }
+                         }).catch(err=>{
+                             console.log("Error");
+                         })
+                    })
+                }
+            }).catch(err=>{
+                console.log("Error please try again.");
+                console.log(err);
+            })
+
+        },
         fileUploadProcess(file){
             const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
             //persons username
@@ -729,6 +767,8 @@ export default{
         //grab pinned reads
         this.grabAllMemorial();
         //grab memorial wall items
+        this.grabAllHighlightedImages();
+        //grabs all highlighed images
      },computed:{
         username(){
             return this.$store.state.authRelated.loginDetails.profileMeta.username;
@@ -774,16 +814,16 @@ export default{
             }
          },
          highlightedImages(){
-              if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.highlightedImages){
+              if(this.highlightedImagesLocal){
                 //bio exists 
-                return this.$store.state.authRelated.loginDetails.optionalAdditionalData.highlightedImages;
+                return this.highlightedImagesLocal;
             }else{
                 //bio does not exit
                 return null;
             }
          },
          memorialWall(){
-              if(this.memorialWallLocal){
+               if(this.memorialWallLocal){
                 //bio exists 
                 return this.memorialWallLocal;
             }else{
