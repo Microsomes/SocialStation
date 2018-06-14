@@ -359,6 +359,8 @@ text-transform:capitalize;
                     <div style="text-align:center;" v-if="highlightedImages==null">
                         You have no highlighted images, you can upload some by clicking the button below.
                         <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Upload Highlighted Images</v-btn>
+                        <input type="file" @change="fileUploadProcess" accept="image/x-png,image/gif,image/jpeg"/>
+                        <em>Images will upload automatically</em>
                     </div>
                     <div v-if="highlightedImages" v-for="n in highlightedImages" class="photoItem">
                         <img height="100%" width="100%" :src="n"/>
@@ -518,6 +520,7 @@ text-transform:capitalize;
  
 import {db} from './../../../../firestore.js';
 import {auth} from './../../../../firestore.js';
+import {storage} from './../../../../firestore.js';
 import VueCircle from 'vue2-circle-progress';
 //imported the circle progress needed for the beief profile page
 
@@ -545,6 +548,14 @@ export default{
         }
     },
     methods:{
+        fileUploadProcess(file){
+            var fileSelected=file.target.files[0];
+
+            //grab storage reference
+            
+            
+
+        },
         grabAllMemorial(){
             //grab all memorial items from the database
             const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
