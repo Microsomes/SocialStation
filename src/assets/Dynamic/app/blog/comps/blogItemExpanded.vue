@@ -12,8 +12,8 @@
 
 .blogItemContainer{
     border:1px solid lightblue;
-    width:350px;
-    min-height:300px;
+    width:650px;
+    min-height:500px;
     padding: 2px;
     font-family: 'Roboto', sans-serif;
     border-radius: 5px;
@@ -66,7 +66,7 @@
      
 }
 .imagePreview{
-    height:200px;
+    min-height:200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,10 +76,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-        text-transform: capitalize;
-
+    text-transform: capitalize;
 }
 
+.title{
+    color:grey;
+    padding: 10px;
+}
+
+.blogContent{
+    min-height: 100px;
+ }
+ .commentSection{
+     border-top:1px solid lightblue;
+ }
 </style>
 
 
@@ -102,8 +112,14 @@
     <div class="blogTitle">
         {{data.itam.title}}
     </div>
-    <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Read</v-btn>
-</div>
+    <div class="blogContent">
+        {{data.itam.blogContents}}
+    </div>
+    <div class="commentSection">
+        <div class="title">Leave a comment below</div>
+       <ssdisqus  :uid="data.itam.id"></ssdisqus>
+    </div>
+ </div>
 
 
 </template>

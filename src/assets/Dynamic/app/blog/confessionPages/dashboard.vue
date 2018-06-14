@@ -109,6 +109,7 @@ export default{
                     blogs.forEach(doc=>{
                         console.log(doc.data());
                         let itam= doc.data();
+                        itam.id= doc.id;
                         let blogContent= doc.data().blogContents;
                         home.blogs.push({
                             itam,
