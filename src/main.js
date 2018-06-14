@@ -188,7 +188,7 @@ const routes=[
     }
   },
   {
-    path:'/codeModule',
+    path:'/c',
     component:dynoModuler,
     meta:{
       requiresAuth:true

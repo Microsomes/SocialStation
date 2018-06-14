@@ -447,25 +447,25 @@
           <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
         </template>        
         <b-dropdown-item href="#">
-                  <router-link to="/codeModule/confessions/confessionall">Confessions</router-link>
+                  <router-link to="/c/confessions/confessionall">Confessions</router-link>
         </b-dropdown-item>
          <b-dropdown-item href="#">
-                  <router-link to="/codeModule/news">Popular News</router-link>
+                  <router-link to="/c/news">Popular News</router-link>
         </b-dropdown-item>
          <b-dropdown-item  href="#">
-           <router-link to="/codeModule/blog">Blog</router-link>
+           <router-link to="/c/blog">Blog</router-link>
          </b-dropdown-item>
          <b-dropdown-item  href="#">
-           <router-link to="/codeModule/neverending" >Never Ending Facts</router-link>
+           <router-link to="/c/neverending" >Never Ending Facts</router-link>
            </b-dropdown-item>
   
          
             <b-dropdown-item  href="#">
-           <router-link to="/codeModule/qanda">Q/A</router-link>
+           <router-link to="/c/qanda">Q/A</router-link>
          </b-dropdown-item>
          
           <b-dropdown-item  href="#">
-           <router-link to="/codeModule/theeidshow">THE EID SHOW</router-link>
+           <router-link to="/c/theeidshow">THE EID SHOW</router-link>
          </b-dropdown-item>
           <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
       </b-nav-item-dropdown>
@@ -473,7 +473,7 @@
 
         <b-nav-form >
                 <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                  <router-link  style="color:white;" to="/codeModule/feed">Feed</router-link>
+                  <router-link  style="color:white;" to="/c/feed">Feed</router-link>
                  </b-button>
       </b-nav-form>
 
