@@ -133,7 +133,13 @@ import dyno_blog_add_blog from './assets/Dynamic/app/blog/confessionPages/addcon
 import dyno_blog_view_all from './assets/Dynamic/app/blog/confessionPages/dashboard.vue';
 import dyno_blog_slug_view from './assets/Dynamic/app/blog/confessionPages/blogPerma.vue';
 
+import dyno_showing_other_profile from './assets/Dynamic/_mainDirectives/myprofile/my/showingProfileBreif.vue';
+
 const routes=[
+  {
+    path:'/p/:username',
+    component:dyno_showing_other_profile
+  },
   {
     path:'/examples',
     component:example_modal
