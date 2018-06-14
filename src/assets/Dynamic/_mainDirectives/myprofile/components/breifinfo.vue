@@ -545,6 +545,23 @@ export default{
         }
     },
     methods:{
+        grabAllMemorial(){
+            //grab all memorial items from the database
+            const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
+            //persons username
+            db.collection("users").where("username","==",username).get().then(us=>{
+                if(us.empty){
+                    //the user does not have any memoral records
+                }else{
+                    //memorial records exist
+                    us.forEach(uss=>{
+                        console.log(uss.data());
+                    })
+                }
+            }).catch(err=>{
+                console.log("error");
+            })
+        },
         grabAllPinnedReads(){
             //method will grab pinned reads
             const username= this.$store.state.authRelated.loginDetails.profileMeta.username;

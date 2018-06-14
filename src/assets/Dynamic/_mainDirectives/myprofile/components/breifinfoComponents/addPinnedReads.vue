@@ -100,7 +100,9 @@ export default{
                        title:this.formValues.title,
                        timestamp:this.$moment().format()
                    }).then(status=>{
-                       this.feedback="Pin added.";
+                       this.feedback="Pin added refresh to see it.";
+                       this.formValues.title=null;
+                       this.formValues.link=null;
                    }).catch(err=>{
                        this.feedback="Error please try again."
                    })
