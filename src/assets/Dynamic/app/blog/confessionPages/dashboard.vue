@@ -16,7 +16,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-
+ 
 }
 .confessionItem{
     min-height:300px;
@@ -67,9 +67,13 @@
 </style>
 
 <template>
+<div>
+        <em v-if="feedback">{{feedback}}</em>
+
 <div class="dashboard">
-    <blogitem></blogitem>
- </div>
+     <blogitem :data="n" v-for="n in blogs"></blogitem>
+  </div>
+</div>
 </template>
 
 <script>
@@ -81,42 +85,41 @@ import blogitem from './../comps/blogitem';
 export default{
     data:function(){
         return {
-            confessions:[
-                 
+            feedback:null,
+            blogs:[
+
             ]
         }
     },components:{
         confessionItem,
         blogitem
     },created(){
-        
+        this.grabAll();
     },methods:{
         grabAll(){
-            //method grabs all posts
-             var confessionsRef= db.collection("confessions");
-        //confession refernece
-        var home=this;
+            var home=this;
+            //grabs all blogs within the blogs collection
+            db.collection("blogs").get().then(blogs=>{
+                console.log(blogs);
+                if(blogs.empty){
+                    this.feedback="Their are no blogs, create one if you like";
+                }else{
+                    this.feedback="Parsing blogs now...";
 
-        confessionsRef.get().then(confession=>{
-            confession.forEach(conf=>{
-                var currentData= conf.data();
-                 
-
-                home.confessions.push({
-                    confessionsTags:currentData.confessionTags,
-                    confessionText:currentData.confessionText,
-                    confessionTimestamp:currentData.confessionTimestamp,
-                    confessionBy:currentData.confessionby,
-                    id:conf.id,
-                    slug:currentData.slug
-                })
-
+                    blogs.forEach(doc=>{
+                        console.log(doc.data());
+                        let itam= doc.data();
+                        let blogContent= doc.data().blogContents;
+                        home.blogs.push({
+                            itam,
+                        })
+                    })
+                    
+                }
+            }).catch(err=>{
+                this.feedback="Error please try again.";
             })
-        })
         }
-    },mounted(){
-        this.grabAll();
-        //call to grab all posts
     }
 }
 

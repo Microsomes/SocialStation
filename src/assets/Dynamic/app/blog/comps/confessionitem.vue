@@ -12,7 +12,8 @@
      background: lightgoldenrodyellow;
      border-radius: 5px;
      padding: 10px;
-     margin: 7px;
+     margin: 10px;
+     
 }
 .confessionText{
     min-height:200px;

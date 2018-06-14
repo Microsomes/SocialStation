@@ -11,12 +11,13 @@
 <style scoped>
 
 .blogItemContainer{
-    border:1px solid grey;
+    border:1px solid lightblue;
     width:350px;
     min-height:300px;
     padding: 2px;
     font-family: 'Roboto', sans-serif;
     border-radius: 5px;
+    margin: 3px;
 
 }
 
@@ -59,6 +60,10 @@
     justify-content: center;
     font-size: 12px;
     color:grey;
+    text-align: center;
+    position: relative;
+    left: -3px;;
+     
 }
 .imagePreview{
     height:200px;
@@ -81,19 +86,18 @@
 <div class="blogItemContainer">
     <div class="blogItemDetails">
         <div class="image">
-            image
-        </div>
+         </div>
         <div class="textDetails">
-            <div class="by">Microsomes</div>
+            <div class="by">{{data.itam.createdBy}}</div>
             <div class="did">Posted a Blog</div>
         </div>
-        <div class="when">5 hours ago</div>
+        <div class="when">{{timeAgo}}</div>
     </div>
     <div class="imagePreview">
-        image preview
+        <img height="100%" :src="data.itam.imageurl"/>
     </div>
     <div class="blogTitle">
-        blog title
+        {{data.itam.title}}
     </div>
     <v-btn style="padding:0px;font-family: 'Roboto', sans-serif;">Read</v-btn>
 </div>
@@ -108,6 +112,11 @@ export default{
     data:function(){
         return {
 
+        }
+    },props:["data"],
+    computed:{
+        timeAgo(){
+            return this.$moment(this.data.itam.timestamp).fromNow();
         }
     }
 }
