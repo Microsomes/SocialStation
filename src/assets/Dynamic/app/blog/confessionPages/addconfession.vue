@@ -98,6 +98,7 @@ textarea{
 
 <template>
 <div class="addConfessionContainer">
+
     
     <div class="confessionForm">
         <div class="title">Create a Blog</div>
@@ -106,9 +107,10 @@ textarea{
         <div class="likeBlogEdit" v-for="(n,index) in formDataToSubmit">
                 <input  v-model="formDataToSubmit[index].title" type="text" placeholder="Title"/>
                 <textarea v-model="formDataToSubmit[index].blogContents" type="text" placeholder="blog contents. Write whatever your heard desires"></textarea>
-                 <div v-for="(n,index) in n.tags">
-                <input type="text" v-model="tags[index]" placeholder="type a tag then click tab"/>
+                <div v-for="(nn,ind)  in n.tags">
+                    <input style="width:97%"  v-model="formDataToSubmit[index].tags[ind]" type="text" placeholder="edit tag"/>
                 </div>
+
         </div><!-- end of live edit-->
 
         <input  v-model="title" type="text" placeholder="Title"/>
@@ -120,7 +122,7 @@ textarea{
                   <i class="material-icons">broken_image</i>
             </div>
             Upload a footer image. Optional.
-            <div><input type="file"/></div>
+            <div><input @change="handleImage" type="file" accept="image/x-png,image/gif,image/jpeg"/></div>
         </div>
 
         <div v-for="(n,index) in tags">
@@ -134,7 +136,7 @@ textarea{
         <v-btn v-if="isMultiAdd" @click="addConfession()" style="padding:0px;font-family: 'Roboto', sans-serif;">Add All</v-btn>
         <v-btn @click="inputAnother()" style="padding:0px;font-family: 'Roboto', sans-serif;">or Input another first</v-btn>
         <em style="text-align:center;" v-if="feedback">{{feedback}}</em>
-        </div>
+         </div>
      
     </div>
   
@@ -157,7 +159,9 @@ export default{
             tags:[],
             formDataToSubmit:[],
             typing:null,
-            isMultiAdd:false//determines which add blog button to show
+            isMultiAdd:false,//determines which add blog button to show
+            isImageAdded:false,//determines if user added an image
+            imageFile:null
         
         }
     },methods:{
@@ -181,13 +185,18 @@ export default{
                     title:this.title,
                     blogContents:this.blogContents,
                     tags:this.tags
-                });
+                 });
+
                 this.isMultiAdd="Add All";
                 //switch button to multimode
-                this.title="";
-                this.blogContents="";
-                this.tags="";
+                this.title=null;
+                this.blogContents=null;
+                this.tags=[];
 
+                if(this.isImageAdded){
+                    this.feedback="The same image will be used for multiple posts";
+                }
+ 
 
             }else{
                 this.feedback="Not all fields are filled";
@@ -199,6 +208,13 @@ export default{
         },
         addSingle(){
             //method hadnles adding a single blog
+        },
+        handleImage(evt){
+            this.feedback="Not all fields are filled";
+            this.isImageAdded=true;
+            //trigger because image is added
+            this.imageFile= evt.target.files[0];
+            
         }
     }
 }
