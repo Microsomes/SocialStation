@@ -321,7 +321,10 @@ auth.onAuthStateChanged(auth=>{
           const country= additionaldata.country;
           const fullname= additionaldata.fullname;
           const profileImage= additionaldata.profileImage;
+          
+
           const website= additionaldata.website;
+          const highlightedImages= additionaldata.highlightedImages;
           //pass the above data to store
           var optionaldata= store.state.authRelated.loginDetails.optionalAdditionalData;
           optionaldata.bio= bio;
@@ -329,8 +332,11 @@ auth.onAuthStateChanged(auth=>{
           optionaldata.birthday=birthday;
           optionaldata.name= fullname;
           store.state.authRelated.loginDetails.profileImageURL= profileImage;
+          optionaldata.profileImage=profileImage;
           optionaldata.location=country;
-          
+          optionaldata.highlightedImages=highlightedImages;
+
+          console.log(store);
        
           const username= item.username;
           const slug= item.slug;

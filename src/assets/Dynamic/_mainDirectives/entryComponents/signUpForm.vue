@@ -115,7 +115,8 @@ data:function(){
                                  country:null,
                                  fullname:null,
                                  profileImage:null,
-                                 website:null
+                                 website:null,
+                                 highlightedImages:null
                              }
                          }).then(status=>{
                              //the user has signed up now we may redirect the user

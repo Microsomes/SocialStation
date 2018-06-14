@@ -40,6 +40,9 @@
     color:white;
     top:-50px;
     box-shadow: 5px 5px 5px #D35B5B;
+    transform: rotate(88deg);
+        box-shadow: -5px 10px 5px 2px white;
+
         
 }
 
@@ -139,7 +142,7 @@
 </div>
 <div class="center">
     <div class="profileImagecircleContainer">
-        <img height="100%" width="100%" style="border-radius:50%" src="https://images.pexels.com/photos/490411/pexels-photo-490411.jpeg?auto=compress&cs=tinysrgb&h=350"/>
+        <img height="100%" width="100%" style="border-radius:50%" :src="profilePicture"/>
     </div>
 </div>
 <!-- container for profile image ends here-->
@@ -255,6 +258,15 @@ export default{
      },computed:{
         email(){
             return  this.$store.state.authRelated.loginDetails.profileMeta.email;
+        },
+        profilePicture(){
+            //determine if user has a profile picture if not we will supply a generic one
+            if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.profileImage){
+                return this.$store.state.authRelated.loginDetails.optionalAdditionalData.profileImage;
+            }else{
+                //return a generic image
+                return "https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/web%2Fdefault%20image%2FPlaceholder.png?alt=media&token=b5d9d748-e2aa-4354-a331-adfc1cfcac15";
+            }
         }
     },mounted(){
         console.log("---");

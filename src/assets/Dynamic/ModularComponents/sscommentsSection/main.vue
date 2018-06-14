@@ -200,7 +200,7 @@ export default{
         },
         addComment(){
              const username=this.$store.state.authRelated.loginDetails.profileMeta.username;
-             const profileImage=this.$store.state.authRelated.loginDetails.profileMeta.profileImageURL;
+             const profileImage=this.$store.state.authRelated.loginDetails.optionalAdditionalData.profileImage;
              //grab currently signed in users profile image
 
             if(profileImage){
