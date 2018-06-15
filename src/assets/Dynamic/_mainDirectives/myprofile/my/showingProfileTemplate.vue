@@ -483,7 +483,7 @@ export default{
             profileTips:"Adding a name to your profile goes a long way. Additionally you may add a location, birthday, bio and a few highligted pictures of yourself.",
         fill : { gradient: ["#D35B5B", "grey", "grey"] },
         }
-    },props:["userDetails"],
+    },props:["userDetails","routeusername"],
     methods:{
         grabAllHighlightedImages(usernamelocal){
             this.highlightedImagesLocal=[];
@@ -573,14 +573,14 @@ export default{
             
 
         },
-        grabAllMemorial(){
+        grabAllMemorial(usernamelocal){
             this.memorialWallLocal=[];
             //prepare memorialwall for inputting data
 
             //grab all memorial items from the database
           const username= "microsomes";
             //persons username
-            db.collection("users").where("username","==",username).get().then(us=>{
+            db.collection("users").where("username","==",usernamelocal).get().then(us=>{
                 if(us.empty){
                     //the user does not have any memoral records
                     this.$router.push("/");
@@ -602,13 +602,13 @@ export default{
             }).catch(err=>{
              })
         },
-        grabAllPinnedReads(){
+        grabAllPinnedReads(usernamelocal){
             //method will grab pinned reads
           const username= "microsomes";
             //persons username
         
             //grab users reference
-            db.collection("users").where("username","==",username).get().then(res=>{
+            db.collection("users").where("username","==",usernamelocal).get().then(res=>{
                     
                     if(res.empty){
                         //user does not exist log out now
@@ -700,13 +700,12 @@ export default{
         pinned_item_template,
         memorial_item_template
     },created(){
-        this.grabAllPinnedReads();
+        this.grabAllPinnedReads(this.routeusername);
         //grab pinned reads
-        this.grabAllMemorial();
+        this.grabAllMemorial(this.routeusername);
         //grab memorial wall items
         console.log("------------showing profile template");
-        console.log(this.userPassedIn[0]);
-        this.grabAllHighlightedImages("microsomses");
+          this.grabAllHighlightedImages(this.routeusername);
         //grabs all highlighed images
      },computed:{
          userPassedIn(){
@@ -743,7 +742,7 @@ export default{
             }
          },
          joinedDay(){
-              return this.$moment(this.userPassedIn[0].joinedDay).fromNow();
+              return "Joined "+this.$moment(this.userPassedIn[0].joinedDay).fromNow();
          },
          birthday(){
               if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.birthday){

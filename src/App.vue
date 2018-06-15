@@ -381,8 +381,7 @@
 <template>
   <div class="main_container">
 
-    <!-- <ssdisqus></ssdisqus>  -->
-
+ 
     <div v-if="state.isLoading" class="loaderContainer">
          <div class="sk-cube-grid">
   <div class="sk-cube sk-cube1"></div>
@@ -397,28 +396,7 @@
 </div>
     </div>
 
-        <b-alert show style="background:#C62D2D;font-family: 'Roboto', sans-serif;">
-          Happy release day! Today marks the start of the social media revolution. Click&nbsp; <a style="color:white;" target="_blank" href="https://socialstation.info">here</a> &nbsp;to visit the ICO/Docs website
-        </b-alert>
-
-        <!-- welcome modal-->
-        <b-modal ref="welcomeMessage" hide-footer title="Welcome">
-          <div class="welcomeMessageModal">
-            <div style="font-weight:bold;font-family: 'Roboto', sans-serif;" class="title">Welcome to Social Station.</div>
-            <div style="color:grey;margin-top:3px;" class="explanation">Today Friday 15th of June Marks the release of this website. What is Social Station you may ask? in short Social Station is an open source modular social media platform, that will eventually become decentralzed. You may read more about the project at <a target="_blank" href="https://socialstation.info">socialstation.info</a>. Or you can learn by exploring the site.
-            </div>
-          </div>
-        </b-modal>
-        <!-- welcome end modal-->
-  
-        
- 
-  
       
-       
-
-    
-  
   
      <b-navbar ref="mainNavBar" style="background:gray;color:black;" toggleable="md" type="dark" >
 

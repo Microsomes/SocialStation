@@ -7,7 +7,7 @@
 <template>
 <div>
     <em v-if="feedback">{{feedback}}</em>
-     <showProfileTemplate :userDetails="userDetails"></showProfileTemplate>
+     <showProfileTemplate :userDetails="userDetails" :routeusername="this.$route.params.username"></showProfileTemplate>
   </div>
 </template>
 
