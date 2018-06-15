@@ -485,7 +485,7 @@ export default{
         }
     },props:["userDetails"],
     methods:{
-        grabAllHighlightedImages(){
+        grabAllHighlightedImages(usernamelocal){
             this.highlightedImagesLocal=[];
             //perpare to accet highlighed images local
         //method that grabs all highligted images
@@ -493,7 +493,7 @@ export default{
           const username= "microsomes";
             //persons usernam
 
-            db.collection("users").where("username","==",username).get().then(userdocs=>{
+            db.collection("users").where("username","==",usernamelocal).get().then(userdocs=>{
                 if(userdocs.empty){
                     //the user should
                 }else{
@@ -704,13 +704,15 @@ export default{
         //grab pinned reads
         this.grabAllMemorial();
         //grab memorial wall items
-        this.grabAllHighlightedImages();
+        console.log("------------showing profile template");
+        console.log(this.userPassedIn[0]);
+        this.grabAllHighlightedImages("microsomses");
         //grabs all highlighed images
      },computed:{
          userPassedIn(){
              return this.userDetails;
          },
-        username(){
+        usernameU(){
             return this.userDetails[0].username;
         },
         bio(){
