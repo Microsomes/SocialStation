@@ -7,15 +7,16 @@
 <template>
 <div>
     <em v-if="feedback">{{feedback}}</em>
-    {{userDetails}}
- </div>
+     <showProfileTemplate :userDetails="userDetails"></showProfileTemplate>
+  </div>
 </template>
 
 
 <script>
 
 import {db} from './../../../../firestore.js';
-//
+//import db sdk needed to load profile info
+import showProfileTemplate from './showingProfileTemplate';
 
 export default{
     data:function(){
@@ -37,14 +38,22 @@ export default{
 
                 usr.forEach(u=>{
                     var udata= u.data();
+                    var opti= udata.optionalAdditionalData;
+
                     console.log(udata);
                     this.userDetails.push({
-                        udata,
+                        username:udata.username
+                        
                     });
+                    this.feedback=null;
                 })
 
             }
         })
+    },updated(){
+         
+    },components:{
+        showProfileTemplate,
     }
 }
 
