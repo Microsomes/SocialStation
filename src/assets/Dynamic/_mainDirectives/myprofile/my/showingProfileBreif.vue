@@ -39,10 +39,26 @@ export default{
                 usr.forEach(u=>{
                     var udata= u.data();
                     var opti= udata.optionalAdditionalData;
-
                     console.log(udata);
-                    this.userDetails.push({
-                        username:udata.username
+
+                    const bio= opti.bio;
+                    const birthday= opti.birthday;
+                    const country= opti.country;
+                    const fullname= opti.fullname;
+                    const profileImage= opti.profileImage;
+                    const website= opti.website;
+                    const joinedDay= udata.joinedDay;
+
+                    console.log("----------");
+                      this.userDetails.push({
+                        username:udata.username,
+                        bio,
+                        birthday,
+                        country,
+                        fullname,
+                        profileImage,
+                        website,
+                        joinedDay
                         
                     });
                     this.feedback=null;

@@ -323,21 +323,21 @@ text-transform:capitalize;
 
 <template>
 <div class="breifInfoContainer">
-    {{userPassedIn}}
-            <div class="leftSide">
+             <div class="leftSide">
         <div class="infoContainer">
             <div class="profileName">
                     {{userPassedIn[0].username}}
-               </div>
+                </div>
             <div class="bio">
               </div>
             <div class="iconableInfo">
                 <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">location_on</i></div>
+                    <div class="text"> {{userPassedIn[0].country}}</div>
                  </div>
                  <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">link</i></div>
-                    <div class="text"><a  target="_blank" href="#"></a></div>
+                    <div class="text"><a  target="_blank" href="#">{{userPassedIn[0].website}}</a></div>
                 </div>
                  <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">access_time</i></div>
@@ -345,7 +345,7 @@ text-transform:capitalize;
                 </div>
                  <div class="inconableInfoItem">
                     <div class="icon">  <i class="material-icons">pan_tool</i></div>
-                    <div class="text"></div>
+                    <div class="text">{{userPassedIn[0].birthday}}</div>
                 </div>
             </div>
             <div class="photosAndImagesContainer">
@@ -489,7 +489,8 @@ export default{
             this.highlightedImagesLocal=[];
             //perpare to accet highlighed images local
         //method that grabs all highligted images
-            const username= "microsomes";
+ 
+          const username= "microsomes";
             //persons usernam
 
             db.collection("users").where("username","==",username).get().then(userdocs=>{
@@ -498,33 +499,29 @@ export default{
                 }else{
                     userdocs.forEach(u=>{
                         var udata= u.data();
-                        console.log("log log log");
-                         u.ref.collection("highlightedImages").get().then(high=>{
+                          u.ref.collection("highlightedImages").get().then(high=>{
                              if(high.empty){
                                  //no highligted images
                                  this.highlightedImagesLocal=null;
                              }else{
                             high.forEach(h=>{
                                 var hdata= h.data();
-                                console.log(hdata.link);
-                                this.highlightedImagesLocal.push({
+                                 this.highlightedImagesLocal.push({
                                     hdata,
                                 });
                             })
                              }
                          }).catch(err=>{
-                             console.log("Error");
-                         })
+                          })
                     })
                 }
             }).catch(err=>{
-                console.log("Error please try again.");
-                console.log(err);
+                
             })
 
         },
         fileUploadProcess(file){
-            const username= this.$store.state.authRelated.loginDetails.profileMeta.username;
+            const username= "microsomes";
             //persons username
              this.uploadHighlightedImageFeedback="Attempting to upload image";
             var fileSelected=file.target.files[0];
@@ -539,8 +536,7 @@ export default{
                     
                     db.collection("users").where("username","==",username).get().then(users=>{
                     if(users.empty){
-                        console.log("no users found");
-                    }else{
+                     }else{
 
                         var fullPath= sta.metadata.fullPath;
                         
@@ -569,8 +565,7 @@ export default{
                
 
             }).catch(err=>{
-                console.log(err);
-            })
+             })
 
             
 
@@ -583,7 +578,7 @@ export default{
             //prepare memorialwall for inputting data
 
             //grab all memorial items from the database
-            const username= "microsomes";
+          const username= "microsomes";
             //persons username
             db.collection("users").where("username","==",username).get().then(us=>{
                 if(us.empty){
@@ -600,20 +595,16 @@ export default{
                                     memoItem,
                                 });
                             })
-                            console.log(this.memorialWallLocal);
-                        }).catch(err=>{
-                            console.log("error");
-                        })
+                         }).catch(err=>{
+                         })
                     })
                 }
             }).catch(err=>{
-                console.log("error");
-                console.log(err);
-            })
+             })
         },
         grabAllPinnedReads(){
             //method will grab pinned reads
-            const username= "microsomes";
+          const username= "microsomes";
             //persons username
         
             //grab users reference
@@ -644,14 +635,12 @@ export default{
                               }
                           }).catch(err=>{
 
-                              console.log(err);
-                          })
+                           })
                         })
                     }
                     
             }).catch(err=>{
-                console.log("error grabbing users data");
-            })
+             })
 
         },
         addMemorial(){
@@ -722,7 +711,7 @@ export default{
              return this.userDetails;
          },
         username(){
-            return this.$store.state.authRelated.loginDetails.profileMeta.username;
+            return this.userDetails[0].username;
         },
         bio(){
             if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.bio){
@@ -752,7 +741,7 @@ export default{
             }
          },
          joinedDay(){
-              return null;
+              return this.$moment(this.userPassedIn[0].joinedDay).fromNow();
          },
          birthday(){
               if(this.$store.state.authRelated.loginDetails.optionalAdditionalData.birthday){
