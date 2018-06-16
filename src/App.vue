@@ -479,9 +479,9 @@
 </b-navbar>
   
 <div class="main_routing_content">
-  <!-- <transition name="transiton_anim" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown"> -->
+  <transition name="transiton_anim" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown"> 
   <router-view></router-view>
-  <!-- </transition> -->
+   </transition> 
 </div>
 
 <!-- start of the recent module container-->
