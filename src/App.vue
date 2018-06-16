@@ -480,7 +480,7 @@
 </b-navbar>
   
 <div class="main_routing_content">
-  <transition name="transiton_anim" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown"> 
+  <transition name="transiton_anim" enter-active-class="animated wobble" leave-active-class="animated wobble"> 
   <router-view></router-view>
   </transition> 
 </div>
