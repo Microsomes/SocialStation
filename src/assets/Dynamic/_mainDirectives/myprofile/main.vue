@@ -13,7 +13,7 @@
 }
 .profileTop{
     min-height:200px;
-    background: #D35B5B;
+    background: #00B9FF;
     display: flex;
     align-items: center;
     color:white;
@@ -25,6 +25,9 @@
     justify-content: center;
     font-size: 30px;
     font-family: 'Roboto', sans-serif;
+    border-radius: 2px;
+    margin-top:20px;
+  
 
 }
 .profileImagecircleContainer{
@@ -50,7 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background:#D35B5B;
+    background:#00B9FF;
 
     
 }
