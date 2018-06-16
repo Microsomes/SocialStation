@@ -66,7 +66,7 @@
     justify-content: space-around;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
-    background:#D35B5B;
+    background:#00B9FF;
     padding:20px;
     color:white;
     position: relative;
