@@ -468,7 +468,7 @@
       <b-nav-item-dropdown right>
         <!-- Using button-content slot -->
         <template slot="button-content">
-          <em style="color:white;font-family: 'Roboto', sans-serif;">User</em>
+          <div style="color:white;font-family: 'Roboto', sans-serif;">User</div>
         </template>        
         <b-dropdown-item href="#">
                   <router-link to="/profile/breifinfo">Profile</router-link>

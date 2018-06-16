@@ -365,6 +365,26 @@
 
         }
 
+        .circularButton{
+             border-radius: 20px;
+            background: #00B9FF;
+            padding:5px;
+            width:100px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            font-family: 'Roboto', sans-serif;
+            text-transform: capitalize;
+            margin-left: 20px;
+                box-shadow: 5px 5px lightblue;
+
+        }
+        .circularButton:hover{
+            cursor:pointer;
+        }
+
     </style>
 
  
@@ -451,9 +471,12 @@
                 
             </div>
             <div class="quickAddComp">
-                <v-btn @click="createAQa()" style="padding:0px">Ask Q/A</v-btn>
+                <div class="circularButton">Ask Q/A</div>
+                <div class="circularButton">Create a blog</div>
+                <div class="circularButton">Add a fact</div>
+                <!-- <v-btn @click="createAQa()" style="padding:0px">Ask Q/A</v-btn>
                 <v-btn @click="createABlog()" style="padding:0px">Create A blog</v-btn>
-                <v-btn @click="createAFact()" style="padding:0px">Add a fact</v-btn>
+                <v-btn @click="createAFact()" style="padding:0px">Add a fact</v-btn> -->
             </div>
             
              
