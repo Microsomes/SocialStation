@@ -9,6 +9,9 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 import VueTyperPlugin from 'vue-typer'
 
+
+
+
 import Typewriter from 'vue-typewriter'
 
 Vue.use(Typewriter);
