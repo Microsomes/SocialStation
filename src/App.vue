@@ -423,8 +423,7 @@
     <b-navbar-nav   class="ml-auto">
       
       <b-nav-form>
-            <transition name="transiton_anim1" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown">
-          <b-nav-item-dropdown right><!-- modules drop down starts-->
+           <b-nav-item-dropdown right><!-- modules drop down starts-->
         <!-- Using button-content slot -->
         <template slot="button-content">
            <div class="modulesDropDownText" style="color:white;font-family: 'Roboto', sans-serif;">Modules</div>
@@ -452,8 +451,7 @@
          </b-dropdown-item>
           <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
       </b-nav-item-dropdown><!-- end of dropdown-->
-        </transition>
-
+ 
       </b-nav-form>
 
        
@@ -482,9 +480,9 @@
 </b-navbar>
   
 <div class="main_routing_content">
-  <!-- <transition name="transiton_anim" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown"> -->
+  <transition name="transiton_anim" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown"> 
   <router-view></router-view>
-  <!-- </transition> -->
+  </transition> 
 </div>
 
 <!-- start of the recent module container-->

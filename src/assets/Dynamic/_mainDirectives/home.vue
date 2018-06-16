@@ -386,6 +386,10 @@
             cursor:pointer;
         }
 
+.router_reset{
+    color:white;
+    text-decoration: none;
+}
     </style>
 
  
@@ -410,7 +414,7 @@
 
          <!--create a blog modal-->
 
-         <b-modal ref="createBlog" hide-footer title="Aak a Q/A">
+         <b-modal @click="gotocreateBlog" ref="createBlog" hide-footer title="Aak a Q/A">
 
         create a blog coming soon
           
@@ -473,10 +477,12 @@
             </div>
             <div class="quickAddComp">
                 <div class="circularButton">Ask Q/A</div>
-                <div class="circularButton">Create a blog</div>
+                <div class="circularButton">
+                    <router-link class="router_reset" to="/c/b/add">Create a blog</router-link>
+                </div>
                 <div class="circularButton">Add a fact</div>
                 <!-- <v-btn @click="createAQa()" style="padding:0px">Ask Q/A</v-btn>
-                <v-btn @click="createABlog()" style="padding:0px">Create A blog</v-btn>
+                <v-btn  style="padding:0px">Create A blog123</v-btn>
                 <v-btn @click="createAFact()" style="padding:0px">Add a fact</v-btn> -->
             </div>
             
@@ -682,7 +688,8 @@ export default{
             this.$refs.createAFact.show();
         },
         createABlog(){
-            this.$refs.createBlog.show();
+            //this.push.$router("/c/b/add");
+            console.log("go to create a blog page");
         },
         createAQa(){
             this.$refs.askaqa.show();
