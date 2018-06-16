@@ -371,6 +371,10 @@
   } 
 }
 
+.modulesDropDownText{
+  text-align: center;
+}
+
 </style>
 
 
@@ -398,7 +402,7 @@
 
       
   
-     <b-navbar ref="mainNavBar" style="background:gray;color:black;" toggleable="md" type="dark" >
+     <b-navbar ref="mainNavBar" style="background:#00B9FF;color:black;border-radius:20px;" toggleable="md" type="dark" >
 
   <b-navbar-toggle  target="nav_collapse"></b-navbar-toggle>
 
@@ -419,10 +423,11 @@
     <b-navbar-nav   class="ml-auto">
       
       <b-nav-form>
-          <b-nav-item-dropdown right>
+            <transition name="transiton_anim1" enter-active-class="animated bounceInDown" leave-active-class="animated bounceOutDown">
+          <b-nav-item-dropdown right><!-- modules drop down starts-->
         <!-- Using button-content slot -->
         <template slot="button-content">
-          <em style="color:white;font-family: 'Roboto', sans-serif;">Featured Modules</em>
+           <div class="modulesDropDownText" style="color:white;font-family: 'Roboto', sans-serif;">Modules</div>
         </template>        
         <b-dropdown-item href="#">
                   <router-link to="/c/con/all">Confessions</router-link>
@@ -446,14 +451,12 @@
            <router-link to="/c/theeidshow">THE EID SHOW</router-link>
          </b-dropdown-item>
           <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
-      </b-nav-item-dropdown>
+      </b-nav-item-dropdown><!-- end of dropdown-->
+        </transition>
+
       </b-nav-form>
 
-        <b-nav-form >
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                  <router-link  style="color:white;" to="/c/feed">Feed</router-link>
-                 </b-button>
-      </b-nav-form>
+       
 
       <b-nav-form>
         <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search Anything"/>

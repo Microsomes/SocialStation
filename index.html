@@ -39,13 +39,19 @@
 
      .lds-circle {
   display: inline-block;
-  width: 51px;
-  height: 51px;
+  --aspectration:500px;
+  width: var(--aspectration);
+  height: var(--aspectration);
   margin: 6px;
   border-radius: 50%;
-  background: #D35B5B;
+  background: #00B9FF;
   animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
   transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left:30%;
 }
 @keyframes lds-circle {
   0%, 100% {
@@ -57,6 +63,7 @@
   50% {
     transform: rotateY(1800deg);
     animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    transform: scale(5);
   }
   100% {
     transform: rotateY(3600deg);
