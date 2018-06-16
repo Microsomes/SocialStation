@@ -167,7 +167,7 @@
 
            .promo_container{
                min-height:400px;
-               background: #C62D2D;
+               background: #00B9FF;
                width: 100%;
                display: flex;
                color: white;
@@ -337,6 +337,7 @@
         .whatCanYouDoItem:nth-child(odd){
             background: lightgrey;
         }
+         
 
         .whatIcon{
             width: 100px;
