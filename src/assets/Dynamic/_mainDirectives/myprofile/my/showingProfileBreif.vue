@@ -25,6 +25,8 @@ export default{
             feedback:null
         }
     },created(){
+        window.scrollTo(0, 0);
+
         //call database to grab param username details
         this.feedback="attempting to load profile details of "+this.$route.params.username;
 

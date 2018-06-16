@@ -66,7 +66,10 @@
     font-family: 'Roboto', sans-serif;
 
 }
-
+.commenters_name:hover{
+    cursor:pointer;
+    color:blue;
+}
 .commentLikeReplyContainer{
     display: flex;
 }
@@ -152,7 +155,7 @@
     </div>
     <div class="comment_right">
         <div class="comment_right_top">
-            <div class="commenters_name">
+            <div @click="gotoProfile" class="commenters_name">
                 {{dataComing.commentedBy}}
             </div>
             <div class="commentCreatedAgo">
@@ -205,6 +208,10 @@ export default{
     },computed:{
         dataComing(){
             return this.dataComingIn
+        }
+    },methods:{
+        gotoProfile(){
+            this.$router.push("/p/"+this.dataComingIn.commentedBy);
         }
     }
 }
