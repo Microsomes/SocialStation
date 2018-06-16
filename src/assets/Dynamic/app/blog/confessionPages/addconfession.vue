@@ -92,7 +92,7 @@ textarea{
      padding: 10px;
 }
 .uploadAnImage i{
-    color:#C62D2D;
+    color:#00B9FF;
 }
 </style>
 
@@ -119,7 +119,7 @@ textarea{
         <div class="uploadAnImage">
             
             <div class="icon">
-                  <i class="material-icons">broken_image</i>
+                  <i class="material-icons">image</i>
             </div>
             Upload a footer image.
             <div><input @change="handleImage" type="file" accept="image/x-png,image/gif,image/jpeg"/></div>
