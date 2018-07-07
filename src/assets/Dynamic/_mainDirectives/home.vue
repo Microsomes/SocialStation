@@ -390,6 +390,9 @@
     color:white;
     text-decoration: none;
 }
+
+ 
+
     </style>
 
  
@@ -640,7 +643,9 @@
             </div>
          </div><!-- end of quick options-->
 
-         
+         <div style="z-index:1000" class="promp_add_new_app">
+            <v-btn @click="downloadBeta()" style="padding:0px;background:#00B9FF;color:white">Download News research app beta</v-btn>
+         </div>
         
     </div>
 
@@ -684,6 +689,10 @@ export default{
     },components:{
         VueCircle
     },methods:{
+        downloadBeta(){
+            var downloadLink="https://firebasestorage.googleapis.com/v0/b/social-station-69cfc.appspot.com/o/newsresearchapp%2FNews%20Research%20app%20beta%20Setup%204.3.0.exe?alt=media&token=6e66b7ac-29ef-4a9a-b0e7-ed31c022bfa0";
+            window.open(downloadLink);
+        },
         createAFact(){
             this.$refs.createAFact.show();
         },

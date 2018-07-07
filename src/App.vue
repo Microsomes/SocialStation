@@ -1,19 +1,13 @@
 <!--
-
- @author Daking123
-  @date- 15/05/2018
-
+@author Daking123
+@date- 15/05/2018
   Comments-
   This is the home page, this will be fun
-
 -->
-
-
 <style scoped>
 .goToFeedButton{
   position: absolute;
   right: 70px;
-  
 }
 .membersBar{
   height: 50px;
@@ -24,7 +18,6 @@
 
 .scrollUpButton i{
   color:white;
-  
 }
 
 .scrollUpButton{
@@ -47,8 +40,6 @@
 .scrollUpButton:active{
   background: white;
 }
-
-
 .chatContainer{
   position: fixed;
   background: #C62D2D;
