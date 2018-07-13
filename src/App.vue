@@ -440,6 +440,15 @@
           <b-dropdown-item  href="#">
            <router-link to="/c/theeidshow">THE EID SHOW</router-link>
          </b-dropdown-item>
+
+         <b-dropdown-item  href="#">
+           <router-link to="/c/insanity/all">Videos-Insanity</router-link>
+         </b-dropdown-item>
+
+         <b-dropdown-item  href="#">
+           <router-link to="/c/cons">Conspiracies</router-link>
+         </b-dropdown-item>
+
           <b-dropdown-item @click="signout()" href="#"></b-dropdown-item>
       </b-nav-item-dropdown><!-- end of dropdown-->
  

@@ -5,6 +5,10 @@ Social station is an open souce modular social media platform.
 */
 
 import Vue from 'vue'
+
+ 
+
+
 import App from './App.vue'
 import VueRouter from 'vue-router';
 import VueTyperPlugin from 'vue-typer'
@@ -138,6 +142,17 @@ import dyno_blog_slug_view from './assets/Dynamic/app/blog/confessionPages/blogP
 
 import dyno_showing_other_profile from './assets/Dynamic/_mainDirectives/myprofile/my/showingProfileBreif.vue';
 
+
+//import insanity main
+import mainInsanity from './assets/Dynamic/app/videos_insanity/dashboard.vue';
+//import mainlist 
+import mainInsanityList from './assets/Dynamic/app/videos_insanity/main.vue';
+//import main playing
+import mainInsanityPlaying from './assets/Dynamic/app/videos_insanity/playing.vue';
+
+
+import conspiracies from './assets/Dynamic/app/conspiracies/dashboard.vue';
+import conspiracies_add from './assets/Dynamic/app/conspiracies/addcons.vue';
 const routes=[
   {
     path:'/p/:username',
@@ -208,6 +223,30 @@ const routes=[
     path:'/c',
     component:dynoModuler,
     children:[
+      {
+        path:'cons/:key',
+        component:conspiracies
+      },
+      {
+        path:'consadd',
+        component:conspiracies_add
+      },
+      {
+
+        path:'insanity',
+        component:mainInsanity,
+        children:[
+          {
+            path:'all',
+            component:mainInsanityList
+          },
+          {
+            path:'play/:src',
+            component:mainInsanityPlaying
+          }
+        ]
+
+      },
       {
         path:'news',
         component:dynoNews
