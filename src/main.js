@@ -68,6 +68,10 @@ Vue.use(Vuetify);
 
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 
+import wysiwyg from "vue-wysiwyg";
+Vue.use(wysiwyg, {}); // config is optional. more below
+import "vue-wysiwyg/dist/vueWysiwyg.css";
+
 
 import staticRules from './assets/Static/rules.vue';
 import staticHelp from './assets/Static/help.vue';

@@ -116,9 +116,8 @@ textarea{
         <input  v-model="title" type="text" placeholder="Title"/>
         <textarea v-model="description" type="text" placeholder="Description"></textarea>
         <input  v-model="author" type="text" placeholder="Author"/>
-        <textarea v-model="blogContents" type="text" placeholder="Conpiracies content"></textarea>
-
-
+         <wysiwyg v-model="blogContents" />
+ 
         <div class="uploadAnImage">
             
             <div class="icon">
@@ -159,6 +158,7 @@ import slugify from 'slugify';
 export default{
     data:function(){
         return {
+            myHTML:'',
             title:null,
             blogContents:null,
             feedback:null,

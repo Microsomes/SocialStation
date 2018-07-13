@@ -31,6 +31,7 @@
     "vue-typer": "^1.2.0",
     "vue-typewriter": "^2.2.1",
     "vue-video-player": "^5.0.2",
+    "vue-wysiwyg": "^1.7.2",
     "vue2-circle-progress": "^1.2.3",
     "vuefire": "^1.4.5",
     "vuetify": "^1.0.18",

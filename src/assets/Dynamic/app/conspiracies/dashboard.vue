@@ -12,7 +12,7 @@
             <div class="metricItem">{{timeAgo}}</div>
         </div>
         <div class="postItemContent">
-            content
+            <div style="padding:10px;" v-html="postData.content"></div>
         </div>
     </div>
  </div>
